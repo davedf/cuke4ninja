@@ -1,0 +1,56 @@
+body {
+font-family: Helvetica, Arial, sans-serif; 
+margin:0; background-image:url('rule.png'); 
+background-repeat:both;}
+img { border: 0px; }
+
+
+a:hover , a:visited, a, a:active {color: black; }
+.leftmenu a:hover { color: #333333; text-decoration:underline }
+.leftmenu a:visited, .leftmenu a, .leftmenu a:active {color: black; text-decoration:none;}
+
+.topHeader {
+	width:100%;
+	height:130px;
+	vertical-align:middle;
+	padding-left:80px;	
+	text-align:left;
+	font-weight: normal;
+	font-style: normal;
+	line-height:normal;
+	font-family: 'ITCAmericanTypewriterStdBold', sans-serif;
+	font-size: 30pt;
+}
+
+.leftMenu {
+	font-weight: normal;
+	font-style: normal;
+	line-height:normal;
+	font-family: 'ITCAmericanTypewriterStdBold', sans-serif;
+	font-size: 15pt;
+	height:100%;
+	vertical-align:top;
+
+}
+.leftMenu ul {list-style-type: none; padding-left:10px;padding-top:20px;}
+.leftMenu ul li {margin-bottom:30px;margin-top:30px;}
+.pageTable {width:100%;height:100%;background-image:url('leftbg.png'); background-repeat:repeat-y;}
+.topRow {background-image:url('top.png'); background-repeat:repeat-x;}
+
+.content { padding-left:20px; padding-right:20px; vertical-align:top; }
+
+
+
+div.mainPage {float:left;text-align:center;margin-left:20px; margin-right:20px;}
+
+.mainPage h2{
+	font-weight: normal;
+	font-style: normal;
+	line-height:normal;
+	font-family: 'ITCAmericanTypewriterStdBold', sans-serif;
+	font-size: 15pt;
+	height:100%;
+	vertical-align:top;
+}
+
+#footer {clear:both; font-size:10px; margin-top:10px; text-align:center;}

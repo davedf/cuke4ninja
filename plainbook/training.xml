@@ -1,0 +1,17 @@
+<!DOCTYPE preface SYSTEM "../resources/plainbook/plainbook.dtd" >
+<preface id="pre_training" title="Ninja training">
+	<p>David and Gojko run public and on-site training workshops for aspiring Cucumber teams. Our
+		workshops are designed for business users, analysts, testers and developers. Through facilitated
+		exercises and discussion, these workshops provide teams with practical experience of agile
+		acceptance testing, behaviour-driven development and specification by example. The participants
+		learn how to collaborate on specifications and tests, how to design good Cucumber tests and how to
+		automate them efficiently.</p>
+	<p> On-site workshops are typically customised to fit the business domains and particular needs of
+		teams, so that the participants get real-world experience and instant benefits.</p>
+	<p>More than 90% of previous attendees said that the workshops improved their performance at work.</p>
+	<p>
+		For more information on our workshops, see
+		<url link="http://cuke4ninja.com/training" />, 
+		drop us an e-mail on training@cuke4ninja.com or give us a call on +442079932982.
+	</p>
+</preface>

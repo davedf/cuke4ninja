@@ -1,0 +1,4 @@
+<cucumberArg>--format</cucumberArg>
+<cucumberArg>junit</cucumberArg>
+<cucumberArg>--out</cucumberArg>
+<cucumberArg>target/cucumber-reports</cucumberArg>

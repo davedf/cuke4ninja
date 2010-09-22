@@ -1,0 +1,1 @@
+../../../ruby/NinjaSurvivalRate/features/danger_levels_background.feature

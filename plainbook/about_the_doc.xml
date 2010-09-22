@@ -1,0 +1,32 @@
+<!DOCTYPE preface SYSTEM "../resources/plainbook/plainbook.dtd" >
+<preface id="pre_about" title="About this document">
+	<p>This document is a step-by-step guide for Cucumber,
+	a tool that is quickly becoming the weapon of choice for many agile teams when it comes to functional test automation, creating
+	executable specifications and building a living documentation. We believe in iterative development so we write iteratively and this
+	is just the start: </p>
+	<ul>
+	<li>This version
+	covers the basics of setting up Cucumber for Ruby, Java and .NET and how to write and design good tests. </li>
+	<li>The second version will cover integration with web test automation frameworks.</li>
+	<li>The third version will have more examples on Ajax and cover advanced web automation topics.</li>
+	</ul>
+<section id="pref.about.online" title="Online">
+ <p>To get notified when we publish an update, grab the code for the examples we used in the guide, 
+	provide feedback or ask a question, do one or more of the following: </p>
+	<ul>
+	<li>Point your browser to <url link="http://cuke4ninja.com"/> periodically</li>
+	<li>Follow @cuke4ninja on Twitter for updates and news</li>
+	<li>Follow @davedf and @gojkoadzic on Twitter to keep in touch with the authors or drop us a message there</li>
+	</ul> 
+</section>
+<section id="pref.about.contribuninja" title="Become a contribuninja">
+	<p>
+		Do you have an interesting story to tell about cucumbers? It is related to the right kind of
+		cucumbers? Is it morally acceptable? Do you have a different opinion about any of the things we
+		wrote here? Please get engaged and help us make this document better. 
+	</p>
+	<p>See <url link="http://cuke4ninja.com/contribuninja" />
+		for more information on how to contribute.
+	</p>
+</section>
+</preface>

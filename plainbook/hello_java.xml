@@ -1,0 +1,340 @@
+<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
+<chapter title="Cucumber and Java" id="chp_hello_java">
+	<p> In this chapter, we cover setting up Cucumber for a Java project and integrating with a
+		continuous build system. Although the examples are in Java, you can use
+		absolutely the same approach to integrate Cucumber with any JVM-based language,
+		including Groovy, Scala and Clojure.</p>
+	<p>
+		Thanks to JRuby,
+		<footnote>
+			<url link="http://jruby.org/" />
+		</footnote>, Cucumber can talk directly to JVM code, without a wire protocol. This simplifies the Java
+		project setup and also means that you do not need a stand-alone Ruby installation.
+	</p>
+    <important title="What is JRuby?">
+        <p>
+            JRuby is a version of the Ruby runtime environment which runs in the JVM. It differs from other Ruby
+            like JVM based languages such as Groovy in that it aims for complete compatibility with Ruby. At the time
+            of writing JRuby is compatible with Ruby version 1.8.7.
+        </p>
+    </important>
+	<p>
+		A ruby gem called
+		<url title="Cuke4Duke" link="http://wiki.github.com/aslakhellesoy/cuke4duke/" />
+		enables us to write step definitions in Java and other JVM languages. (See
+		<link ref="sidebar_gem" />
+		to learn about gems). Cuke4Duke uses JUnit for assertions. It also relies on an inversion-of-control container
+		for application wiring. By
+		default, it uses
+		<url link="http://www.picocontainer.org/" title="PicoContainer" />
+		to inject dependencies. If you already use Spring for application wiring on your project, you can
+		use Spring instead of PicoContainer Cucumber automation as well. Add the following JVM argument when
+		you run tests to tell Cuke4Duke to use Spring:<footnote>
+			For more information on the Spring integration, see
+			<url link="http://wiki.github.com/aslakhellesoy/cuke4duke/spring" />
+		</footnote>
+	</p>
+	<code>-Dcuke4duke.objectFactory=cuke4duke.internal.jvmclass.SpringFactory</code>
+                
+    <p>
+    	In the rest of this chapter we are going to cover the three most common
+        ways of using Cuke4Duke.
+        <ul>
+            <li><link ref="sec_jruby" /> covers installing JRuby and running Cuke4Duke from the terminal</li>
+            <li><link ref="sec_ant"/> covers using Cuke4Duke with Ant</li>
+            <li><link ref="sec_maven" /> covers using Cuke4Duke with Maven</li>
+        </ul>
+        Then we will create a simple Hello-World project, and finally take a look at how to include Cucumber tests into
+	a continuous build process.
+    </p>
+    <section id="sec_jruby" title="Using JRuby directly">
+	<p>
+		To run Cucumber features from the console without a build system such as Ant or Maven, you'll need
+		JRuby. If you do not already have JRuby installed, download the binary zip or tarball from the
+		JRuby download page,<footnote>
+			<url link="http://jruby.org/download" />
+		</footnote>
+		extract the contents into a directory and add the
+		<code>bin</code>
+		sub-directory of the JRuby installation to your PATH environment variable.
+	</p>
+        <important title="Maven (of course) downloads the Internet separately">
+        	<p>Don't install JRuby yourself if you intend to use Maven, jump to <link ref="sec_maven" /> and continue
+        	reading that. Maven will install JRuby in its own repository separately. </p>
+        </important>
+        <section title="Checking whether JRuby is installed correctly">
+            <p>Check if JRuby is installed correctly by running the following command from a terminal window:
+            </p>
+            <code>jruby -v</code>
+            <p>If you set up JRuby correctly and added the <code>bin</code> folder to the executable path, you
+            should see a message similar to the following:</p>
+<code>
+jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3) 
+(Java HotSpot(TM) Client VM 1.6.0) [i386-java]
+</code>
+        </section>
+        
+        <section title="Installing the Cuke4Duke gem">
+        <p>
+            Install the Cuke4Duke gem for JRuby using the following command:
+        </p>
+        <code>jruby -S gem install cuke4duke</code>
+        <p>
+	    Even if you have Cucumber installed in your stand-alone Ruby
+            gem repository, you still need to install Cuke4Duke from JRuby. 
+            To test the installation, run the following command from a terminal window:
+        </p>
+        <code>cuke4duke --help</code>
+        <p>This should print the available Cuke4Duke options.</p>
+        </section>
+        <section title="Running Cuke4Duke from JRuby">
+        <p>
+            Cuke4Duke has two additional options compared to Cucumber: 
+    	</p>
+	<ul>
+        <li>
+            The first is <code>--jars</code> which allows you to specify the location of library classes to include.
+            Confusingly, this option does not accept a jar file, but instead expects a directory.  You can specify this
+            option several times to  include multiple directories containing dependencies.
+        </li>
+        <li>
+            The second additional option is <code>--require</code>, which you can use to specify the root directory for
+            your compiled classes for non-dynamic languages. For dynamic languages, put the step definitions in the
+            <code>features/step_definitions</code> folder and they will be included automatically.
+        </li>
+	</ul>
+        <p>For example, the following command will run all the feature files in the <code>features</code> folder,
+        including all the JAR archives from the <code>lib</code> folder using the step 
+        definitions from the <code>target/test-classes</code> folder:</p>
+        <code>cuke4duke --jars lib --require target/test-classes features</code>
+        <p>
+            If you write the step definitions in JRuby, then you can get the same result with the following command:
+        </p>
+        <code>cuke4duke --jars lib features</code>
+    </section>
+    </section>
+    <!-- here -->
+    <section title="Using ANT and Ivy" id="sec_ant">
+        <p>
+            If you want to run Cuke4Duke via Ant, you do not have to install JRuby manually. We recommend 
+            
+            using
+            <url link="http://ant.apache.org/ivy/" title="Apache Ivy"/>
+            for dependency management with Ant (although you can still install everything by hand). 
+        </p>
+	<p>    
+	To install all the required dependencies with Ivy, you need to create the following three files in your project:
+	</p>
+	<ul>
+		<li><code>build.xml</code> is the ANT build file that specifies how you want to build and package the project</li>
+		<li><code>ivy.xml</code> specifies the required dependencies for the project.</li>
+		<li><code>ivysettings.xml</code> tells Ivy where download the dependencies from.</li>
+	</ul>	
+	<section title="Project build file">
+	<p>Create a new ANT build file in your project folder, call it <code>build.xml</code> and paste the
+		following content into it:</p>
+        <code file="java/HelloCucumber/build.xml"/>
+        <p>
+            There are two tasks specific to Cuke4Duke in this build file example:
+            <ul>
+		<li>The <code>&lt;gem&gt;</code> tag downloads the Cuke4Duke ruby gem</li>
+	    	<li>The <code>&lt;cucumber&gt;</code> tag executes the tests to validate Cucumber feature files</li>
+            </ul>
+        </p>
+	</section>
+	<section title="Project dependencies">
+        <p>
+            Create a file called <code>ivy.xml</code> in your project folder which instructs Ivy to download Cuke4Duke and its dependencies. It should have the following content:
+        </p>
+        <code file="java/HelloCucumber/ivy.xml"/>
+	</section>
+	<section title="Ivy settings">
+        <p>Create a file called <code>ivysettings.xml</code> to tell Ivy how to download the dependencies:</p>
+        <code file="java/HelloCucumber/ivysettings.xml"/>
+	</section>
+        <section title="Running Cucumber through ANT">
+	<p>
+            To compile and run the cucumber feature use the following command:
+        </p>
+        <code>ant -Divy=true -Dgems=true</code>
+    </section>
+    </section>
+    <section title="Using Maven" id="sec_maven">
+        <p>
+            If you are using Maven, you will need to set up the <code>pom.xml</code> project file to include Cuke4Duke and install the required gems. 
+            and java dependencies. Setting up Maven is outside the scope of this tutorial, but you will find the full working example of the POM file on the companion web site of this book.<footnote><url link="http://cuke4ninja.com" /></footnote>
+        </p>
+        <section title="Setting up the POM file">
+	<p>
+		Add the following repositories to the POM file:
+	</p>
+	<code file="java/HelloCucumber/pom.xml" part="repositories"/>
+	<p>
+		Next, add a plugin repository, so that Maven can get hold of the cuke4duke-maven-plugin.
+	</p>
+	<code file="java/HelloCucumber/pom.xml" part="pluginRepositories"/>
+	<p>
+	Add the following dependencies to the <code>dependencies</code> block:
+	</p>
+	<code file="java/HelloCucumber/pom.xml" part="dependencies"/>
+	<p>
+	Finally, configure the Cuke4Duke plugin:
+	</p>
+	<code file="java/HelloCucumber/pom.xml" part="plugins"/>
+	<p>
+	You can control how Cuke4Duke runs and saves its results with the arguments in the <code>cucumberArg</code> tags. For example, the following arguments:
+	</p>
+	<code><![CDATA[
+<cucumberArg>--out</cucumberArg>>
+<cucumberArg>target/cucumber-reports</cucumberArg>]]></code>
+	<p>are equivalent to the following command line:</p>
+	<code>cuke4duke --out target/cucumber-reports</code>
+	</section>
+	<section title="Running Cuke4Duke from Maven">
+		<p>The example setup from the previous section binds Cuke4Duke to the <code>integration-test</code> Maven lifecycle. To run
+			Cucumber tests using Maven, execute the following command line:</p>
+		<code>mvn clean integration-test</code>
+        <p>
+         That command cleans the output folder, re-compiles the projects and
+                    then reruns the test. While this is the best way to ensure the tests are running against
+                    the latest code base, it will take longer to run. If you are not making changes to classes,
+                    you can run the test using the following command:
+                </p>
+                <code>mvn cuke4duke:cucumber</code>
+		<note title="Installing gems">
+		<p>The first time you run Cucumber with Maven, you will have to specify one additional arguments so that JRuby downloads
+			and installs the required gems. Run Maven as:</p>
+			<code>mvn integration-test -Dcucumber.installGems=true</code>
+		<p>You only need to do this once on any particular system.</p>
+		</note>
+	
+    </section>
+    </section>
+    <!-- here -->
+    <section title="Hello world from Java" id="sec_java_helloworld">
+        <p>Let's go through a quick sample project to verify that the installation works. We will
+        use Maven to run the project.  If you would prefer to use Ant or JRuby directly rather than Maven, then 
+        set up the project as described in the previous section. You can download the full project code
+        for both Ant and Maven from the <url link="http://cuke4ninja.com" title="companion web site"/> of this book.
+            </p>
+            <section title="Project Setup">
+                <p>
+                    Set up a new project using the standard project layout and add a <code>features</code> sub-directory to the
+                    project directory. This is where your feature files will go. For a Maven project, 
+                    the final layout will be as in <link ref="fig.project-structure-java" />. Make sure that 
+                    <code>src/test/java</code> is marked as a test source directory in your IDE.
+                </p>
+                <img src="project-structure-java.png" id="fig.project-structure-java" title="Maven project directory structure"/>
+            </section>
+           
+            <section title="Adding the feature file">
+                <p>Create a file in the <code>features</code> folder in your project called <code>basic.feature</code> and add the following content:
+                </p>
+                <code file="java/HelloCucumber/features/basic.feature"/>
+                <p>Now run Cucumber. Open a terminal window and execute the following command from the project folder:
+                </p>
+                <code>mvn integration-test -Dcucumber.installGems=true</code>
+                <p>Of course, if you decided to use Ant or JRuby directly, use the commands described in the previous sections to execute the tests. </p>
+                <p>
+                Near the end of the output of the maven build report in the terminal window you should see something like the result in <link ref="fig.j_terminal_output" />.
+                Below that, Maven build result shows a suggested implementation for the step definitions, such as in <link ref="fig.j_terminal_output2"/>.
+                This shows that Cuke4Duke is running and has identified the feature file.
+                As we have not yet created any step definitions, the test execution will fail. It will however do three 
+                    three important things:
+                    <ul>
+                        <li>install the cuke4duke gem and its dependencies</li>
+                        <li>confirm that cuke4duke is installed correctly and that it can find the feature file as
+                            expected
+                        </li>
+                        <li>provides an example feature step definitions in Java</li>
+                    </ul>
+                </p>
+                <img src="j_terminal_output.png" id="fig.j_terminal_output" title="Cuke4Duke finds the feature file"/>
+                <img src="j_terminal_output_2.png" id="fig.j_terminal_output2"
+                     title="Cuke4Duke suggests step definitions"/>
+            </section>
+
+            <section title="Writing step definitions">
+                <p>
+                    Now let's add the step definitions that help Cucumber talk to our project code.  Add a class called
+                    <code>BasicFeature</code> into the <code>test/java/hellocucumber</code> directory, with the following content:
+                </p>
+                <code file="java/HelloCucumber/src/test/java/hellocucumber/BasicFeature.java"/>
+                 <p>
+                     Now build the project again and re-run Cuke4Duke, using the following command:
+                 </p>
+	             <code>mvn clean integration-test</code>
+                 <p>
+                     Note that we don't need the <code>-D</code> any more because the gems should now be installed. The
+                     output should now say that the steps passed, similar to the result in <link ref="fig.j_terminal_output_3"/>.
+                 </p>
+                 <img src="j_terminal_output_3.png" id="fig.j_terminal_output_3" title="The feature passes"/>
+                 <p>
+	                This is a very simplistic implementation for all the steps, that does not actually
+	                connect to any domain code. We go through all the details of the feature file and step 
+	                definitions in <link ref="chp_feature_files" />. For now,
+	                you can probably guess that Cucumber uses regular expression in the attributes
+	                <code>Given</code>, <code>When</code> and <code>Then</code> 
+	                to map lines in a feature file to step definitions.  
+	            </p>
+                <important title="Maven may need some TLC">
+                    <p>
+                        Depending on the IDE you are using, you may need to process the <code>pom.xml</code> file we
+                        updated earlier to import the dependencies.
+                    </p>
+                </important>
+            </section>
+    </section>
+
+    <section id="sec_java_ci" title="Continuous integration">
+        <p>
+            We are only going to cover setting up TeamCity with a Maven base project in detail here, but you should be able
+            to configure other CI systems similarly.
+        </p>
+        <p>
+            Cucumber can write out the results of the tests in a format that your CI system can process.
+            In <link ref="sec_maven" /> we used <code>cucumberArgs</code> to set configure the output format: 
+        </p>
+        <code file="java/Examples/ci_cucumberArg.txt"/>
+        <p>
+            These arguments instructed Cucumber to output the test results in JUnit format to  the
+            <code>target/cucumber-reports</code> directory. When we ran Cucumber, it created a file like this:
+        </p>
+        <code file="java/Examples/TEST-basic.xml"/>
+        <p>
+            Most CI servers should be able to parse these results and display them.
+            As an example, we are going to set up a 
+            TeamCity job to run the <code>integration-test</code> target and report the results.
+        </p>
+    <section title="Setting up CI using TeamCity">
+        <p>
+            Setting up TeamCity is outside the scope of this tutorial, but it is fairly easy to do. Grab it from
+            <url link="http://jetbrains.com" />. It is free to use for up to 20 build configurations.
+        </p>
+        <p>
+            Add the project you created in <url link="sec_java_helloworld"/> to TeamCity as a Maven 2 project.
+            On page that configures the Build Runner, select &lsquo;Maven 2&rsquo; from the dropdown and enter 
+            <code>clean integration-test</code> as goals, as in <link ref="fig.j.ci.buildrunner" />.
+            Further down the page, set the command line parameters to <code>-Dcucumber.installGems=true</code>
+            as in <link ref="fig.j.ci.cmd.line.params" />.
+        </p>
+        <img src="j.ci.buildrunner.png" id="fig.j.ci.buildrunner" title="Selecting Maven2 as the build runner"/>
+        <img src="j.ci.cmd.line.params.png" id="fig.j.ci.cmd.line.params" title="Setting command line parameters so gems are downloaded"/>
+        <p>
+            At the bottom of the page, in the &lsquo;Import data from XML&rsquo; section, select &lsquo;Ant JUnit&rsquo; as a report type to import and enter <code>target/cucumber-reports/*.xml</code>
+            as the report path, as in <link ref="fig.j.ci.junit" />. That is about it! Save the page and scroll to the top, where you should see a run button. Once the
+            project is running, if you select the projects tab, you should see the build happening. This may take a while the first time,
+            since maven in its usual fashion will insist on downloading many libraries.
+        </p>
+        <img src="j.ci.junit.png" id="fig.j.ci.junit" title="Setting up build report type"/>
+        <p>
+        </p>
+        <p>Once the build is complete it should show that one test passed, as in <link ref="fig.j.ci.build.results" />.
+        You can drill down into the result to see the test name, as with a normal JUnit test. For an example, see
+        <link ref="fig.j.ci.test.results" />. 
+        </p>
+        <img src="j.ci.build.results.png" id="fig.j.ci.build.results" title="Test results in TeamCity"/>
+        <img src="j.ci.test.results.png" id="fig.j.ci.test.results" title="Test names in TeamCity"/>
+    </section>
+	</section>
+</chapter>

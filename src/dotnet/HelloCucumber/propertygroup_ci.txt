@@ -1,0 +1,5 @@
+<PropertyGroup>
+    <PostBuildEvent>cuke4nuke $(TargetPath) $(ProjectDir)features -q
+     -f junit -o$(ProjectDir)test</PostBuildEvent>
+    <PreBuildEvent>del $(ProjectDir)test\*.xml</PreBuildEvent>
+</PropertyGroup>

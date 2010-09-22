@@ -1,0 +1,294 @@
+<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
+<chapter title="Cucumber and .NET" id="chp_hello_dotnet">
+    <p>
+        In this chapter, we cover setting up Cucumber for a .NET project, debugging Cucumber tests in .NET
+        and integrating with a continuous build system.
+    </p>
+    <section id="sec_setting_up_ruby" title="Setting up Ruby">
+        <important title="Don't worry, you won't have to know Ruby to work with .NET">
+            <p>
+                Cucumber is written in Ruby and so you need it installed to run Cucumber tests. You do 
+                not need to know 
+                Ruby to write or run .NET tests. 
+            </p>
+        </important>
+	<p>
+		Download and run the one-click installer from the RubyInstaller web site.<footnote>
+			<url link="http://rubyinstaller.org/" title="" />
+		</footnote>
+		Although the latest version of Ruby at time of writing is 1.9.1, download the version 1.8.6. The
+		Cucumber .NET integration, called Cuke4Nuke, does not work out of the box with the latest version
+		of Ruby.
+	</p>
+	<p>
+		Next, add the location of the Ruby
+		<code>bin</code>
+		directory, by default
+		<code>c:\Ruby\bin</code>, to your PATH environment variable. 
+		If you you are not sure how to do this, there are some good
+		instructions in the Microsoft knowledge base.
+		<footnote>
+			<url link="http://support.microsoft.com/kb/310519" />
+		</footnote>
+	</p>
+        <section id="sec_check_ruby_installed" title="Checking if Ruby is installed correctly">
+            <p>Check your installation by running the following command from a command window:</p>
+            <code>ruby -v</code>
+            <p>If you set up
+		everything properly and added the <code>bin</code> directory to your executable path, that command should
+		print the version of Ruby you just installed, similar to the following:</p>
+            <code>ruby 1.8.6 (2010-02-04 patchlevel 398) [i386-mingw32]</code>
+		<p>  For full instructions 
+            on installing a different version of Ruby, troubleshooting and advanced installation options, see the
+            Ruby language web site.<footnote><url link="http://www.ruby-lang.org/en/downloads"/></footnote>
+        </p>
+        </section>
+        
+    </section>
+    <section id="sec_installing_cuke4nuke" title="Installing Cucumber and Cuke4Nuke">
+        <p>
+            Now that Ruby is installed, you can set up the Cucumber .NET integration.
+            Cucumber talks to .NET projects using a gem called Cuke4Nuke.<footnote><url link="http://github.com/richardlawrence/Cuke4Nuke" /></footnote>
+            (See <link ref="sidebar_gem" /> to
+            learn about gems).
+            Cuke4Nuke sets up a TCP server which will accept Cucumber commands and execute them against .NET code. In the 
+            Cucumber jargon, this way of executing is called the <define>wire protocol</define>.                  
+            Cuke4Nuke allows you to use Cucumber for .NET projects without having any knowledge of Ruby.
+        </p>
+        <p>
+            To install Cuke4Nuke, add GemCutter.org to the list of allowed Ruby Gem sources by executing the following command:
+        </p>
+        <code>gem sources -a http://gemcutter.org/</code>
+        <p>
+            Then install the Cuke4Nuke gem by executing the following command from the terminal window:
+        </p>
+        <code>gem install cuke4nuke</code>
+        <p>Finally, install the Win32Console gem to get colour reports, by using the following command:
+        </p>
+        <code>gem install win32console</code>
+        <p>
+         Cucumber colours do not show up correctly on some versions of Windows. <url title="WAC" link="http://github.com/aslakhellesoy/wac" />
+           is a workaround that 
+         enables colour reporting by using ANSI colours. Download it from the following URL: 
+        </p>
+        <code>http://github.com/aslakhellesoy/wac/raw/master/wac.exe</code>
+        <p>
+          Put it somewhere on the disk, ideally in the executable path. 
+        </p>
+          <sidebar id="sidebar_gem" title="Ruby Gems">
+            <p>
+                Gems are Ruby packages for applications and libraries. You can use the 
+                RubyGems package manager (the <code>gem</code> command) to download, install,
+                update and uninstall gems. To install a gem, use the following command:
+            </p>
+            <code>gem install gem_name</code>
+            <p>To download and install gems, RubyGems needs to know the addresses of one or more gem
+                repositories, called sources. You can view the currently configured sources using the following command:
+            </p>
+            <code>gem sources -l</code>
+            <p>You should get a result like the following:</p>
+            <code>*** CURRENT SOURCES ***</code>
+            <code>http://gems.rubyforge.org/</code>
+            <p>
+                The gem manager downloads and installs gems in a path relative to the main Ruby installation.
+                For a standard windows installation, gems will be in the following folder:
+            </p>
+            <code>C:\Ruby\lib\ruby\gems\1.8\gems\</code>
+            <p>
+                For more information on the gem package manager, see the list of options using the following command:
+            </p>
+            <code>gem --help</code>
+        </sidebar>
+       <section id="sec_verifying_cuke4nuke" title="Verifying that Cuke4Nuke is installed correctly">
+        <p>
+            To verify that the system is set up, execute
+            <code>Cuke4Nuke</code>
+            from the command line.
+            You should see a help screen with Cuke4Nuke options. If you see an error that the command Cuke4Nuke isn't
+            found, check the following:
+            <ul>
+                <li>There should be a <code>Cuke4Nuke.bat</code> executable in your Ruby <code>bin</code> folder. The path for 
+                this folder will be
+                    <code>C:\Ruby\bin</code>
+                    if you accepted the default installation options for Ruby.
+                </li>
+                <li>The Ruby
+                    <code>bin</code>
+                    folder should be on on your executable path. You can check this by using the command
+                    <code>echo %PATH%</code>.
+                </li>
+                <li>The Cuke4Nuke gem should exist in the gems folder. The default location is
+                <code>C:\Ruby\lib\ruby\gems\1.8\gems\cuke4nuke-0.3.0</code>.
+                </li>
+            </ul>
+        </p>
+       </section>
+       <note title="Cuke4Nuke uses NUnit assertions">
+       <p>Cuke4Nuke uses NUnit for assertions. Most .NET developers will have some version of NUnit installed, so we won't
+       go into the details of that here. If you do not have it, go to <url link="http://nunit.org" /> and
+       follow the installation instructions from that web site. 
+       </p>
+       </note>        
+    </section>
+    <section id="sec_hello_world_net" title="Hello World from .NET" >
+        <important title="Cuke4Nuke does not like the 4.0 framework">
+            <p>
+                Your project needs to set the target framework as .NET Framework 3.5 if you are using VS2010. If you get an error message
+                like the one below, then this is probably worth checking.
+            </p>
+            <code>Unable to contact the wire server at :3901. Is it up?</code>
+        </important>
+        <p>Let's go through a quick sample project to verify that the installation works.
+                Create a normal C# class library project (we called our example project <code>Cuke4NukeExample</code>).
+                Add a <code>Features</code> folder to it. This is where your Cucumber feature files will go. 
+                Add a <code>step_definitions</code>
+                subfolder to that and create a file called <code>cucumber.wire</code> in it, with the following content:
+            </p>
+            <code file="dotnet/HelloCucumber/Cuke4NukeExample/features/step_definitions/cucumber.wire"/>
+            <p>The <code>cucumber.wire</code> file tells Cucumber to use the wire protocol instead of executing steps
+            directly. Cuke4Nuke starts on port 3901 by default, so this file makes Cucumber talk to Cuke4Nuke.
+            Now let's add a test scenario to make sure that everything is working correctly. Create a file
+            called <code>basic.feature</code> in the <code>Features</code> folder, with the following content:
+            </p>
+            <code file="dotnet/HelloCucumber/Cuke4NukeExample/features/basic.feature"/>
+            <p>At this point, your project structure should look similar to the one in <link ref="fig.project_structure"/>.
+            </p>
+            <img width="3in" src="project-structure.png" id="fig.project_structure" title="Cuke4Nuke Project structure"/>
+            <p>Now let's run Cuke4Nuke for the first time. Build the project, open a console window, go to your project
+                folder (in this case <code>Cuke4NukeExample</code>) and run the following command:
+            </p>
+            <code>Cuke4Nuke bin\debug\Cuke4NukeExample.dll</code>
+            <p>Of course, if you named your project differently, replace the DLL path accordingly.</p>
+            <p>You should see the Cucumber output telling you that there is one scenario with three steps, all of
+                which are undefined. If you do not see the colours then add the <code>-c</code> flag and pipe the output to WAC.exe,
+                making the command similar to the following (replace the path to wac.exe with the folder where you saved it):
+            </p>
+            <code>Cuke4Nuke bin\debug\Cuke4NukeExample.dll -c | d:\apps\wac.exe</code>
+            <p>The result should be similar to one in <link ref="fig.terminal_output"/>. As we still have
+            not implemented any step definitions, Cuke4Nuke will not be able to match the feature file to 
+            any code. It therefore suggests some default step definitions. If these are in Ruby rather than C#, Cucumber
+            cannot find the <code>cucumber.wire</code> file. Make sure that it is in <code>Features\step_definitions</code>.</p>
+
+            <img id="fig.terminal_output" src="dn_terminal_output_1.PNG" title="Cuke4Nuke suggests steps"/>
+
+            <p>
+                Now let's add the step definitions that help Cucumber talk to our project code. Create a C# class
+                file called <code>HelloWorldSteps.cs</code> and edit it so it looks like the example below:
+            </p>
+            <code file="dotnet/HelloCucumber/Cuke4NukeExample/HelloWorldSteps.cs"/>
+            <p>
+                Add a reference to NUnit.Framework.dll (from your NUnit installation) and Cuke4Nuke.Framework.dll
+                (by default, it is installed into <code>C:\Ruby\lib\ruby\gems\1.8\gems\cuke4nuke-0.3.0\dotnet\</code>).
+                Now build the project again, go to the console and re-run the Cuke4Nuke command. The output should
+                now say that the steps passed, similar to the result in <link ref="fig.terminal_output2"/>.
+            </p>
+            <img src="dn_terminal_output_2.PNG" id="fig.terminal_output2" title="Cuke4Nuke executes our test"/>
+            <p>
+                This is a very simplistic implementation for all the steps, that does not actually
+                connect to any domain code. We go through all the details of the feature file and step definitions in <link ref="chp_feature_files" />. For now,
+                you can probably guess that Cucumber uses regular expression in the attributes
+                <code>Given</code>, <code>When</code> and <code>Then</code> 
+                to map lines in a feature file to step definitions.  
+            </p>
+            <p>Our simple script will set the subject and the action and then verify the greeting using the
+                standard NUnit assertion <code>Assert.AreEqual</code>. Just to see it when it fails, modify the 
+                <code>CheckGreeting</code>
+                method or feature source so that they don’t match and re-run Cuke4Nuke.
+            </p>
+     </section>
+      <section id="sec_net_build_integration" title="Build integration">
+          <p>
+              We can add Cuke4Nuke as a post-build step so that all the specifications get executed after every
+              build. Open your project .csproj file and add this just above the closing tag:
+          </p>
+          <code file="dotnet/HelloCucumber/Cuke4NukeExample/Cuke4NukeExample.csproj" part="PostBuildEvent"/>
+          <p>
+              When you build the project, the output window should show that Cucumber tests are executed as well.
+              <!-- 
+              similar to the output in <link ref="fig.dn.build_output" />.            
+               -->
+              You can now inspect the results of Cuke4Nuke in your output and problem windows every time a project is built.           
+          </p>
+          <!--  	   
+           <img float="true" src="dn_build_output.PNG" id="fig.dn.build_output" title="Cuke4Nuke tests run in Visual Studio"/>
+           -->
+      </section>
+    <section id="sec_net_ci" title="Continuous Integration">    
+        <p>
+            To complete the project setup, let’s run Cucumber tests within a continuous integration environment and
+            store
+            test outputs next to project build results. We'll use TeamCity in this example.
+        </p>
+        <note title="Cucumber and TeamCity">
+        <p>
+            Setting up TeamCity is outside the scope of this tutorial, but it is fairly easy to do. Grab it from
+            <url link="http://jetbrains.com" />.
+            TeamCity 5 should support Cucumber out of the box but we have not been able to make it work. TeamCity 
+            documentation suggests that a few environment variables should do the trick for ANT/Java builds, but this
+            does not
+            work for Cuke4Nuke. The Cucumber Teamcity template uses a deprecated API and fails to build with the latest
+            Cucumber version.
+        </p>
+        </note>
+        <p>
+            Cucumber
+            can
+            export a JUnit XML test report file, which is more than enough to get it nicely
+            integrated with TeamCity. We’ll make Cucumber save the test results into
+            the
+            test subfolder of our project folder, and tell TeamCity to monitor that. First, let’s change the .csproj
+            project file.
+            Modify the <code>PropertyGroup</code> block you just added to the following:
+        </p>
+        <code file="dotnet/HelloCucumber/propertygroup_ci.txt"/>
+        <p>
+            This <code>-f junit</code> option will tell Cucumber to save test results in the JUnit format, and
+            <code>-o$(ProjectDir)test</code> tells it to save the files in the <code>test</code> subfolder of our project
+            directory. The <code>PreBuildEvent</code> will delete any previous test results from that folder
+            when the build starts.
+        </p>
+        <p>
+            Now set up your TeamCity project as normal. On the Build Runner configuration screen, 
+            find the
+            &lsquo;XML Report Processing&rsquo; section and 
+            choose <code>ANT Junit</code> from the &lsquo;Import data from XML&rsquo; list. 
+            Set <code>test/*xml</code> as the report path. (See <link ref="img.dn.teamcity.setup" />.)
+        </p>
+        <img src="teamcity-setup.png" id="img.dn.teamcity.setup" title="Setting up XML Report Processing"/>
+        <p>
+            Everything should now be set up. You should be able to run the TeamCity build and get the 
+            &lsquo;Tests passed:1&rsquo; message in TeamCity, similar to the result show in <link ref="img.dn.teamcity.results" />.
+        </p>
+        <img width="2.5in" src="teamcity-results.png" id="img.dn.teamcity.results" title="TeamCity reporting test passes"/>
+    </section>
+    <important title="Cuke4Nuke keeps timing out">
+    <p>Sometimes you might think that Cuke4Nuke has some special ninja invisibility skills, it just disappears. The reason
+    for that is most likely that a step is taking too long to execute. Cucumber and Cuke4Nuke communicate using TCP and
+    Cucumber only allows steps a very short time to execute by default. To increase the timeout, add a timeout section
+    to your <code>cucumber.wire</code> file and an <code>invoke</code> subitem. Set the number of
+    seconds allowed for a step to execute there. For example, the following file sets that to 200 seconds:</p>
+      	<code file="dotnet/NinjaSurvivalRate/features/step_definitions/cucumber.wire"/>    
+    </important>
+    <section title="Debugging Cuke4Nuke steps" id="sec_dotnet_debug">
+    	<p>Because of the way that Cuke4Nuke and Cucumber run, it is virtually impossible to debug Cuke4Nuke steps properly
+    	directly from Visual Studio, even if you set up the project to launch an external process for debugging. There
+    	are two workarounds that we use to debug steps: </p>
+    	<ol>
+    	<li>
+    	Call the step from a unit test, or even convert the step definition class to a unit test fixture class (Cuke4Nuke can
+    	use NUnit test methods as step definitions as long as they have the correct attributes). This allows you
+    	to execute individual steps in isolation. If you find yourself doing this too much, this means that there is a lot of
+    	logic in the steps which probably hints at the need to push some of that logic into the domain code. 
+    	</li>
+    	<li>The unit test approach only works for troubleshooting the logic inside a step, but it doesn't really allow you
+    	to debug a running feature file. For that, put <code>System.Diagnostics.Debugger.Break()</code> where
+    	you want to set a breakpoint and run Cuke4Nuke normally. When the CLR hits the breakpoint, it will offer to 
+    	open up another Visual Studio instance and debug it. You will then be able to inspect any variables
+    	and step through the execution. Remember to increase the timeout for the wire protocol
+    	otherwise Cucumber will kill Cuke4Nuke before the debugger launches. Also remember to delete or comment
+    	out this line before committing the step definition files to the version control system, otherwise the continuous 
+    	build process will start blocking and offering to debug the code as well.</li>
+    	</ol>
+    </section>
+
+</chapter>

@@ -1,0 +1,150 @@
+<!DOCTYPE bibliography [
+<!ENTITY % isolat1 SYSTEM "../resources/plainbook/isolat1.ent" >
+%isolat1;
+]>
+<bibliography><title>Books</title>
+	<biblioentry id="adzic:comgap">
+		<abbrev>Adzic09</abbrev>
+		<authorgroup>
+			<author>
+				<firstname>Gojko</firstname>
+				<surname>Adzic</surname>
+			</author>
+		</authorgroup>
+		<copyright>
+			<year>2009</year>
+		</copyright>
+		<publisher>
+			<publishername>Neuri</publishername>
+		</publisher>
+		<title>Bridging the Communication Gap</title>
+		<subtitle>Specification by Example and Agile Acceptance Testing</subtitle>
+		<isbn>0955683610</isbn>
+	</biblioentry>
+		
+	<biblioentry id="crispin:at">
+		<abbrev>CrispinGregory09</abbrev>
+		<authorgroup>
+			<author>
+				<firstname>Lisa</firstname>
+				<surname>Crispin</surname>
+			</author>
+			<author>
+				<firstname>Janet</firstname>
+				<surname>Gregory</surname>
+			</author>
+			
+		</authorgroup>
+		<copyright>
+			<year>2009</year>
+		</copyright>
+		<publisher>
+			<publishername>Addison-Wesley Professional</publishername>
+		</publisher>
+		<title>Agile Testing</title>
+		<subtitle>A Practical Guide for Testers and Agile Teams</subtitle>
+		<isbn>0201835959</isbn>
+	</biblioentry>
+
+	<biblioentry id="vodde:practices">
+		<abbrev>LarmanVodde10</abbrev>
+		<authorgroup>
+			<author>
+				<firstname>Craig</firstname>
+				<surname>Larman</surname>
+			</author>
+			<author>
+				<firstname>Bas</firstname>
+				<surname>Vodde</surname>
+			</author>
+		</authorgroup>
+		<copyright>
+			<year>2010</year>
+		</copyright>
+		<publisher>
+			<publishername>Pearson Education</publishername>
+		</publisher>
+		<title>Practices for Scaling Lean and Agile Development</title>
+		<subtitle>Large, Multisite, and Offshore Product Development with Large-Scale Scrum</subtitle>
+		<isbn>9780321636409</isbn>
+	</biblioentry>
+	<biblioentry id="evans:ddd">
+	<abbrev>Evans03</abbrev>
+ <authorgroup>
+ <author><firstname>Eric</firstname><surname>Evans</surname></author>
+ </authorgroup>
+ <copyright><year>2003</year></copyright>
+  <publisher>
+    <publishername>Addison-Wesley Professional</publishername>
+  </publisher>
+  <title>Domain-Driven Design</title>
+  <subtitle>Tackling Complexity in the Heart of Software</subtitle>
+ 	<isbn>0321125215</isbn>
+ </biblioentry>
+		<biblioentry id="weinberg:er">
+		<abbrev>WeibergGause89</abbrev>
+		<authorgroup>
+			<author>
+				<firstname>Gerald M.</firstname>
+				<surname>Weinberg </surname>
+			</author>
+			<author>
+				<firstname>Donald C.</firstname>
+				<surname>Gause</surname>
+			</author>
+		</authorgroup>
+		<copyright>
+			<year>1989</year>
+		</copyright>
+		<publisher>
+			<publishername>Dorset House Publishing Company</publishername>
+		</publisher>
+		<title>Exploring Requirements: Quality Before Design</title>
+		<isbn>0932633137</isbn>
+	</biblioentry>	
+	<biblioentry id="weinberg:qualitysw">
+		<abbrev>Weinberg92</abbrev>		
+		<authorgroup>
+			<author>
+				<firstname>Gerald </firstname>
+				<surname>Weinberg</surname>
+			</author>
+		</authorgroup>
+		<copyright>
+			<year>1992</year>
+		</copyright>
+		<publisher>
+			<publishername>Dorset House Publishing</publishername>
+		</publisher>
+		<title>Quality Software Management : Vol. 1</title>
+		<subtitle>Systems Thinking</subtitle>
+		<isbn>978-0932633224</isbn>	
+	</biblioentry>
+
+	<biblioentry id="cohn:userstory">
+		<abbrev>Cohn04</abbrev>
+		<author><firstname>Mike</firstname><surname>Cohn</surname></author>
+		<copyright><year>2004</year></copyright>
+		<publisher>
+			<publishername>Addison-Wesley Professional</publishername>
+		</publisher>
+		<title>User Stories Applied: For Agile Software Development</title>
+		<isbn>978-0321205681</isbn>
+	</biblioentry>
+	<biblioentry id="chelimsky:rspec">
+		<abbrev>Chelimsky10</abbrev>
+		<author><firstname>David</firstname><surname>Chelimsky</surname></author>
+		<author><firstname>Dave</firstname><surname>Astels</surname></author>
+		<author><firstname>Zach</firstname><surname>Dennis</surname></author>
+		<author><firstname>Aslak</firstname><surname>Helles&oslash;y</surname></author>
+		<author><firstname>Bryan</firstname><surname>Helmkamp</surname></author>
+		<author><firstname>Dan</firstname><surname>North</surname></author>		
+		<copyright><year>2010</year></copyright>
+		<publisher>
+			<publishername>Pragmatic Bookshelf</publishername>
+		</publisher>
+		<title>The RSpec Book</title>
+		<subtitle>Behaviour Driven Development with RSpec, Cucumber and Friends</subtitle>
+		<isbn>978-1934356371</isbn>
+	</biblioentry>
+</bibliography>

@@ -1,0 +1,19 @@
+Differences from HTML:
+
+1. Web links are <url link="http://www.google.com" />. They can have a title (<url link="http://www.google.com" title="Google" />) in which case the link is automatically rendered as a footnote.
+
+2. Internal links between document parts are defined with <link ref="element_id" />. element_id should point to the ID of a section, figure, chapter or any other thing that can have an ID. the title and page number will automatically be inserted
+
+3. sections can be defined with <section title="Section title" id="section_id"> ... </section>. You can embed sections into other sections
+
+4. images can be defined with <img src="filename" title="image title" id="image_id" />. image file name is relative to the images folder
+
+5. code sections can be defined with <code src="filename" /> or <code> ... </code>. they are rendered with a monspace font. file name is relative to the resources/src folder (built with rebuildcode.sh from src). optional part attribute can pull out just a part of the source file based on the comments (start the part with //START:part_name and end it with //END:part_name. 
+
+6. <todo> comment </todo> is a way to leave comments 
+
+7. use &ldquo; and &rdquo; instead of double quotes, &lsquo; and &rsquo; instead of single quotes
+
+8. You can use special sections <sidebar title="" > for sidebars, <note title="..."> for notes, <warning title="..."> for warnings. these cannot have embedded sections but can be embedded anywhere in sections
+
+9. Images might be rendered on the next page etc so instead of "below" or "above", refer to them in the text with <link ref="..." />

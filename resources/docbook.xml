@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book lang="en">
+    <title>The Secret Ninja Cucumber Scrolls</title>
+    <subtitle>Strictly Confidential</subtitle>
+    <bookinfo>
+        <author>
+            <firstname>David</firstname>
+            <surname>de Florinier</surname>
+        </author>
+        <author>
+            <firstname>Gojko</firstname>
+            <surname>Adzic</surname>
+        </author>
+        <copyright>
+            <year>2010</year>
+            <holder>David de Florinier, Gojko Adzic</holder>
+        </copyright>
+        <othercredit class="graphicdesigner">
+		  	<firstname>Annette</firstname>
+		  	<surname>de Florinier</surname>
+		  	<contrib>Cover design</contrib>
+		</othercredit>
+        
+	  <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="../resources/legal.xml"/>
+	  <biblioid class="isbn">ISBN: 978-0-9556836-3-3</biblioid>
+	  <edition>1.0</edition>
+	  <pubdate>2010 09 20</pubdate>	  	  
+    </bookinfo>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about_the_doc.dbxml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="author.dbxml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="training.dbxml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="intro.dbxml"/>
+    <part id="part_getting_started">
+        <title>Getting Started</title>
+        <partintro>
+            <para>
+                In this part we cover how to get started using Cucumber, including: 
+            <itemizedlist>
+                <listitem>prerequisites for using Cucumber with Ruby, Java and .NET</listitem>
+                <listitem>setting up Cucumber and working through a simple Hello-World example</listitem>
+                <listitem>using Cucumber in continuous integration</listitem>
+            </itemizedlist>                
+             We keep things fairly basic for now and introduce more complex features in later parts.
+             You can work through all the chapters  in sequence or just skip to the one that interests you. 
+             There are three chapters in this part:
+            <itemizedlist>
+                <listitem><xref linkend="chp_hello_ruby"/> covers Ruby</listitem>
+                <listitem><xref linkend="chp_hello_java"/> covers Java</listitem>
+                <listitem><xref linkend="chp_hello_dotnet"/> covers .NET</listitem>
+            </itemizedlist>
+            </para>
+        </partintro>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hello_ruby.dbxml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hello_dotnet.dbxml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hello_java.dbxml"/>
+    </part>
+    <part id="part_gherkin">
+        <title>Gherkin</title>
+        <partintro>
+            <para>In this part, we go through the Gherkin language in more detail. We explain:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>How Cucumber interprets feature files</para>
+                </listitem>
+                <listitem>
+                    <para>How to write good feature files</para>
+                </listitem>                
+                <listitem>
+                    <para>How to implement step definitions in Java, .NET and Ruby</para>
+                </listitem>                
+                <listitem>
+                    <para>How to handle complex scenarios efficiently</para>
+                </listitem>
+            </itemizedlist>
+        </partintro>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gherkin.dbxml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="implementing.dbxml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="tables.dbxml"/>
+    </part>
+    <part id="part_web_automation">
+        <title>Web automation</title>
+        <partintro>
+            <para>In this part, we show how Cucumber integrates with the most popular frameworks
+                for web browser automation.
+            </para>
+        </partintro>
+        <chapter id="chp_automating_browsers">
+            <title>Automating browsers</title>
+            <para>coming in version 2.0</para>
+        </chapter>
+        <chapter id="chp_automating_below_skin"> 
+            <title>Automating below the skin</title>
+            <para>coming in version 2.0</para>
+        </chapter>
+    </part>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resources.dbxml"/>
+</book>

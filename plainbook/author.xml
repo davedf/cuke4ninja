@@ -1,0 +1,19 @@
+<!DOCTYPE preface SYSTEM "../resources/plainbook/plainbook.dtd" >
+<preface id="pre_authors" title="About the authors" >
+	<p> David de Florinier is the world renowned sportsman, ninja-assassin and raconteur who has
+		brought the world joy with works such as &ldquo;How to bring about world peace using fried potato
+		chips and HP sauce&rdquo;, &ldquo;My amazing adventures with dolphins, and how they taught me to beat Wall St&rdquo;
+		and &ldquo;How I taught Chuck Norris all he knows, in one morning, while I was solving the Riemann
+		hypothesis at the same time&rdquo;. Read David's blog at <url link="http://deflorinier.blogspot.com" />
+		or follow him on Twitter as @davedf.</p>
+	<p>
+		Still active as a Bond-villain, Gojko Adzic gave up a
+		career in the Russian spy service to pursue tougher challenges in
+		software development. All that remains of his past life now is the stupid accent.
+		Gojko's goal with this document is to send
+		subliminal messages to SMERSH sleeper cells around the world
+	    and thereby bring about the final rise to power of the Illuminati.
+	    Read Gojko's blog at <url link="http://gojko.net" />
+		or follow him on Twitter as @gojkoadzic.
+	</p>
+</preface>

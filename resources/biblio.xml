@@ -1,0 +1,256 @@
+<!DOCTYPE bibliography SYSTEM "./dtd/docbook-4.5/docbookx.dtd" >
+<bibliography>
+    <title>Books and articles</title>
+
+    <biblioentry id="adzic:comgap">
+        <abbrev>Adzic09</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Gojko</firstname>
+                <surname>Adzic</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2009</year>
+        </copyright>
+        <publisher>
+            <publishername>Neuri</publishername>
+        </publisher>
+        <title>Bridging the Communication Gap</title>
+        <subtitle>Specification by Example and Agile Acceptance Testing</subtitle>
+        <isbn>0955683610</isbn>
+    </biblioentry>
+
+
+    <biblioentry id="adzic:tddnet">
+        <abbrev>Adzic08</abbrev>
+
+        <authorgroup>
+            <author>
+                <firstname>Gojko</firstname>
+                <surname>Adzic</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2008</year>
+        </copyright>
+        <publisher>
+            <publishername>Neuri</publishername>
+        </publisher>
+        <title>Test Driven .NET Development With FitNesse</title>
+        <isbn>0955683602</isbn>
+    </biblioentry>
+
+    <biblioentry id="crispin:at">
+        <abbrev>CrispinGregory09</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Lisa</firstname>
+                <surname>Crispin</surname>
+            </author>
+            <author>
+                <firstname>Janet</firstname>
+                <surname>Gregory</surname>
+            </author>
+
+        </authorgroup>
+        <copyright>
+            <year>2009</year>
+        </copyright>
+        <publisher>
+            <publishername>Addison-Wesley Professional</publishername>
+        </publisher>
+        <title>Agile Testing</title>
+        <subtitle>A Practical Guide for Testers and Agile Teams</subtitle>
+        <isbn>0201835959</isbn>
+    </biblioentry>
+
+    <biblioentry id="vodde:practices">
+        <abbrev>LarmanVodde10</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Craig</firstname>
+                <surname>Larman</surname>
+            </author>
+            <author>
+                <firstname>Bas</firstname>
+                <surname>Vodde</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2010</year>
+        </copyright>
+        <publisher>
+            <publishername>Pearson Education</publishername>
+        </publisher>
+        <title>Practices for Scaling Lean and Agile Development</title>
+        <subtitle>Large, Multisite, and Offshore Product Development with Large-Scale Scrum</subtitle>
+        <isbn>9780321636409</isbn>
+    </biblioentry>
+    <biblioentry id="denne:numbers">
+        <abbrev>DenneHuang03</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Mark</firstname>
+                <surname>Denne</surname>
+            </author>
+            <author>
+                <firstname>Jane</firstname>
+                <surname>Cleland-Huang</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2003</year>
+        </copyright>
+        <publisher>
+            <publishername>Prentice Hall</publishername>
+        </publisher>
+        <title>Software by Numbers</title>
+        <subtitle>Low-Risk, High-Return Development</subtitle>
+        <isbn>0131407287</isbn>
+    </biblioentry>
+
+    <biblioentry id="anderson:kanban">
+        <abbrev>Anderson10</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>David</firstname>
+                <surname>Anderson</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2010</year>
+        </copyright>
+        <publisher>
+            <publishername>Blue Hole Press</publishername>
+        </publisher>
+        <title>Kanban</title>
+        <subtitle>Successful Evolutionary Change for Your Technology Business</subtitle>
+        <isbn>0984521402</isbn>
+    </biblioentry>
+    <biblioentry id="evans:ddd">
+        <abbrev>Evans03</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Eric</firstname>
+                <surname>Evans</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2003</year>
+        </copyright>
+        <publisher>
+            <publishername>Addison-Wesley Professional</publishername>
+        </publisher>
+        <title>Domain-Driven Design</title>
+        <subtitle>Tackling Complexity in the Heart of Software</subtitle>
+        <isbn>0321125215</isbn>
+    </biblioentry>
+    <biblioentry id="weinberg:er">
+        <abbrev>WeibergGause89</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Gerald M.</firstname>
+                <surname>Weinberg</surname>
+            </author>
+            <author>
+                <firstname>Donald C.</firstname>
+                <surname>Gause</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>1989</year>
+        </copyright>
+        <publisher>
+            <publishername>Dorset House Publishing Company</publishername>
+        </publisher>
+        <title>Exploring Requirements: Quality Before Design</title>
+        <isbn>0932633137</isbn>
+    </biblioentry>
+    <biblioentry id="poppendieck:lean">
+        <abbrev>Poppendieck03</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Mary</firstname>
+                <surname>Poppendieck</surname>
+            </author>
+            <author>
+                <firstname>Tom</firstname>
+                <surname>Poppendieck</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2003</year>
+        </copyright>
+        <publisher>
+            <publishername>Addison-Wesley Professional</publishername>
+        </publisher>
+        <title>Lean Software Development</title>
+        <subtitle>An Agile Toolkit</subtitle>
+        <isbn>0321150783</isbn>
+    </biblioentry>
+
+    <biblioentry id="darling:f16">
+        <abbrev>Darling05</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Kev</firstname>
+                <surname>Darling</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2005</year>
+        </copyright>
+        <publisher>
+            <publishername>The Crowood Press</publishername>
+        </publisher>
+        <title>F-16 Fighting Falcon (Combat Legend)</title>
+        <isbn>1840373997</isbn>
+    </biblioentry>
+
+
+    <biblioentry id="haefel:architect">
+        <abbrev>MonsonHaefel09</abbrev>
+        <authorgroup>
+            <author>
+                <firstname>Richard
+                </firstname>
+                <surname>Monson-Haefel</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2009</year>
+        </copyright>
+        <publisher>
+            <publishername>O'Reilly Media</publishername>
+        </publisher>
+        <title>97 Things Every Software Architect Should Know</title>
+        <isbn>059652269X</isbn>
+    </biblioentry>
+
+
+    <biblioentry id="balic:effect">
+        <abbrev>Balic07</abbrev>
+
+        <authorgroup>
+            <author>
+                <firstname>Mijo</firstname>
+                <surname>Balic</surname>
+            </author>
+            <author>
+                <firstname>Ingrid</firstname>
+                <surname>Ottersten</surname>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2007</year>
+        </copyright>
+        <publisher>
+            <publishername>Copenhagen Business School Press</publishername>
+        </publisher>
+        <title>Effect Managing It</title>
+        <isbn>8763001764</isbn>
+    </biblioentry>
+
+
+</bibliography>

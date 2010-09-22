@@ -1,0 +1,1 @@
+Feature: Skill availability

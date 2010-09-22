@@ -1,0 +1,28 @@
+<!DOCTYPE appendix SYSTEM "../resources/plainbook/plainbook.dtd" >
+<appendix title="Resources" id="app_resources">
+<bibliography />
+<section title="Tools" id="sec_resources_tools">
+<ul>
+<li>Cucumber main web site <url link="http://cukes.info" /></li>
+<li>Cucumber wiki <url link="http://wiki.github.com/aslakhellesoy/cucumber/" /></li>
+<li>Specflow <url link="http://specflow.org" /> </li>
+<li>Cuke4Nuke <url link="http://github.com/richardlawrence/Cuke4Nuke" /></li>
+<li>Cuke4Duke <url link="http://wiki.github.com/aslakhellesoy/cuke4duke/" /></li>
+<li>Cuke4Nuke Visual Studio Plugin <url link="http://github.com/henritersteeg/cuke4vs" /></li>
+</ul>
+</section>
+<section id="sec_resources_articles" title="Articles">
+<ul>
+<li>Dan North: Introducing BDD <url link="http://blog.dannorth.net/introducing-bdd/" /></li>
+<li>Liz Keogh: Pulling Power <url link="http://www.infoq.com/articles/pulling-power"/></li>
+</ul>            
+</section>
+<section id="sec_resources_videos" title="Videos">
+<ul>
+	<li>Dan North: How to Sell BDD to the business <url link="http://skillsmatter.com/podcast/java-jee/how-to-sell-bdd-to-the-business" /></li>
+	<li>Gojko Adzic: Behaviour-Driven Development with Cucumber <url link="http://gojko.net/2010/02/08/behaviour-driven-development-with-cucumber-video-slides-and-links/" /></li>
+	<li>Eric Evans: Folding Together DDD and Agile <url link="http://skillsmatter.com/podcast/design-architecture/folding-together-ddd-agile"/></li>
+	<li>Gojko Adzic: TDD, DDD and BDD <url link="http://skillsmatter.com/podcast/design-architecture/ddd-tdd-bdd" /></li>	
+</ul>
+</section>
+</appendix>

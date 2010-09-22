@@ -1,0 +1,123 @@
+<!ENTITY % isonum SYSTEM "isonum.ent" >
+
+%isonum;
+
+<!ENTITY % isopub SYSTEM "isopub.ent" >
+
+%isopub;
+
+<!ENTITY % isolat1 SYSTEM "isolat1.ent" >
+
+%isolat1;
+
+<!ENTITY % contentblocks "p|code|ol|ul|img|todo|quote|index">
+<!ENTITY % blockgroups "bibliography|section|note|important|sidebar|tip|try|avoid|try-vip|avoid-vip">
+<!ENTITY % contentelements "#PCDATA|link|url|code|i|footnote|file|b|todo|ol|ul|img|sup|bib|index|define|quote">
+<!ENTITY % codeelements "#PCDATA|i|b">
+<!ENTITY % commonattribs "title CDATA #REQUIRED
+id ID #IMPLIED
+wikiname CDATA #IMPLIED">
+
+<!ELEMENT chapter (%contentblocks;|%blockgroups;)+>
+<!ATTLIST chapter 
+	  %commonattribs;
+>
+<!ELEMENT preface (%contentblocks;|%blockgroups;)+>
+<!ATTLIST preface 
+	  %commonattribs;
+>
+<!ELEMENT appendix (%contentblocks;|%blockgroups;)+>
+<!ATTLIST appendix 
+	  %commonattribs;
+>
+<!ELEMENT colophon (%contentblocks;|%blockgroups;)+>
+<!ATTLIST colophon 
+	  %commonattribs;
+>
+
+<!ELEMENT section (%contentblocks;|%blockgroups;)+>
+<!ATTLIST section 
+	  %commonattribs;
+>
+<!ELEMENT note (%contentblocks;)+ >
+<!ATTLIST note 
+	  %commonattribs;
+>
+<!ELEMENT important (%contentblocks;)+ >
+<!ATTLIST important 
+	  %commonattribs;
+>
+<!ELEMENT sidebar (%contentblocks;)+>
+<!ATTLIST sidebar 
+	  %commonattribs;
+>
+<!ELEMENT p (%contentelements;)* >
+<!ELEMENT code (%codeelements;)* >
+<!ATTLIST code  
+	file CDATA #IMPLIED
+	part CDATA #IMPLIED
+>
+<!ELEMENT ul (li+) >
+<!ELEMENT ol (li+) >
+<!ELEMENT li (%contentelements;|quote)*  >
+<!ELEMENT quote (%contentelements;|p)*  >
+<!ELEMENT link EMPTY>
+<!ATTLIST link  
+	ref CDATA #REQUIRED
+>  	
+<!ELEMENT url EMPTY>
+<!ATTLIST url  
+	link CDATA #REQUIRED
+	title CDATA #IMPLIED
+> 
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT define (#PCDATA)>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT todo (#PCDATA)>
+<!ELEMENT footnote (%contentelements;)*  >
+<!ELEMENT img EMPTY>
+<!ATTLIST img
+	id CDATA #IMPLIED  
+	title CDATA #IMPLIED
+	src CDATA #IMPLIED
+	float CDATA #IMPLIED
+	width CDATA #IMPLIED
+> 
+<!ELEMENT file (#PCDATA)>
+<!ELEMENT tip (%contentblocks;)+>
+<!ATTLIST tip 
+	  %commonattribs;
+>
+<!ELEMENT try (%contentblocks;)+>
+<!ATTLIST try 
+	  %commonattribs;
+	  context CDATA #REQUIRED
+	  benefit CDATA #IMPLIED
+>
+<!ELEMENT avoid (%contentblocks;)+>
+<!ATTLIST avoid 
+	  %commonattribs;
+	  context CDATA #REQUIRED
+	  benefit CDATA #IMPLIED
+>
+<!ELEMENT try-vip (%contentblocks;)+>
+<!ATTLIST try-vip 
+	  %commonattribs;
+	  benefit CDATA #IMPLIED
+>
+<!ELEMENT avoid-vip (%contentblocks;)+>
+<!ATTLIST avoid-vip 
+	  %commonattribs;
+	  benefit CDATA #IMPLIED
+>
+<!ELEMENT bib EMPTY>
+<!ATTLIST bib
+	ref CDATA #REQUIRED  
+>
+<!ELEMENT bibliography EMPTY>
+<!ELEMENT sup (%contentelements;|p)* >
+<!ELEMENT index EMPTY>
+<!ATTLIST index 
+ primary CDATA #REQUIRED
+ secondary CDATA #IMPLIED
+ see CDATA #IMPLIED>

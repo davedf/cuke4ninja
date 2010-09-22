@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartAction>Project</StartAction>
+    <StartProgram>C:\Ruby\bin\ruby.exe</StartProgram>
+    <StartArguments>c:\ruby\bin\cuke4nuke D:\work\cucumber-doc\NinjaSurvivalRate\bin\debug\NinjaSurvivalRate.dll features -q</StartArguments>
+    <StartWorkingDirectory>D:\work\cucumber-doc\NinjaSurvivalRate\</StartWorkingDirectory>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+  </PropertyGroup>
+</Project>

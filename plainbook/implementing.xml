@@ -1,0 +1,314 @@
+<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
+	<chapter id="chp_implementing" title="Implementing the steps">
+	<p>To give aspiring Cucumber ninjas more examples to copy and
+		paste while they are practicing their
+		new skills, we now implement step definitions
+		from <link ref="chp_feature_files" />. We present the most important
+		snippets of the code to help you focus on the key parts. You can download the entire
+		source code with all the additional project files from <url link="http://cuke4ninja.com"/>.</p>
+	<section id="sec_basic_feature_file" title="The basic feature file &mdash; again">
+	<p>
+		Create a new directory for the project, and add two sub-directories to it:
+			<code>features</code>
+			and
+			<code>src</code>. The feature files, unsurprisingly, go to the <code>features</code> subdirectory. 
+			We use the <code>src</code> subdirectory for the implementation.</p>
+			<p>Create a new file in the
+			<code>features</code>
+			(for example,
+			<code>ninja_survival_rate.feature</code>) with the following content: 			
+			</p>
+			<code file="ruby/NinjaSurvivalRate/features/ninja_survival_rate.feature"/>	
+	</section>
+	
+	
+
+			<section id="sec_steps_and_regex" title="Steps and regular expressions">
+			<p>Cucumber uses regular expressions to match steps in the feature file to step definitions in code.
+			We really need only three
+			step definitions &mdash; one that sets the ninja belt level at the start, one that captures
+			what the ninja does when attacked by an opponent and one that checks if the specified
+			action was in that list of activities. </p>
+
+			<sidebar id="side_quick_intro_regex" title="A very quick introduction to regular expressions">
+			<p> 
+			Regular expressions are a way to specify patterns of text. If you have never used them before, here are
+			just a few basic rules to follow. </p>			
+			<ul>
+			<li>Letters and numbers have literal values. The <code>ninja</code> pattern only matches
+			the exact lowercase sequence n,i,n,j,a. </li>
+			<li>Square brackets define groups of interchangeable elements. The whole group will match a single character. So <code>[Nn]inja</code> matches either
+			n,i,n,j,a or N,i,n,j,a but not N,n,i,n,j,a. </li>
+			<li>An asterisk turns the character or group immediately before it to a sequence that repeats zero or more times. 
+			So <code>Nin*ja</code> will match N,i,n,j,a but also N,i,j,a  and
+			 N,i,n,n,n,n,j,a.</li>
+			<li>A question mark turns the character or group immediately before it into a sequence that appears zero or one time. So <code>N?inja</code>
+			will match N,i,n,j,a and i,n,j,a, but not N,N,i,n,j,a</li>
+			<li>A dash defines a range. For example, <code>ninja1-9</code> will match n,i,n,j,a,1 but also
+			n,i,n,j,a,2 and n,i,n,j,a,3 to n,i,n,j,a,9. <!-- Ranges work on ASCII/UTF code values, so numbers come before uppercase letters, which come before lowercase
+			letters. Non-english letters might not be in the same sequence that they are in local alphabets. -->
+			</li>
+			<li>A dot (<code>.</code>) matches any character. So <code>Ninj.</code> will match any sequence of five characters
+			starting with N,i,n,j.</li>
+			<li>A backslash <code>\</code> turns a special character into a literal value. For example, <code>1\-9</code>
+			 matches only the sequence 1,-,9, not a number between 1 and 9.</li>
+			<li><code>\s</code> matches a whitespace (blank).</li>
+			<li>You can mix and match ranges, asterisks, letters...</li>
+			<li>A caret (<code>^</code>) matches the beginning of the line. A dollar sign (<code>$</code>) matches the end of the line.</li>
+			<li>Brackets () mark parts of an expression that is captured for later processing.</li>
+			</ul>
+			</sidebar>
+			
+				<section id="sec_initialising_context" title="Initialising the context">
+				<p>To set the black belt level, we create a step definition which matches the lines such as:
+				<quote>Given the ninja has a third level black-belt</quote>
+				and capture the word between &lsquo;a&rsquo; and &lsquo;level&rsquo; as an argument. We can use a dash
+				to define a range of characters. So
+				<code>a-z</code> will match any lowercase letter. An asterisk after any character says
+				that we expect a sequence. We use square brackets to apply an asterisk to the entire range, not just the 
+				letter <code>z</code>.				
+				We add brackets around the expression to tell Cucumber
+				to capture the word as an argument and pass it on. So the full expression we want to use for the 
+				match is: 
+				</p>
+				<code>^the ninja has a ([a-z]*) level black\-belt$</code>
+				<note title="Double-escape in Java">
+				<p>The backslash <code>\</code> in a regular expression escapes 
+				the following character. In this case, we use a backslash to tell Cucumber that a dash
+				is literally a dash, not a special range definition symbol such as in <code>a-z</code>. Ruby is OK
+				with the expression as it is. In Java, backslash is also used in strings to escape the
+				following character, so you'll have to use two backslashes <code>\\</code> to write it. So the correct
+				way to specify this in Java and .NET is:
+				</p>
+				<code>^the ninja has a ([a-z]*) level black\\-belt$</code>
+				</note>
+				</section>
+				<section title="Triggering the action">
+		
+				<p>To trigger the action in both scenarios, we create a step definition which matches the lines such as: 
+		<quote>When attacked by a samurai</quote>
+		and
+		<quote>When attacked by Chuck Norris</quote>
+		To do that, we want to capture everything after &lsquo;attacked by&rsquo; as the opponent, ignoring &lsquo;a&rsquo; and a space
+		if they follow straight after that. The expression <code>[a\s]</code> will match the lowercase letter <code>a</code> or a space 
+		(matched by a special sequence <code>\s</code>).
+		We again add an asterisk to say that we expect any sequence of spaces or letter <code>a</code>, including an empty one. We don't add brackets
+		around this expression because we want Cucumber to just ignore it. After that we want to capture anything till the end
+		of the line. A dot matches any character,  an asterisk turns this into a sequence
+		and we add a dollar sign at the end of the expression <code>$</code>, telling Cucumber that the sequence
+		should extend till the end of the current line. We want Cucumber to capture the sequence but not the line-end character,
+		so we close the bracket before the dollar sign. So the full regular expression for the action step is: </p>
+		<code>^attacked by [a\s]*(.*)$</code>
+				</section>
+				<section title="Validating the result">
+		<p>
+		To validate the result, we create a step definition which matches the lines such as:
+		<quote>Then the ninja should engage the opponent</quote> We capture anything that follows &lsquo;should engage&rsquo;
+		using the same expression as in the previous step, matching everything from
+		a certain position till the end of the line <code>(.*)$</code>. The full expression in this case is:</p>		
+		<code>^the ninja should (.*)$</code>
+				</section>
+			</section>
+			<p>
+			Now we can wire these expressions into code. Continue reading the section relevant to your technology platform.
+			</p>
+			<ul>
+			<li>For the Ruby implementation, see <link ref="sec_ninja_survival_ruby" /></li>
+			<li>For the Java implementation, see <link ref="sec_ninja_survival_java" /></li>
+			<li>For the .NET implementation, see <link ref="sec_ninja_survival_net" /></li>
+			</ul>
+		<section id="sec_ninja_survival_ruby" title="Implementing in Ruby">
+		<p>
+			Create a new sub-directory called
+			<code>step_definitions</code>
+			inside
+			<code>features</code>. You can run
+			<code>cucumber</code>
+			from the main project directory and it will print out an example of how the steps could be
+			implemented. Take that and put it into a new file called
+			<code>ninja_steps.rb</code>, and replace the regular expressions with the ones we 
+			suggested in the previous section. 
+		</p>
+		<section title="Initializing the context">
+		<p>We just need pass the argument captured by the step information
+		to the initialiser of the <code>Ninja</code> class, and store the resulting <code>Ninja</code>
+		object as a local variable. In Ruby, one way to do it is this:</p> 
+		<code file="ruby/NinjaSurvivalRate/features/step_definitions/ninja_steps.rb" part="belt" />
+		
+		<important title="Wow &mdash; where did that class and initialiser come from?">
+		<p>If you're reading this carefully, you probably noticed that this is the first time we used a <code>Ninja</code>
+		class and presumed what the arguments of its initializer are. Don't scroll up looking for the class definition, because it 
+		doesn't exist yet. We will drive the class interface from its usage, so we first declare what we need that class to
+		do in the step definitions and then implement the class to match the required interface and behaviour. BDD takes the 
+		test-first ideas of TDD to the business requirements level.</p>
+		</important>
+		</section>
+		<section title="Triggering the action">
+		<p>To trigger the action, we take the <code>Ninja</code> object initialised in the first step and
+		pass the opponent name/type to its <code>attacked_by</code> method.
+		To be able to check the resulting actions, we'll expect the <code>attacked_by</code> method to return 
+		the actions a ninja
+		should take when attacked by a particular opponent and store them in a local variable.
+		</p>
+		<code file="ruby/NinjaSurvivalRate/features/step_definitions/ninja_steps.rb" part="attacked" />		 
+		</section>
+		<section title="Validating the result">
+		<p>
+		To validate the results, we just need to check whether the action expected in the step is included
+		in the list of actions we saved previously. 				
+		</p>		
+		<code file="ruby/NinjaSurvivalRate/features/step_definitions/ninja_steps.rb" part="actions" />		
+		<important title="What is that &lsquo;should include&rsquo; syntax?">
+		<p>Cucumber in Ruby relies on RSpec expectations to perform validations of expected outcomes. 
+		<code>should include</code> is a way to specify that a collection should contain an element with RSpec. See
+		<url link="http://rspec.info/"/> or the RSpect Book <bib ref="chelimsky:rspec" /> for more information 
+		on the RSpec syntax.</p>
+		</important>
+		</section>
+		<section title="Implementing the domain code">
+		<p>
+			We still don't have a Ninja class to handle the calls from the steps, so let's add it. Create a
+			file called
+			<code>ninja.rb</code>
+			in the
+			<code>src</code>
+			directory with the following content:
+		</p>
+		<code file="ruby/NinjaSurvivalRate/src/ninja.rb" />
+		<p>
+			Now run
+			<code>cucumber</code>
+			again. You should get a nice green report, as in
+			<link ref="fig.ninja_survival_ruby_pass" />
+		</p>
+		<img id="fig.ninja_survival_ruby_pass" src="ninja_survival_ruby_pass.png" title="Ninjas survive in Ruby" />
+		</section>
+	</section>
+	<section id="sec_ninja_survival_java" title="Implementing in Java">
+		<p>In this example, we use Maven to manage the dependencies, as SMERSH controls a stake in the world's biggest
+		internet providers and Maven finances our drug-smuggling operations by downloading unnecessary libraries
+		every time you run it. Create a pom.xml for your project as explained in <link ref="sec_maven" />, and run
+		the following command to get a suggested structure for step definitions:</p>
+		<code>mvn clean compile integration-test</code>
+		<note title="Remember to download the gems the first time you run Cucumber from Maven">
+		<p>When you run Cucumber with Maven for the first time, remember to add <code>-Dcucumber.installGems=true</code>.
+		If you do not do that, Maven won't install cuke4duke and all the dependent gems in the local repository, and
+		we won't get our money from force-feeding bandwidth. </p>
+		</note>
+		<p>Put the suggested expressions into a new class in the <code>src/test</code>
+		branch. In the example, we use <code>src/test/java/ninjasurvivalrate/NinjaSurvivalSteps.java</code>. Now let's
+		change the expressions to the one we defined earlier.</p>
+		<section title="Initializing the context">
+		<p>We just need pass the argument captured by the step information
+		to the constructor of the <code>Ninja</code> class, and store the resulting <code>Ninja</code>
+		object as a local variable. In Java, one way to do it is this:</p> 
+		<code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/NinjaSurvivalSteps.java" part="belt" />
+		
+		<important title="Wow &mdash; where did that class and constructor come from?">
+		<p>If you're reading this carefully, you probably noticed that this is the first time we used a <code>Ninja</code>
+		class and presumed what the arguments of its constructor are. Don't scroll up looking for the class definition, because it 
+		doesn't exist yet. We will drive the class interface from its usage, so we first declare what we need that class to
+		do in the step definitions and then implement the class to match the required interface and behaviour. BDD takes the 
+		test-first ideas of TDD to the business requirements level.</p>
+		</important>
+		</section>
+		<section title="Triggering the action">
+		<p>To trigger the action, we take the <code>Ninja</code> object initialised in the first step and
+		pass the opponent name/type to its <code>attackedBy</code> method.
+		To be able to check the resulting actions, we'll expect the <code>attackedBy</code> method to return 
+		the actions a ninja
+		should take when attacked by a particular opponent. We'll store them in a local variable for later inspection.
+		</p>
+		<note title="Remember the double-escape"> 
+		<p>To specify a backslash in Java, you have to write it twice (\\).</p></note>
+		<code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/NinjaSurvivalSteps.java" part="attacked" />		 
+		</section>
+		<section title="Validating the result">
+		<p>
+		To validate the results, we just need to check whether the action expected in the step is included
+		in the list of actions we saved previously. Cuke4Duke uses the normal JUnit assertions. 				
+		</p>		
+		<code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/NinjaSurvivalSteps.java" part="actions" />		
+		</section>
+		<section title="Implementing the domain code">
+		<p>
+			We still don't have a Ninja class to handle the calls from the steps, so let's add it. Create it in the
+			<code>src/main</code> branch. In this example, we use <code>src/main/java/ninjasurvivalrate/Ninja.java</code>.
+			
+			The content is relatively straightforward:
+		</p>
+		<code file="java/NinjaSurvivalRate/src/main/java/ninjasurvivalrate/Ninja.java" />
+		<p>
+			Now run
+			<code>mvn clean compile integration-test</code>
+			again. You should get a nice green report, as in
+			<link ref="fig.ninja_survival_java_pass" />
+		</p>
+		<img float="true" id="fig.ninja_survival_java_pass" src="ninja_survival_java_pass.png" title="Ninjas survive in Java" />
+		</section>
+	</section>
+	<section id="sec_ninja_survival_net" title="Implementing in .NET">
+	
+		<p>
+			Create a .NET project and put the feature file into it, in the <code>features</code> folder. Create
+			a new sub-directory called
+			<code>step_definitions</code>
+			inside
+			<code>features</code> and add a <code>cucumber.wire</code> file with the following content:
+			</p>
+		            <code file="dotnet/HelloCucumber/Cuke4NukeExample/features/step_definitions/cucumber.wire"/>
+		<p>This will set up the Cuke4Nuke integration with Cucumber. </p>
+		<p>
+			You can now run
+			<code>cuke4nuke</code>
+			from the main project directory and it will print out an example of how the steps could be
+			implemented. Take that and put it into a new source file called
+			<code>NinjaSteps.cs</code>. Replace the regular expressions with the ones we 
+			suggested in the previous section. 
+		</p>
+		<section title="Initializing the context">
+		<p>We just need pass the argument captured by the step information
+		to the initialiser of the <code>Ninja</code> class, and store the resulting <code>Ninja</code>
+		object as a local variable. In .NET, one way to do it is this:</p> 
+		<code file="dotnet/NinjaSurvivalRate/src/NinjaSteps.cs" part="belt" />
+		
+		<important title="Wow &mdash; where did that class and constructor come from?">
+		<p>If you're reading this carefully, you probably noticed that this is the first time we used a <code>Ninja</code>
+		class and presumed what the arguments of its constructor are. Don't scroll up looking for the class definition, 
+		because it 
+		doesn't exist yet. We will drive the class interface from its usage, so we first declare what we need that class to
+		do in the step definitions and then implement the class to match the required interface and behaviour. BDD takes the 
+		test-first ideas of TDD to the business requirements level.</p>
+		</important>
+		</section>
+		<section title="Triggering the action">
+		<p>To trigger the action, we take the <code>Ninja</code> object initialised in the first step and
+		pass the opponent name/type to its <code>AttackedBy</code> method.
+		To be able to check the resulting actions, we'll expect the <code>AttackedBy</code> method to return 
+		the actions a ninja
+		should take when attacked by a particular opponent and store them in a local variable.
+		</p>
+		<code file="dotnet/NinjaSurvivalRate/src/NinjaSteps.cs" part="attacked" />		 
+		</section>
+		<section title="Validating the result">
+		<p>
+		To validate the results, we just need to check whether the action expected in the step is included
+		in the list of actions we saved previously. For validations, we use standard NUnit assertions. </p>
+		<code file="dotnet/NinjaSurvivalRate/src/NinjaSteps.cs" part="actions" />		
+		</section>
+		<section title="Implementing the domain code">
+		<p>
+			We still don't have a Ninja class to handle the calls from the steps, so let's add it. Create a
+			
+			<code>Ninja.cs</code>
+			file in the project with the following content:
+		</p>
+		<code file="dotnet/NinjaSurvivalRate/src/Ninja.cs" />
+		<p>
+			Now run
+			<code>Cuke4Nuke</code>
+			again. You should get a nice green report.
+		</p>
+		</section>
+	</section>
+	</chapter>

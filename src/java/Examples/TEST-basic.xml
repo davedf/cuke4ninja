@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" 
+   name="Hello World Feature" tests="1" time="0.025000">
+<testcase 
+  classname="Hello World Feature.Hello World Scenario" 
+  name="Hello World Scenario" time="0.025000">
+</testcase>
+</testsuite>
