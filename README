@@ -1,0 +1,70 @@
+Getting Started
+===============
+
+0. Ask Chuck Norris for permission
+
+1. Get a login to http://github.com/
+
+2. Fork http://github.com/davedf/cuke4ninja you will now have a url like 
+
+	http://github.com/your-login-name/cuke4ninja
+
+3. Clone your fork to create a local repository
+
+	git clone https://your-login-name@github.com/your-login-name/cuke4ninja.git
+
+4. Add davedf's branch as a remote (this will be the effective trunk)
+
+	git remote add davedf git://github.com/davedf/cuke4ninja.git
+
+5. Watch davedf's branch on http://github.com/davedf/cuke4ninja
+	This means you will get pull requests
+
+
+When you get a pull request
+===========================
+
+1. check the status of your clone
+	git status
+
+2. add/or checkout until your clone is clean
+
+3. pull changes from davedf's branch
+
+git pull davedf master
+
+4. push the changes to your fork on github
+
+git push origin master
+
+
+When you want to get your changes back to GitHub
+================================================
+
+1. get the current status
+
+git status
+
+2. add any new files to the change list
+
+git add file-name ...
+
+3. Add any changed files to the change list and commit
+
+git add file-name
+...
+git commit -m"message"
+
+or
+
+commit -a -m"message"
+
+to commit all changed files
+
+4. push the changes to your fork on github
+
+git push origin master
+
+If you want the changes to be pulled, send a pull request on github
+
+Chuck Norris does not need to request a pull, you already have his changes, as he types
