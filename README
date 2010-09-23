@@ -20,6 +20,22 @@ Getting Started
 5. Watch davedf's branch on http://github.com/davedf/cuke4ninja
 	This means you will get pull requests
 
+6. get Xalan http://xml.apache.org/xalan-j/downloads.html
+
+7. get XEP (personal edition) http://www.renderx.com
+
+8. copy resources/environment.template to resources/environment.local to set XEP and XALAN paths
+
+9. get docbook-xsl from http://sourceforge.net/projects/docbook/files/, unpack it to resources/xsl (so that there is a folder resources/xsl/fo) 
+
+10. run checksetup.sh in the resources folder to check your configuration
+
+11. go to ../plainbook
+
+12. run make docbook
+
+13. open docbook.pdf
+
 
 When you get a pull request
 ===========================
