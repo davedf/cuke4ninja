@@ -186,7 +186,7 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
 	</p>
 	<code><![CDATA[
 <cucumberArg>--out</cucumberArg>>
-<cucumberArg>target/cucumber-reports</cucumberArg>]]></code>
+<cucumberArg>${project.build.directory}/cucumber-reports</cucumberArg>]]></code>
 	<p>are equivalent to the following command line:</p>
 	<code>cuke4duke --out target/cucumber-reports</code>
 	</section>

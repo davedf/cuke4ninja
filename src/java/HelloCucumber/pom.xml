@@ -94,7 +94,7 @@
         <cucumberArg>--format</cucumberArg>
         <cucumberArg>junit</cucumberArg>
         <cucumberArg>--out</cucumberArg>
-        <cucumberArg>target/cucumber-reports</cucumberArg>
+        <cucumberArg>${project.build.directory}/cucumber-reports</cucumberArg>
         <cucumberArg>--require</cucumberArg>
         <cucumberArg>${basedir}/target/test-classes</cucumberArg>
     </cucumberArgs>

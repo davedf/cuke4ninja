@@ -55,10 +55,9 @@
 			<li><code>\s</code> matches a whitespace (blank).</li>
 			<li>You can mix and match ranges, asterisks, letters...</li>
 			<li>A caret (<code>^</code>) matches the beginning of the line. A dollar sign (<code>$</code>) matches the end of the line.</li>
-			<li>Brackets () mark parts of an expression that is captured for later processing.</li>
+			<li>Parenthesis () mark parts of an expression that is captured for later processing.</li>
 			</ul>
-			</sidebar>
-			
+			</sidebar>			
 				<section id="sec_initialising_context" title="Initialising the context">
 				<p>To set the black belt level, we create a step definition which matches the lines such as:
 				<quote>Given the ninja has a third level black-belt</quote>
