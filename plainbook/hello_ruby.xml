@@ -18,6 +18,12 @@
             Do that with the following command:
         </p>
         <code>gem install cucumber</code>
+		<important title="Installing Gems behind a firewall">
+			<p>
+				If you do not have direct access to the internet, but instead go through a proxy server, you will have to set the HTTP_PROXY environment variable. Information about environment variables is available on the RubyGems site.<footnote><url link="http://docs.rubygems.org/read/chapter/12"/></footnote>
+			</p>
+		</important>
+
         <p>Check that Cucumber is installed by running the following command in the terminal window:</p>
         <code>cucumber --version</code>
         <p>Cucumber should print out the version (0.9.0 at the time when we wrote this). </p>
