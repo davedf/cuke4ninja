@@ -99,6 +99,11 @@
             </p>
             <code>gem --help</code>
         </sidebar>
+		<important title="Installing Gems behind a firewall">
+			<p>
+				If you do not have direct access to the internet, but instead go through a proxy server, you will have to set the HTTP_PROXY environment variable. Information about environment variables is available on the RubyGems site.<footnote><url link="http://docs.rubygems.org/read/chapter/12"/></footnote>
+			</p>
+		</important>
        <section id="sec_verifying_cuke4nuke" title="Verifying that Cuke4Nuke is installed correctly">
         <p>
             To verify that the system is set up, execute

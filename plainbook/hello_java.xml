@@ -75,6 +75,11 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
         </section>
         
         <section title="Installing the Cuke4Duke gem">
+			<important title="Installing Gems behind a firewall">
+				<p>
+					If you do not have direct access to the internet, but instead go through a proxy server, you will have to set the HTTP_PROXY environment variable. Information about environment variables is available on the RubyGems site.<footnote><url link="http://docs.rubygems.org/read/chapter/12"/></footnote>
+				</p>
+			</important>
         <p>
             Install the Cuke4Duke gem for JRuby using the following command:
         </p>
@@ -186,7 +191,7 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
 	</p>
 	<code><![CDATA[
 <cucumberArg>--out</cucumberArg>>
-<cucumberArg>target/cucumber-reports</cucumberArg>]]></code>
+<cucumberArg>${project.build.directory}/cucumber-reports</cucumberArg>]]></code>
 	<p>are equivalent to the following command line:</p>
 	<code>cuke4duke --out target/cucumber-reports</code>
 	</section>
