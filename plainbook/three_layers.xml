@@ -3,4 +3,27 @@
 	<note title="Work in progress">
 		<p>This chapter is still being written! Nothing to see here... move along</p>
 	</note>
+	<section title="Why three layers?">
+		<p>
+			Many ninja children are told the story of Cucumber and the three layers of UI Automation, in which the the
+			abstract concept of layers of responsibility are represented by bears who are too weak to eat hot porridge
+			and the little ninja comes in and eats the porridge and totally flips out, absolutely killing everyone in the story and
+			other nearby stories. Ahh the carnage is truly a sight to behold...
+		</p>
+		<p>Sorry, ignore that last bit.</p>
+		<p>
+			There are a number of tools available for automating UI testing. Some of these tools use the dark magic of the Geisha to
+			seduce young ninjas int believing that they can build up a suite of tests by recording actions performed on
+			the site to produce automation scripts. These scripts will then form the basis of an ongoing UI automation suite
+		</p>
+		<p>
+			At first, all seems to go well. Scripts are quickly recorded and the tests all pass. Adding more tests is easy.
+			After a few months, new features are added however, which change a number of core pages of the site. Suddenly 
+			all the tests are broken! The ninjas are starting to realise that they have been tricked by the Geisha magic. 
+			Their anger turns to despair, however, once they look at the scripts produced in the first stage of their journey.
+			It is written in a strange language from a far off land, and used twelve words where the ninjas would usually use one.
+			The ninjas realise that the test scripts are completely unmaintainable, and must be thrown away. They are the victims of the 
+			Mount Fuji of death spell (also known as the sine wave of death)<footnote><url link="http://gojko.net/2010/07/29/the-sine-of-death-by-ui-test-automation/"></url></footnote>
+		</p>
+	</section>
 </chapter>
