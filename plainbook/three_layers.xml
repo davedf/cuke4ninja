@@ -61,13 +61,19 @@
 		<p>
 			<ol>
 				<li>
-					Business rule/functionality level: what is this test demonstrating or exercising. For example: Free delivery is offered to customers who order two or more books.
+					Business rule/functionality level: what is this test demonstrating or exercising. For example: Free
+					delivery is offered to customers who order two or more books.
 				</li>
 				<li>
-					User interface workflow level: what does a user have to do to exercise the functionality through the UI, on a higher activity level. For example, put two books in a shopping cart, enter address details, verify that delivery options include free delivery.
+					User interface workflow level: what does a user have to do to exercise the functionality through the
+					UI, on a higher activity level. For example, put two books in a shopping cart, enter address details,
+					verify that delivery options include free delivery.
 				</li>
 				<li>
-					Technical activity level: what are the technical steps required to exercise the functionality. For example, open the shop homepage, log in with “testuser” and “testpassword”, go to the “/book” page, click on the first image with the “book” CSS class, wait for page to load, click on the “Buy now” link… and so on.
+					Technical activity level: what are the technical steps required to exercise the functionality. For
+					example, open the shop homepage, log in with “testuser” and “testpassword”, go to the “/book” page,
+					click on the first image with the “book” CSS class, wait for page to load, click on the “Buy now”
+					link… and so on.
 				</li>
 			</ol>
 		</p>
