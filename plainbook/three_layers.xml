@@ -1,0 +1,162 @@
+<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
+<chapter title="Cucumber and The Three Layers of UI Automation" id="chp_three_layers">
+	<note title="Work in progress">
+		<p>This chapter is still being written! Nothing to see here... move along</p>
+	</note>
+	<section title="Why three layers?">
+		<p>
+			Many ninja children are told the story of Cucumber and the three layers of UI Automation, in which the the
+			abstract concept of layers of responsibility are represented by bears who are too weak to eat hot porridge
+			and the little ninja comes in and eats the porridge and totally flips out, absolutely killing everyone in
+			the story and
+			other nearby stories. Ahh the carnage is truly a sight to behold...
+		</p>
+		<p>Sorry, ignore that last bit.</p>
+		<p>
+			There are a number of tools available for automating UI testing. Some of these tools use the dark magic of
+			the Geisha to
+			seduce young ninjas int believing that they can build up a suite of tests by recording actions performed on
+			the site to produce automation scripts. These scripts will then form the basis of an ongoing UI automation
+			suite
+		</p>
+
+		<p>
+			At first, all seems to go well. Scripts are quickly recorded and the tests all pass. Adding more tests is
+			easy.
+			After a few months, new features are added however, which change a number of core pages of the site.
+			Suddenly
+			all the tests are broken! The ninjas are starting to realise that they have been tricked by the Geisha
+			magic.
+			Their anger turns to despair, however, once they look at the scripts produced in the first stage of their
+			journey.
+		</p>
+		<img src="selenese.png" title="The Secret language of Selenese" id="img.selenese"/>
+		<p>
+			It is written in a strange language from a far off land, and used twelve words where the ninjas would
+			usually use one.
+			The ninjas realise that the test scripts are completely unmaintainable, and must be thrown away. They are
+			the victims of the
+			Mount Fuji of death spell (also known as the sine wave of death),
+			<footnote>
+				<url link="http://gojko.net/2010/07/29/the-sine-of-death-by-ui-test-automation/"></url>
+			</footnote>
+			illustrated in
+			<link ref="img.mount.fuji"/>
+			below.
+		</p>
+		<img src="the_sine_of_death.png" title="The Mount Fuji of Death" id="img.mount.fuji"/>
+		<important title="Symmetric changes" id="imp.symmetric.changes">
+			<p>
+				The pain was caused by the asymmetric nature of the changes required between the production code and the
+				test scripts.
+				When a small change to the UI requires a similarly small change to the test code, the the changes can be
+				described as
+				symmetric. UI automation scripts tend to be to be the opposite. A small change to the UI under test will
+				cause many
+				tests to break.
+			</p>
+		</important>
+		<p>
+			The ninjas realized that their UI testing was a trap. They were describing tests at the technical level only
+			(an extreme case of this are recorded test scripts, where even the third level isn’t human readable). The
+			tests were very brittle,
+			and many of them broke with even the smallest change in the UI. Since the scripting language is quite
+			verbose,
+			it was often hard to understand the reason a test failed.
+		</p>
+		<p>
+			Some ninjas started to describe tests at the workflow level, which was a bit more stable. These tests
+			weren’t
+			bound to a particular layout, but they were bound to user interface implementation. When the page workflow
+			changed, or when the underlying technology changed, the tests still broke.
+		</p>
+		<p>
+			Then a wise elder realised the the stability in acceptance tests comes from the fact that business rules
+			don’t
+			change as much as technical implementations. Technology moves much faster than business. The closer
+			acceptance
+			tests are to the business rules, the more stable they are.
+		</p>
+		<p>
+			So now the ninjas started to describe the test and automation in terms of three levels of granularity
+		</p>
+		<p>
+			<ol>
+				<li>
+					Business rule or functionality level: what is this test demonstrating or exercising. For example:
+					Free
+					delivery is offered to customers who order two or more books.
+				</li>
+				<li>
+					User interface workflow level: what does a user have to do to exercise the functionality through the
+					UI, on a higher activity level. For example, put two books in a shopping cart, enter address
+					details,
+					verify that delivery options include free delivery.
+				</li>
+				<li>
+					Technical activity level: what are the technical steps required to exercise the functionality. For
+					example, open the shop homepage, log in with “testuser” and “testpassword”, go to the “/book” page,
+					click on the first image with the “book” CSS class, wait for page to load, click on the “Buy now”
+					link… and so on.
+				</li>
+			</ol>
+		</p>
+		<p>
+			The idea of thinking about these different levels cause much jubilation in the ninja camp, because it
+			allowed them to write UI-level tests that were easy to understand, efficient to write and relatively
+			inexpensive to maintain. This is because there is a natural hierarchy of concepts on these three levels.
+			Checking that delivery is available for two books involves putting a book in a shopping cart. Putting a book
+			in a shopping cart involves a sequence of technical steps. Entering address details does as well. Breaking
+			things down like that and combining lower level concepts into higher level concepts reduces the cognitive
+			load and promotes reuse.
+		</p>
+	</section>
+	<section title="Easy to understand">
+		<p>
+			From the bottom up, the clarity of the test increases. At the technical activity level, tests are very
+			opaque and full of clutter – it’s hard to see the ninja in the forest.
+			<footnote>Unless you are Chuck Norris</footnote>
+			At the user interface workflow level, tests describe how something is done, which is easier to understand
+			but still has too much detail to efficiently describe several possibilities. At the business rule level,
+			the intention of the test is described in a relatively terse form. We can use that level to effectively
+			communicate all different possibilities in important example cases. It is much more efficient to give
+			another example as “Free delivery is not offered to customers who have one book” than to talk about
+			logging in, putting only a single book in a cart, checking out etc. I’m not even going to mention how
+			much cognitive overload a description of that same thing would require if we were to talk about clicking
+			check-boxes and links.
+		</p>
+	</section>
+	<section title="Efficient to write">
+		<p>
+			From the bottom up, the technical level of tests decreases. At the technical activity level, you need people
+			who understand the design of a system, HTTP calls, DOM and such to write the test. To write tests at the
+			user interface workflow level, you only need to understand the web site workflow. At the business rule level,
+			you need to understand what the business rule is. Given a set of third-level components (eg login, adding a book),
+			testers who are not automation specialists and business users can happily write the definition of second level
+			steps. This allows them to engage more efficiently during development and reduce the automation load on developers.
+		</p>
+		<p>
+			More importantly, the business rule and the workflow level can be written before the UI is actually there.
+			Tests at these levels can be written before the development starts, and be used as guidelines for development
+			and as acceptance criteria to verify the output.
+		</p>
+	</section>
+	<section title="Relatively inexpensive to maintain">
+		<p>
+			The business rule level isn’t tied to any particular web site design or activity flow, so it remains stable
+			and unchanged during most web user interface changes, be it layout or workflow improvements. The user interface
+			workflow level is tied to the activity workflow, so when the flow for a particular action changes we need to
+			rewrite only that action. The technical level is tied to the layout of the pages, so when the layout changes
+			we need to rewrite or re-record only the implementation of particular second-level steps affected by that
+			(without changing the description of the test at the business or the workflow level).
+		</p>
+		<p>
+			To continue with the free delivery example from above, if the login form was suddenly changed not to have a
+			button but an image, we only need to re-write the “login” action at the technical level. From my experience,
+			it is the technical level where changes happen most frequently – layout, not the activity workflow. So by
+			breaking up the implementation into this hierarchy, we’re creating several layers of insulation and limiting
+			the propagation of changes. This reduces the cost of maintenance significantly.
+		</p>
+	</section>
+	
+</chapter>
