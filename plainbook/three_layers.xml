@@ -155,7 +155,7 @@
 			button but an image, we only need to re-write the “login” action at the technical level. From my experience,
 			it is the technical level where changes happen most frequently – layout, not the activity workflow. So by
 			breaking up the implementation into this hierarchy, we’re creating several layers of insulation and limiting
-			the propagation of changes. This reduces the cost of maintenance significantly. (temp)
+			the propagation of changes. This reduces the cost of maintenance significantly.
 		</p>
 	</section>
 	
