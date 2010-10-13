@@ -15,7 +15,7 @@
 		<p>
 			There are a number of tools available for automating UI testing. Some of these tools use the dark magic of
 			the Geisha to
-			seduce young ninjas int believing that they can build up a suite of tests by recording actions performed on
+			seduce young ninjas into believing that they can build up a suite of tests by recording actions performed on
 			the site to produce automation scripts. These scripts will then form the basis of an ongoing UI automation
 			suite
 		</p>
@@ -23,20 +23,18 @@
 		<p>
 			At first, all seems to go well. Scripts are quickly recorded and the tests all pass. Adding more tests is
 			easy.
-			After a few months, new features are added however, which change a number of core pages of the site.
-			Suddenly
-			all the tests are broken! The ninjas are starting to realise that they have been tricked by the Geisha
-			magic.
+			After a few months, new features are added however, which mean some small styling changes are made to a number
+			of core pages of the site. Suddenly all the tests are broken! The ninjas are starting to realise that they
+			have been tricked by the Geisha magic.
 			Their anger turns to despair, however, once they look at the scripts produced in the first stage of their
 			journey.
 		</p>
 		<img src="selenese.png" title="The Secret language of Selenese" id="img.selenese"/>
 		<p>
 			It is written in a strange language from a far off land, and used twelve words where the ninjas would
-			usually use one.
-			The ninjas realise that the test scripts are completely unmaintainable, and must be thrown away. They are
-			the victims of the
-			Mount Fuji of death spell (also known as the sine wave of death),
+			usually use one. The ninjas realise that the test scripts are completely unmaintainable,
+			<footnote>Chuck Norris refactors Selenese scripts using Emacs</footnote> and must be thrown away. They are
+			the victims of the Mount Fuji of death spell (also known as the sine wave of death),
 			<footnote>
 				<url link="http://gojko.net/2010/07/29/the-sine-of-death-by-ui-test-automation/"></url>
 			</footnote>
@@ -45,6 +43,7 @@
 			below.
 		</p>
 		<img src="the_sine_of_death.png" title="The Mount Fuji of Death" id="img.mount.fuji"/>
+		<todo>Annette will do a mount fuji version of this</todo>
 		<important title="Symmetric changes" id="imp.symmetric.changes">
 			<p>
 				The pain was caused by the asymmetric nature of the changes required between the production code and the
@@ -80,6 +79,7 @@
 		<p>
 			So now the ninjas started to describe the test and automation in terms of three levels of granularity
 		</p>
+		<img src="three_levels.png" title="The three levels of web automation" id="img.three_levels"/>
 		<p>
 			<ol>
 				<li>
@@ -158,5 +158,5 @@
 			the propagation of changes. This reduces the cost of maintenance significantly.
 		</p>
 	</section>
-	
+
 </chapter>
