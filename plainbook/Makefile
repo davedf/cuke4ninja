@@ -36,7 +36,7 @@ code:
 
 docbook: code docbook-chapters docbook.pdf
 
-website: docbook-chapters docbook.html
+website: code docbook-chapters docbook.html
 	sh ../resources/embedfiles.sh .
 	mv index.html toc.html
 	rm -rf ../website-final

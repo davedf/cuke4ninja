@@ -77,6 +77,44 @@
             </footnote> the killer feature of Cucumber is the ease of web workflow testing.
         </p>
     </section>
+    <section title="How does Cucumber compare to other tools?">
+	<p>Cucumber is essentially a test runner. It does a pretty good job of
+	    running the tests and spitting out reports in lots of various formats,
+	    including HTML, PDF, JUnit (for integration with continuous build tools) and colour text on the
+	    screen. On the other hand, it doesn't try to do anything before test
+	    execution in the process. So there is no Cucumber-IDE or anything
+	    similar. There are some external programs for that, mostly of beta
+	    quality and in development:</p>
+   	<ul>
+	    <li><url link="http://github.com/henritersteeg/cuke4vs" /> does syntax highlighting
+	    and intellisense in visual studio.</li>
+    	    <li><url link="http://github.com/QuBiT/cucumber-eclipse-plugin" /> is a plugin for Eclupse</li>
+	    <li><url link="http://github.com/cs3b/cucumber_fm/" /> is a website system for
+	    feature file management</li>
+    	    <li><url link="http://relishapp.com/" /> is another web product in development to
+	    show feature files</li>
+    	    <li><url link="http://21croissants.github.com/courgette/" /> another web product in
+	    development to show feature files</li>
+	</ul>
+	<p> Cucumber feature files (explained later in this chapter) are plain-text files which
+		makes it very simple to edit them but does not allow any clever formatting.  
+		A feature file
+		allows for a short description in a header, but apart from that everything else
+		in the file is related to scenarios and test cases. That means that there is no
+		way to include images, hyperlinks, rich-text descriptions and similar.
+	</p>
+	<p>Cucumber's step
+	    definition (integration to domain API, explained in later chapters) model is much simpler which is 
+	    both a strength
+	    and a weakness in different contexts. A simple API makes it very easy
+	    to understand and learn what you can do with Cucumber, so you won't
+	    spend three months getting your head around all the possible ways to
+	    use tables. On the other hand, it doesn't have the smart domain-object
+	    mapping features that some other tools have, which allow you to expose your domain
+	    objects and services directly for testing and provide lots of
+	    flexibility in how you can manage complex scenarios.
+    	</p>
+    </section>
     <!--    <section title="What does BDD have to do with Cucumber?">
         <p>
             Cucumber is often mentioned in the context of Behaviour driven Development (BDD). Dan North, the central authority on BDD, summarised it as:<footnote>
