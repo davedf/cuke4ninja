@@ -1,0 +1,2 @@
+module NinjasHelper
+end
