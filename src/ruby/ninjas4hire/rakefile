@@ -1,0 +1,29 @@
+require 'rake'
+require 'rake/testtask'
+
+desc "default build task"
+task :default => [:test]
+
+desc "Run all tests"
+task :test => [:unit_test, :rack_test]
+
+desc "Run unit tests"
+Rake::TestTask.new(:unit_test) do |t|
+   	t.libs << "src"
+	t.test_files = FileList['test/unit/*_test.rb']
+    	t.verbose = true
+end
+
+desc "Run rack tests"
+Rake::TestTask.new(:rack_test) do |t|
+   	t.libs << "src"
+	t.test_files = FileList['test/rack/*_test.rb']
+    	t.verbose = true
+end
+
+desc "run the server"
+task :run => [:test] do |t|
+	require "src/ninjas4hire_app.rb"
+	Ninjas4HireApp.run!
+end
+
