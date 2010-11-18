@@ -117,6 +117,19 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
         </p>
         <code>cuke4duke --jars lib features</code>
     </section>
+    <section title="Debugging from a Java IDE">
+    <p>The rest of this chapter describes how to run Cuke4Duke from ANT and Maven, which makes it also easy to debug. If you decide to
+    use JRuby to run Cucumber features directly, debugging is a bit more complex. JRuby is a Java program, so instead of launching 
+    Cuke4Duke directly, you can launch JRuby and pass the arguments you would pass from the command line. The main JRuby class is
+    <code>org.jruby.Main</code>. For JRuby to run correctly, you should also define the JRuby root directory using 
+    the <code>jruby.home</code> JVM variable. See <link ref="fig_cucumber_jruby_eclipse_1" /> and 
+    <link ref="fig_cucumber_jruby_eclipse_2" /> for an example of how to do that in Eclipse.</p>
+    <img id="fig_cucumber_jruby_eclipse_1" src="cucumber-bare-eclipse-1.png" title="Running JRuby from Eclipse" />
+    <img id="fig_cucumber_jruby_eclipse_2" src="cucumber-bare-eclipse-2.png" title="Setting Cuke4Duke JRuby parameters in Eclipse" />
+    
+    <p>You can execute or debug this run configuration now as you would do any other Java program. Don't forget to add 
+    PicoContainer and JUnit dependencies to your classpath for Cuke4Duke to work correctly.</p>
+   </section>
     </section>
     <!-- here -->
     <section title="Using ANT and Ivy" id="sec_ant">
