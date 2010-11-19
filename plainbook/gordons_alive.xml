@@ -3,10 +3,19 @@
 	<note title="Work in progress">
 		<p>This chapter is still being written! Nothing to see here... move along</p>
 	</note>
+	<p>
+		In this chapter we ae going to be covering the basic requirements for testing Web applications in Ruby, Java and DotNet.
+		Ruby is up first. Jump ahead to the language of your choice if you are in a hurry.
+	</p>
 	<section title="Ruby">
-		<p>
-			
-		</p>
+		<section title="Rails">
+			<p>
+				If you are at all serious about using cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />
+			</p>
+		</section>
+		<section title="Sinatra">
+			<p></p>
+		</section>
 	</section>
 	<section title="Java">
 		<p>

@@ -160,7 +160,7 @@
 		<important title="What is that &lsquo;should include&rsquo; syntax?">
 		<p>Cucumber in Ruby relies on RSpec expectations to perform validations of expected outcomes. 
 		<code>should include</code> is a way to specify that a collection should contain an element with RSpec. See
-		<url link="http://rspec.info/"/> or the RSpect Book <bib ref="chelimsky:rspec" /> for more information 
+		<url link="http://rspec.info/"/> or the RSpec Book <bib ref="chelimsky:rspec" /> for more information 
 		on the RSpec syntax.</p>
 		</important>
 		</section>
