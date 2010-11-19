@@ -6,7 +6,6 @@ require File.join(File.dirname(__FILE__), '..', '..', 'src/ninjas4hire_app.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
-require 'rspec'
 
 Capybara.app = Ninjas4HireApp
 

@@ -9,7 +9,7 @@ class Ninjas4HireApp < Sinatra::Base
 #		  redirect '/config', 301
 #		end
 #	end
-	get '/helloworld' do
-		"Hello world!"
+	get '/howIsGordon' do
+		"Gordon is Alive!"
 	end
 end
