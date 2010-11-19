@@ -10,4 +10,5 @@ resources.dbxml
 tables.dbxml
 training.dbxml
 three_layers.dbxml
+gordons_alive.dbxml
 *.pdf

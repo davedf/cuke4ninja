@@ -85,6 +85,7 @@
             </para>
         </partintro>
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="three_layers.dbxml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gordons_alive.dbxml"/>
         <chapter id="chp_automating_browsers">
             <title>Automating browsers</title>
             <para>coming in version 2.0</para>
