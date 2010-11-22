@@ -10,11 +10,64 @@
 	<section title="Ruby">
 		<section title="Rails">
 			<p>
-				If you are at all serious about using cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />
+				If you are at all serious about using cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />, which
+				includes a section discussing BDD outside-in rails development using cucumber in great detail. We will, however, give a very brief overview of the
+				basics for Rails 2 here.
 			</p>
+			<p>
+				To use cucumber with rails, you will need the following gems installed on your system:
+				<ul>
+					<li>rails </li>
+					<li>cucumber</li>
+					<li>cucumber-rails</li>
+					<li>rspec-rails</li>
+					<li>webrat</li>
+					<li>selenium-client</li>
+				</ul>
+				Install each of these using ruby gems.
+			</p>
+			<p>
+				Once you have these installed, get things running using the following commands:
+			</p>
+			<code>
+				rails ninjas4Hire
+				cd ninjas4Hire
+				script/generate rspec
+				script/generate cucumber --webrat --rspec
+			</code>
+			<p>
+				You should now be able to run cucumber tests using the command:
+			</p>
+			<code>rake cucumber</code>
+			<p>
+				... and get a response like this:
+			</p>
+			<code>
+				0 scenarios
+				0 steps
+			</code>
 		</section>
 		<section title="Sinatra">
-			<p></p>
+			<p>
+				Due to the fact that Ninjas like to travel light (Their deep appreciation of 20th century easy listening crooners is also a factor)
+				we will be using Sinatra<footnote><url link="http://www.sinatrarb.com/intro"/></footnote> to illustrate how to use cucumber to support web application development.
+			</p>
+			<sidebar title="What is Sinatra, Daddio?" id="sidebar.sinatra">
+				<p>
+					Sinatra is a lightweight framework for creating web applications using Ruby. As an example, the following is given for a helloworld example on the Sinatra site
+				</p>
+				<p>
+					Create a ruby file called myapp.rb:
+				</p>
+				<code>
+					# myapp.rb
+					require 'sinatra'
+
+					get '/' do
+						'Hello world!'
+					end
+				</code>
+			</sidebar>
 		</section>
 	</section>
 	<section title="Java">
