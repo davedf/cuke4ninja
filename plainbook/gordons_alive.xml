@@ -87,7 +87,11 @@
 			</sidebar>
 			<section title="Gordon is alive?!" id="sec_gordons_alive.ruby.cucumber-sinatra">
 				<p>
-
+					To get started, we are going to set up a simple sinatra app, and exercise it with cucumber.
+					First, create a directory called ninjas4hire, and get a terminal window pointing at the directory.
+				</p>
+				<p>
+					
 				</p>
 			</section>
 		</section>
