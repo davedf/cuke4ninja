@@ -7,8 +7,8 @@
 		In this chapter we ae going to be covering the basic requirements for testing Web applications in Ruby, Java and DotNet.
 		Ruby is up first. Jump ahead to the language of your choice if you are in a hurry.
 	</p>
-	<section title="Ruby">
-		<section title="Rails">
+	<section title="Ruby" id="sec_gordons_alive.ruby">
+		<section title="Rails" id="sec_gordons_alive.ruby.rails">
 			<p>
 				If you are at all serious about using cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />, which
 				includes a section discussing BDD outside-in rails development using cucumber in great detail. We will, however, give a very brief overview of the
@@ -47,12 +47,12 @@
 				0 steps
 			</code>
 		</section>
-		<section title="Sinatra">
+		<section title="Sinatra" id="sec_gordons_alive.ruby.sinatra">
 			<p>
-				Due to the fact that Ninjas like to travel light (Their deep appreciation of 20th century easy listening crooners is also a factor)
+				Due to the fact that Ninjas like to travel light (their deep appreciation of 20th century easy listening crooners is also a factor)
 				we will be using Sinatra<footnote><url link="http://www.sinatrarb.com/intro"/></footnote> to illustrate how to use cucumber to support web application development.
 			</p>
-			<sidebar title="What is Sinatra, Daddio?" id="sidebar.sinatra">
+			<sidebar title="What is Sinatra, Daddio?" id="sb_gordons_alive.sidebar.sinatra">
 				<p>
 					Sinatra is a lightweight framework for creating web applications using Ruby.
 				</p>
@@ -70,14 +70,33 @@
 						'Hello world!'
 					end
 				</code>
+				<p>
+					Install the sinatra gem
+				</p>
+				<code>gem install sinatra</code>
+				<p>
+					Then, run in the directory where you created the file
+				</p>
+				<code>
+					ruby -rubygems myapp.rb
+				</code>
+				<p>
+					View the output by pointing your browser at <code>http://localhost:4567</code>
+				</p>
+				<p>Pretty hep, no?</p>
 			</sidebar>
+			<section title="Gordon is alive?!" id="sec_gordons_alive.ruby.cucumber-sinatra">
+				<p>
+
+				</p>
+			</section>
 		</section>
 	</section>
-	<section title="Java">
+	<section title="Java" id="sec_gordons_alive.java">
 		<p>
 		</p>
 	</section>
-	<section title="DotNet">
+	<section title="DotNet" id="sec_gordons_alive.dotnet">
 		<p>
 		</p>
 	</section>
