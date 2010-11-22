@@ -54,7 +54,10 @@
 			</p>
 			<sidebar title="What is Sinatra, Daddio?" id="sidebar.sinatra">
 				<p>
-					Sinatra is a lightweight framework for creating web applications using Ruby. As an example, the following is given for a helloworld example on the Sinatra site
+					Sinatra is a lightweight framework for creating web applications using Ruby.
+				</p>
+				<p>
+					As an example, the following is given for a helloworld example on the Sinatra site.
 				</p>
 				<p>
 					Create a ruby file called myapp.rb:
