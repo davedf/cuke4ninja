@@ -135,7 +135,35 @@
 				<code>gem install rake</code>
 				<p>.. then test that you can run the app using the rake command</p>
 				<code>rake run</code>
-				
+			</section>
+			<section title="Getting cucumber involved" id="sec_gordons_alive.ruby.cucumber">
+				<p>
+					Now we have Sinatra up and running, the next step is to get cucumber involved. To help with this
+					we will use the <code>cucumber-sinatra</code> gem.<footnote><url link="https://github.com/aslakhellesoy/cucumber/wiki/Sinatra"/></footnote>
+					This will create some directories and files in our sinatra project, so it is configured for testing with cucumber, RSpec and Capybara.<footnote><url
+					link="https://github.com/jnicklas/capybara"/></footnote>
+				</p>
+				<sidebar title="You will need to have the cucumber gem" id="sb_gordons_alive.ruby.cucumber">
+					<p>If you haven't installed cucumber, gherkin or RSpec yet, there are instructions in <link ref="sec_ruby_install_cucumber"></link></p>
+				</sidebar>
+				<p>
+					First we will need to install the gems for capybara and cucumber-sinatra
+				</p>
+				<code>gem install cucumber-sinatra capybara</code>
+				<p>
+					Then we will use cucumber-sinatra to set up the configuration for our project
+				</p>
+				<code>cucumber-sinatra init Ninjas4HireApp src/ninjas4hire_app.rb</code>
+				<p>You should see an output like the one in the figure below</p>
+				<img src="cucumber-sinatra-output.png" id="img.cucumber-sinatra-output" />
+				<p>
+					The three files it created are:
+					<ol>
+						<li><code>features/support/env.rb</code> sets up capybara and rspec</li>
+						<li><code>features/support/paths.rb</code> enables the overriding of paths with readable alternatives</li>
+						<li><code>features/step_definitions/web_steps.rb</code> created some reusable steps</li>
+					</ol>
+				</p>
 			</section>
 		</section>
 	</section>

@@ -26,7 +26,7 @@
 
         <p>Check that Cucumber is installed by running the following command in the terminal window:</p>
         <code>cucumber --version</code>
-        <p>Cucumber should print out the version (0.9.0 at the time when we wrote this). </p>
+        <p>Cucumber should print out the version (0.9.4 at the time when we wrote this). </p>
         <p>Cucumber uses
          RSpec for assertions. If you do not already have
             RSpec, run the following command to install it:
@@ -39,11 +39,11 @@
             required by Cucumber. As a result you might get an error message similar to this one:
         </p>
         <code>ERROR:  Error installing cucumber:
-        cucumber requires gherkin (~> 2.2.2, runtime)</code>
+        cucumber requires gherkin (~> 2.2.9, runtime)</code>
         <p>
             To resolve this, install the correct gherkin gem version first:
         </p>
-        <code>gem install gherkin --version 2.2.3 </code>
+        <code>gem install gherkin --version 2.2.9 </code>
         <p> Or just uninstall the previous version of gherkin if you do not need it for other reasons, and then install the latest version:</p>
         <code>
         gem uninstall gherkin
