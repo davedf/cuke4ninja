@@ -1,0 +1,7 @@
+require 'rake'
+
+desc "run the server"
+task :run do |t|
+	require "src/ninjas4hire_app.rb"
+	Ninjas4HireApp.run!
+end

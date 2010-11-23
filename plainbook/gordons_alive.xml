@@ -94,7 +94,7 @@
 					Now add a subdirectory called <code>src</code> and create a file in there called <code>ninjas4hire_app.rb</code>.
 					Edit the file, so it looks like the example below.
 				</p>
-				<code file="ruby/ninjas4hire/src/ninjas4hire_app.rb.001" />
+				<code file="ruby/ninjas4hire/src/ninjas4hire_app.rb.001" part="code" />
 				<p>
 					If you haven't done it already, install the sinatra gem.
 				</p>
@@ -105,12 +105,7 @@
 					Now we're going to test that what we have done so far runs. To do this we can use irb.<footnote>Interactive Ruby (see <url
 					link="http://www.ruby-lang.org/en/documentation/quickstart/"/> for more info)</footnote> In the terminal window, type
 				</p>
-				<code>
-$ irb
-irb(main):001:0> require "src/ninjas4hire_app.rb"
-=> true
-irb(main):002:0> Ninjas4HireApp.run!
-				</code>
+				<code file="ruby/ninjas4hire/src/ninjas4hire_app.rb.001" part="run" />
 				<sidebar title="What did I just do?" id="sb.sinatra.startup">
 					<p>
 						These commands do three things
@@ -124,17 +119,23 @@ irb(main):002:0> Ninjas4HireApp.run!
 				<p>
 					You should see some output like this:
 				</p>
-				<code>
-== Sinatra/1.1.0 has taken the stage on 4567 for development with backup from WEBrick
-[2010-11-23 08:38:49] INFO  WEBrick 1.3.1
-[2010-11-23 08:38:49] INFO  ruby 1.8.7 (2010-01-10) [i486-linux]
-[2010-11-23 08:38:55] INFO  WEBrick::HTTPServer#start: pid=2588 port=4567
-				</code>
+				<code file="ruby/ninjas4hire/src/ninjas4hire_app.rb.001" part="output" />
 				<p>
 					If you open a browser and navigate to <code>http://localhost:4567/howIsGordon</code> then you should see the
 					"up" displayed. You can shut down the irb session by typing <code>Ctrl+C</code> to shut down the app and then
 					entering <code>quit</code>
 				</p>
+				<p>
+					Since we don't want to go through such a long winded process each time we run the app, the next step is  to
+					create a rake file. In the <code>ninjas4hire</code> directory, create a file called <code>rakefile</code> and
+					edit it so that it looks like the example below
+				</p>
+				<code file="ruby/ninjas4hire/rakefile.001"/>
+				<p>If you don't have rake installed, install it now using rubygems</p>
+				<code>gem install rake</code>
+				<p>.. then test that you can run the app using the rake command</p>
+				<code>rake run</code>
+				
 			</section>
 		</section>
 	</section>
