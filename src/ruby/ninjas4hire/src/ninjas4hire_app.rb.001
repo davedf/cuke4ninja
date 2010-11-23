@@ -1,0 +1,7 @@
+require 'rubygems'
+require 'sinatra/base'
+class Ninjas4HireApp < Sinatra::Base
+	get '/howIsGordon' do
+		"up"
+	end
+end
