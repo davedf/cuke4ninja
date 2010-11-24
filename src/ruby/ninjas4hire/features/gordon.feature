@@ -1,11 +1,8 @@
-Feature: Saviour of the universe
-  As the king of the hawkmen
-  I want Gordon to be alive
-  So he can save every one of us
+Feature: Cucumber web testing
+  As A developer
+  I want cucumber to exercise my site
+  So I can use it to drive development
 
-  Scenario: Gordon's alive
-    Given I am "King of the Hawkmen"
-    When I am told "Gordon is alive"
-    Then I shout "Gordon is Alive!"
-
-
+  Scenario: Cuke's alive
+    When I go to the cucumber test page
+    Then show me the page

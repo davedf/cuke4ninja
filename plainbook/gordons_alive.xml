@@ -121,7 +121,7 @@
 				</p>
 				<code file="ruby/ninjas4hire/src/ninjas4hire_app.rb.001" part="output" />
 				<p>
-					If you open a browser and navigate to <code>http://localhost:4567/howIsGordon</code> then you should see the
+					If you open a browser and navigate to <code>http://localhost:4567/cukeTest</code> then you should see the
 					"up" displayed. You can shut down the irb session by typing <code>Ctrl+C</code> to shut down the app and then
 					entering <code>quit</code>
 				</p>
@@ -147,9 +147,11 @@
 					<p>If you haven't installed cucumber, gherkin or RSpec yet, there are instructions in <link ref="sec_ruby_install_cucumber"></link></p>
 				</sidebar>
 				<p>
-					First we will need to install the gems for capybara and cucumber-sinatra
+					First we will need to install the gems for capybara and cucumber-sinatra. The example below also installs a
+					gem called launchy<footnote><url link="http://rubygems.org/gems/launchy/versions/0.3.7"/></footnote> which
+					is a helper library for launching cross-platform applications.
 				</p>
-				<code>gem install cucumber-sinatra capybara</code>
+				<code>gem install cucumber-sinatra capybara launchy</code>
 				<p>
 					Then we will use cucumber-sinatra to set up the configuration for our project
 				</p>
@@ -163,6 +165,29 @@
 						<li><code>features/support/paths.rb</code> enables the overriding of paths with readable alternatives</li>
 						<li><code>features/step_definitions/web_steps.rb</code> created some reusable steps</li>
 					</ol>
+				</p>
+				<p>
+					First, add the following lines to <code>paths.rb</code>. These will map the text &lsquo;the cucumber test page&rsquo;
+					to the path <code>/cukeTest</code>
+				</p>
+				<code file="ruby/ninjas4hire/features/support/paths.rb" part="hello"/>
+				<p>
+					Then add a cucumber feature file to the features directory. You can call it whatever you want, so long as it has the correct extension.
+					<footnote>I called mine gordon.feature because I thought of Brian Blessed shouting"Gordons ALIVE?!" in the Flash Gordon film</footnote>
+					Edit the feature file so it looks like the example below.
+				</p>
+				<code file="ruby/ninjas4hire/features/gordon.feature" />
+				<p>Now run the cucumber feature bu opening a terminal window in the root of the project, and typing </p>
+				<code>cucumber features</code>
+				<p>
+					You should see some terminal output similar to the figure below, and a browser window should open, displaying the page.
+				</p>
+				<img src="cucumber-sinatra-hello.png" id="img.cucumber-sinatra-hello" />
+				<img src="cucumber-sinatra-fox.png" id="img.cucumber-sinatra-fox" />
+				<p>
+					As you have seen, the integration between Sinatra, Cucumber and Capybara make web testing a breeze. In the following sections
+					we will take a quick look at how to achieve similar results using java and dotnet, or you can skip ahead to the following chapter, which covers
+					web testing in more detail if you prefer.
 				</p>
 			</section>
 		</section>

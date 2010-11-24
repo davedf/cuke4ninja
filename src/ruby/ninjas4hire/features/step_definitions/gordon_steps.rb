@@ -1,5 +1,4 @@
 Given /^I am "([^"]*)"$/ do |who_am_i|
- @who = who_am_i
 end
 
 When /^I am told "([^"]*)"$/ do |alive_name|
