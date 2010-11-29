@@ -1,8 +1,8 @@
 <!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
 <chapter title="Getting Ruby ready to exercise the UI" id="chp_gordons_alive">
 	<p>
-		In this chapter we ae going to be covering the basic requirements for testing Web applications in Ruby. We will
-		cover rails quite quickly, but go into more detail about how to set up Cucumber with Sinatra.
+		In this chapter we will be covering the basic requirements for testing Web applications in Ruby. We will
+		introduce Rails quickly, but go into more detail about how to set up Cucumber with Sinatra.
 	</p>
 	<section title="Rails" id="sec_gordons_alive.ruby.rails">
 		<p>
@@ -47,7 +47,7 @@
 		</code>
 		<p>
 			You should now be able to add cucumber features into the <code>features</code> directory, and step definitions into
-			the <code>features/step_definitions</code> directory
+			the <code>features/step_definitions</code> directory.
 		</p>
 		</section>
 		<section title="Rails 3" id="sec_gordons_alive.ruby.rails3">
@@ -56,8 +56,8 @@
 			</p>
 			<code>rails new ninjas4hire</code>
 			<p>
-				This should create a directory called ninjas4hire. Navigate to that directory in your terminal and create a file
-				called <code>gemfile</code>, then edit this file so it looks like the example below.
+				This will create a directory called <code>ninjas4hire</code>. Navigate to that directory in your terminal and create a file
+				called <code>gemfile</code>.  Edit this file so it looks like the example below.
 			</p>
 			<code file="ruby/ninjas4hire/gemfile-rails"/>
 			<p>
@@ -65,7 +65,7 @@
 			</p>
 			<code>bundle install</code>
 			<p>
-				Once this is complete you should be able to setup the cucmber configuration using the command
+				Once this is complete you should be able to setup the cucumber configuration using the command:
 			</p>
 			<code> ruby script/rails generate cucumber:install --rspec --capybara</code>
 		</section>
@@ -140,11 +140,11 @@
 				</p>
 			</sidebar>
 			<p>
-				You should see some output like this:
+				You should see some output in the terminal window like this:
 			</p>
 			<code file="ruby/ninjas4hire/src/ninjas4hire_app.rb.001" part="output" />
 			<p>
-				If you open a browser and navigate to <code>http://localhost:4567/cukeTest</code> then you should see the
+				If you open a browser and navigate to <code>http://localhost:4567/cukeTest</code> then you should see the word
 				"up" displayed. You can shut down the irb session by typing <code>Ctrl+C</code> to shut down the app and then
 				entering <code>quit</code>
 			</p>
@@ -156,7 +156,7 @@
 			<code file="ruby/ninjas4hire/rakefile.001"/>
 			<p>If you don't have rake installed, install it now using rubygems</p>
 			<code>gem install rake</code>
-			<p>.. then test that you can run the app using the rake command</p>
+			<p>Now test that you can run the app using the rake command:</p>
 			<code>rake run</code>
 		</section>
 		<section title="Getting cucumber involved" id="sec_gordons_alive.ruby.cucumber">
@@ -184,18 +184,20 @@
 			<p>
 				The three files it created are:
 				<ol>
-					<li><code>features/support/env.rb</code> sets up capybara and rspec</li>
-					<li><code>features/support/paths.rb</code> enables the overriding of paths with readable alternatives</li>
-					<li><code>features/step_definitions/web_steps.rb</code> created some reusable steps</li>
+					<li><code>features/support/env.rb</code> sets up capybara and rspec.</li>
+					<li><code>features/support/paths.rb</code> enables the overriding of paths with readable alternatives.</li>
+					<li><code>features/step_definitions/web_steps.rb</code> created some reusable steps.</li>
 				</ol>
 			</p>
 			<p>
-				First, add the following lines to <code>paths.rb</code>. These will map the text &lsquo;the cucumber test page&rsquo;
+				Now we are goind to create a simple cucumber feature to check everything is working.First, add the following
+				lines to <code>paths.rb</code>. These will map the text &lsquo;the cucumber test page&rsquo;
 				to the path <code>/cukeTest</code>
 			</p>
 			<code file="ruby/ninjas4hire/features/support/paths.rb" part="hello"/>
 			<p>
-				Then add a cucumber feature file to the features directory. You can call it whatever you want, so long as it has the correct extension.
+				The next step is to add a cucumber feature file to the features directory. You can call it whatever you want,
+				so long as it has the correct (<code>.feature</code>)extension.
 				<footnote>I called mine gordon.feature because I thought of Brian Blessed shouting"Gordons ALIVE?!" in the Flash Gordon film</footnote>
 				Edit the feature file so it looks like the example below.
 			</p>
@@ -208,7 +210,7 @@
 			<img src="cucumber-sinatra-hello.png" id="img.cucumber-sinatra-hello" />
 			<img src="cucumber-sinatra-fox.png" id="img.cucumber-sinatra-fox" />
 			<p>
-				So we wrote a cucumber feature, and it ran and passed without having to write any step definitions!
+				So, we wrote a cucumber feature and it ran and passed without having to write any step definitions!
 			</p>
 			<p>
 				This is possible because the cucumber-sinatra gem sets up some default steps out of the box. If you take a look at
@@ -228,7 +230,7 @@
 			<p>
 				Take a few minutes to look at the step definitions provided in <code>web_steps.rb</code>. In the next chapter we will be
 				putting into practice some of the theory outlined in the previous chapter, so we will be using these predefined steps as 
-				a template for the technical level we will be creating.
+				a template for the technical layer we will be creating.
 			</p>
 		</section>
 	</section>

@@ -1,5 +1,5 @@
 Feature: Cucumber web testing
-  As A developer
+  As a developer
   I want cucumber to exercise my site
   So I can use it to drive development
 
