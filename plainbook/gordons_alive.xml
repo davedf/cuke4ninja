@@ -8,10 +8,13 @@
 		<p>
 			If you are at all serious about using cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />, which
 			includes a section discussing BDD outside-in rails development using cucumber in great detail. We will, however, give a very brief overview of the
-			basics for Rails 2 here.
+			basics for Rails here.
 		</p>
+		
+		<section title="Rails 2" id="sec_gordons_alive.ruby.rails2">
+
 		<p>
-			To use cucumber with rails, you will need the following gems installed on your system:
+			To use cucumber with rails 2, you will need the following gems installed on your system:
 			<ul>
 				<li>rails </li>
 				<li>cucumber</li>
@@ -42,6 +45,30 @@
 			0 scenarios
 			0 steps
 		</code>
+		<p>
+			You should now be able to add cucumber features into the <code>features</code> directory, and step definitions into
+			the <code>features/step_definitions</code> directory
+		</p>
+		</section>
+		<section title="Rails 3" id="sec_gordons_alive.ruby.rails3">
+			<p>
+				For a rails 3 application, first create the rails site using the following command in a terminal window.
+			</p>
+			<code>rails new ninjas4hire</code>
+			<p>
+				This should create a directory called ninjas4hire. Navigate to that directory in your terminal and create a file
+				called <code>gemfile</code>, then edit this file so it looks like the example below.
+			</p>
+			<code file="ruby/ninjas4hire/gemfile-rails"/>
+			<p>
+				You can now install the gem dependencies using bundler like so...
+			</p>
+			<code>bundle install</code>
+			<p>
+				Once this is complete you should be able to setup the cucmber configuration using the command
+			</p>
+			<code> ruby script/rails generate cucumber:install --rspec --capybara</code>
+		</section>
 	</section>
 	<section title="Sinatra" id="sec_gordons_alive.ruby.sinatra">
 		<p>

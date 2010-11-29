@@ -1,8 +1,6 @@
 source 'http://rubygems.org'
 gem 'sinatra'
 gem 'rspec'
-gem 'rack-test'
-gem 'haml'
 gem 'gherkin' , "2.2.9"
 gem 'cucumber'
 gem 'cucumber-sinatra'
