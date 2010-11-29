@@ -1,5 +1,8 @@
+require 'rubygems'
 require 'rake'
 require 'rake/testtask'
+require 'cucumber'
+require 'cucumber/rake/task'
 
 desc "default build task"
 task :default => [:test]
@@ -19,6 +22,11 @@ Rake::TestTask.new(:rack_test) do |t|
    	t.libs << "src"
 	t.test_files = FileList['test/rack/*_test.rb']
     	t.verbose = true
+end
+
+desc "run cucumber features"
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
 end
 
 desc "run the server"

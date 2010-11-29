@@ -1,3 +1,4 @@
+#START:run-only
 require 'rake'
 
 desc "run the server"
@@ -5,3 +6,23 @@ task :run do |t|
 	require "src/ninjas4hire_app.rb"
 	Ninjas4HireApp.run!
 end
+#end:run-only
+
+#START:run-features
+require 'rake'
+require 'rubygems'
+require 'cucumber'
+require 'cucumber/rake/task'
+
+desc "run the server"
+task :run do |t|
+	require "src/ninjas4hire_app.rb"
+	Ninjas4HireApp.run!
+end
+
+desc "run cucumber features"
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
+end
+
+#end:run-features
