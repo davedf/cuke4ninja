@@ -19,11 +19,11 @@ World(WithinHelpers)
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
-
+#START:step1
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
-
+#END:step1
 When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
   with_scope(selector) do
     click_button(button)

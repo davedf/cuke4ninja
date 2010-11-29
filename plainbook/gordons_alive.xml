@@ -208,7 +208,27 @@
 			<img src="cucumber-sinatra-hello.png" id="img.cucumber-sinatra-hello" />
 			<img src="cucumber-sinatra-fox.png" id="img.cucumber-sinatra-fox" />
 			<p>
-				As you have seen, the integration between Sinatra, Cucumber and Capybara make web testing a breeze.
+				So we wrote a cucumber feature, and it ran and passed without having to write any step definitions!
+			</p>
+			<p>
+				This is possible because the cucumber-sinatra gem sets up some default steps out of the box. If you take a look at
+				<code>features/step_definitions/web_steps.rb</code> you should see a function definition like the one illustrated
+				below.
+			</p>
+			<code file="ruby/ninjas4hire/features/step_definitions/web_steps.rb" part="step1"/>
+			<p>
+				This is the step corresponding to the feature file line:
+			</p>
+			<code>When I go to the cucumber test page</code>
+			<p>
+				The body of the method uses two pieces of functionality. Firstly there is a call to <code>path_to(page_name)</code>. This function is defined in <code>paths.rb</code>.
+				We added a url mapping to this earlier in the chapter. Secondly, the result of this function is passed to visit, which is picked up by
+				capybara to automate the loading of the page at the <code>/cukeTest</code> url.
+			</p>
+			<p>
+				Take a few minutes to look at the step definitions provided in <code>web_steps.rb</code>. In the next chapter we will be
+				putting into practice some of the theory outlined in the previous chapter, so we will be using these predefined steps as 
+				a template for the technical level we will be creating.
 			</p>
 		</section>
 	</section>
