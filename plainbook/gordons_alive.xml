@@ -153,7 +153,7 @@
 				create a rake file. In the <code>ninjas4hire</code> directory, create a file called <code>rakefile</code> and
 				edit it so that it looks like the example below
 			</p>
-			<code file="ruby/ninjas4hire/rakefile.001" part="run-only"/>
+			<code file="ruby/ninjas4hire/rakefile.001"/>
 			<p>If you don't have rake installed, install it now using rubygems</p>
 			<code>gem install rake</code>
 			<p>.. then test that you can run the app using the rake command</p>
@@ -200,7 +200,7 @@
 				Edit the feature file so it looks like the example below.
 			</p>
 			<code file="ruby/ninjas4hire/features/gordon.feature" />
-			<p>Now run the cucumber feature bu opening a terminal window in the root of the project, and typing </p>
+			<p>Now run the cucumber feature by opening a terminal window in the root of the project, and typing </p>
 			<code>cucumber features</code>
 			<p>
 				You should see some terminal output similar to the figure below, and a browser window should open, displaying the page.
