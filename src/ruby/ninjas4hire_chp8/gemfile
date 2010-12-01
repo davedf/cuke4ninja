@@ -1,0 +1,8 @@
+source 'http://rubygems.org'
+gem 'sinatra'
+gem 'rspec'
+gem 'gherkin' , "2.2.9"
+gem 'cucumber'
+gem 'cucumber-sinatra'
+gem 'capybara'
+gem 'launchy'

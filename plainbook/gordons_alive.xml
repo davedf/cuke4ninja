@@ -187,7 +187,7 @@
 				</ol>
 			</p>
 			<p>
-				Now we are goind to create a simple feature file to check everything is working. First, add the following
+				Now we are going to create a simple feature file to check everything is working. First, add the following
 				lines to <code>paths.rb</code>. These will map the text &lsquo;the cucumber test page&rsquo;
 				to the path <code>/cukeTest</code>
 			</p>
@@ -204,7 +204,6 @@
 			<p>
 				You should see some terminal output similar to the figure below, and a browser window should open, displaying the page.
 			</p>
-			<todo>regenerate this image to show Cuke is instead of Cuke's</todo>
 			<img src="cucumber-sinatra-hello.png" id="img.cucumber-sinatra-hello" />
 			<img src="cucumber-sinatra-fox.png" id="img.cucumber-sinatra-fox" />
 			<p>
@@ -231,5 +230,28 @@
 				a template for the technical layer we will be creating.
 			</p>
 		</section>
+        <section title="Raking your cucumber patch" id="sec_gordons_alive.ruby.cucumber.rake">
+            <p>
+                As a final step, we are going to edit our rake file so that we can run our cucumber features using the <code>rake</code> command.
+                Happily, Cucumber ships with a rake task so it is simple to do.
+            </p>
+            <p>
+                Rake adds some overhead, so it is not recommended to use this directly.
+                The usefulness of the rake task comes when running cucumber as part of an automated process because it allows a greater 
+                level of control over how and when the cucumber feature are run.
+            </p>
+            <p>
+                First, edit the file called <code>rakefile</code> in the root directory of your ninjas4hire project so it looks like the example below
+            </p>
+            <code file="ruby/ninjas4hire_chp8/rakefile"/>
+            <p>
+                Now create a file called <code>gemfile</code> if you don't have one already, and edit it so it looks like the example below
+            </p>
+            <code file="ruby/ninjas4hire_chp8/gemfile"/>
+            <p>
+                Once you have done this, you should be able run the task using the command: <code>rake features</code>
+            </p>
+
+        </section>
 	</section>
 </chapter>
