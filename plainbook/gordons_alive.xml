@@ -6,7 +6,7 @@
 	</p>
 	<section title="Rails" id="sec_gordons_alive.ruby.rails">
 		<p>
-			If you are at all serious about using cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />, which
+			If you are at all serious about using Cucumber to test Rails sites, then you should get hold of the RSpec Book <bib ref="chelimsky:rspec" />, which
 			includes a section discussing BDD outside-in rails development using cucumber in great detail. We will, however, give a very brief overview of the
 			basics for Rails here.
 		</p>
@@ -14,7 +14,7 @@
 		<section title="Rails 2" id="sec_gordons_alive.ruby.rails2">
 
 		<p>
-			To use cucumber with rails 2, you will need the following gems installed on your system:
+			To use Cucumber with Rails 2, you will need the following gems installed on your system:
 			<ul>
 				<li>rails </li>
 				<li>cucumber</li>
@@ -52,7 +52,7 @@
 		</section>
 		<section title="Rails 3" id="sec_gordons_alive.ruby.rails3">
 			<p>
-				For a rails 3 application, first create the rails site using the following command in a terminal window.
+				For a Rails 3 application, first create the Rails site using the following command in a terminal window.
 			</p>
 			<code>rails new ninjas4hire</code>
 			<p>
@@ -61,7 +61,7 @@
 			</p>
 			<code file="ruby/ninjas4hire/gemfile-rails"/>
 			<p>
-				You can now install the gem dependencies using bundler like so...
+				You can now install the gem dependencies using <code>bundler</code>: 
 			</p>
 			<code>bundle install</code>
 			<p>
@@ -73,13 +73,11 @@
 	<section title="Sinatra" id="sec_gordons_alive.ruby.sinatra">
 		<p>
 			Due to the fact that Ninjas like to travel light (their deep appreciation of 20th century easy listening crooners is also a factor)
-			we will be using Sinatra<footnote><url link="http://www.sinatrarb.com/intro"/></footnote> to illustrate how to use cucumber to support web application development.
+			we will be using <url title='Sinatra' link="http://www.sinatrarb.com/intro"/> to illustrate how to use Cucumber to support web application development.
 		</p>
-		<sidebar title="What is Sinatra, Daddio?" id="sb_gordons_alive.sidebar.sinatra">
+		<sidebar title="What is Sinatra, Sensei?" id="sb_gordons_alive.sidebar.sinatra">
 			<p>
 				Sinatra is a lightweight framework for creating web applications using Ruby.
-			</p>
-			<p>
 				As an example, the following is given for a helloworld example on the Sinatra site.
 			</p>
 			<p>
@@ -104,9 +102,8 @@
 				ruby -rubygems myapp.rb
 			</code>
 			<p>
-				View the output by pointing your browser at <code>http://localhost:4567</code>
-			</p>
-			<p>Pretty hep, no?</p>
+				View the output by pointing your browser at <code>http://localhost:4567</code>.
+			Pretty hep, no?</p>
 		</sidebar>
 		<section title="Gordon is alive?!" id="sec_gordons_alive.ruby.cucumber-sinatra">
 			<p>
@@ -146,7 +143,7 @@
 			<p>
 				If you open a browser and navigate to <code>http://localhost:4567/cukeTest</code> then you should see the word
 				"up" displayed. You can shut down the irb session by typing <code>Ctrl+C</code> to shut down the app and then
-				entering <code>quit</code>
+				entering <code>quit</code>.
 			</p>
 			<p>
 				Since we don't want to go through such a long winded process each time we run the app, the next step is  to
@@ -154,21 +151,21 @@
 				edit it so that it looks like the example below
 			</p>
 			<code file="ruby/ninjas4hire/rakefile.001"/>
-			<p>If you don't have rake installed, install it now using rubygems</p>
+			<p>If you don't have rake installed, install it now using rubygems:</p>
 			<code>gem install rake</code>
 			<p>Now test that you can run the app using the rake command:</p>
 			<code>rake run</code>
 		</section>
-		<section title="Getting cucumber involved" id="sec_gordons_alive.ruby.cucumber">
+		<section title="Feeding Sinatra with cucumbers" id="sec_gordons_alive.ruby.cucumber">
 			<p>
-				Now we have Sinatra up and running, the next step is to get cucumber involved. To help with this
+				Now we have Sinatra up and running, the next step is to get Cucumber involved. To help with this
 				we will use the <code>cucumber-sinatra</code> gem.<footnote><url link="https://github.com/aslakhellesoy/cucumber/wiki/Sinatra"/></footnote>
 				This will create some directories and files in our sinatra project, so it is configured for testing with cucumber, RSpec and Capybara.<footnote><url
 				link="https://github.com/jnicklas/capybara"/></footnote>
 			</p>
-			<sidebar title="You will need to have the cucumber gem" id="sb_gordons_alive.ruby.cucumber">
+			<note title="You will need to have the cucumber gem" id="sb_gordons_alive.ruby.cucumber">
 				<p>If you haven't installed cucumber, gherkin or RSpec yet, there are instructions in <link ref="sec_ruby_install_cucumber"/></p>
-			</sidebar>
+			</note>
 			<p>
 				First we will need to install the gems for capybara and cucumber-sinatra. The example below also installs a
 				gem called launchy<footnote><url link="http://rubygems.org/gems/launchy/versions/0.3.7"/></footnote> which
@@ -190,15 +187,15 @@
 				</ol>
 			</p>
 			<p>
-				Now we are goind to create a simple cucumber feature to check everything is working.First, add the following
+				Now we are goind to create a simple feature file to check everything is working. First, add the following
 				lines to <code>paths.rb</code>. These will map the text &lsquo;the cucumber test page&rsquo;
 				to the path <code>/cukeTest</code>
 			</p>
 			<code file="ruby/ninjas4hire/features/support/paths.rb" part="hello"/>
 			<p>
 				The next step is to add a cucumber feature file to the features directory. You can call it whatever you want,
-				so long as it has the correct (<code>.feature</code>)extension.
-				<footnote>I called mine gordon.feature because I thought of Brian Blessed shouting"Gordons ALIVE?!" in the Flash Gordon film</footnote>
+				so long as it has the correct extension (<code>.feature</code>).
+				<footnote>I called mine gordon.feature because I thought of Brian Blessed shouting "Gordon is ALIVE?!" in the Flash Gordon film</footnote>
 				Edit the feature file so it looks like the example below.
 			</p>
 			<code file="ruby/ninjas4hire/features/gordon.feature" />
@@ -207,13 +204,14 @@
 			<p>
 				You should see some terminal output similar to the figure below, and a browser window should open, displaying the page.
 			</p>
+			<todo>regenerate this image to show Cuke is instead of Cuke's</todo>
 			<img src="cucumber-sinatra-hello.png" id="img.cucumber-sinatra-hello" />
 			<img src="cucumber-sinatra-fox.png" id="img.cucumber-sinatra-fox" />
 			<p>
-				So, we wrote a cucumber feature and it ran and passed without having to write any step definitions!
+				So, we wrote a Cucumber feature and it ran and passed without having to write any step definitions!
 			</p>
 			<p>
-				This is possible because the cucumber-sinatra gem sets up some default steps out of the box. If you take a look at
+				This is possible because the <code>cucumber-sinatra</code> gem sets up some default steps out of the box. If you take a look at
 				<code>features/step_definitions/web_steps.rb</code> you should see a function definition like the one illustrated
 				below.
 			</p>

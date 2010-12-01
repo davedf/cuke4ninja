@@ -3,6 +3,6 @@ Feature: Cucumber web testing
   I want cucumber to exercise my site
   So I can use it to drive development
 
-  Scenario: Cuke's alive
+  Scenario: Cuke is alive
     When I go to the cucumber test page
     Then show me the page
