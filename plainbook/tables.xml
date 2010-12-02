@@ -219,12 +219,35 @@ before each scenario in the feature file. It starts with the <code>Background</c
 <code>Scenario</code>. Here is how the previous example looks with a background:</p>
 	<code file="ruby/NinjaSurvivalRate/features/danger_levels_background.feature" />
 
+
 <note title="Avoid complex backgrounds">
-<p>If a feature file background starts becoming long or complex, you are scripting in feature files. Move that functionality
-to a step definition or even better to a technical hook (explained in <link ref="sec_hooks" />. </p>
+<p>If a feature file background starts becoming long or complex, it is often a sign that you are describing how the context needs to be set up
+rather than what the context is. Separate the specification of the context from the procedure to set it up and automate the procedure using step
+definitions. Another reason for complex backgrounds is often trying to define technical initialisation, for example allocating resources etc. 
+Technical context setup should be moved to a technical hook (explained in <link ref="sec_hooks" />. </p>
 </note>
 </section>
 <section id="sec_hooks" title="Using hooks to manage cross-cutting concerns">
-<p>coming in version 2.0</p>
+<p>Cucumber feature files should ideally describe expected functionality without going into a lot of technical detail. This makes the feature files
+simpler, easier to read and understand, and less bound to a particular technical implementation. It helps us implement the principle of symmetric change 
+(see <link ref="imp.symmetric.changes" />). Technical initialisation or tear-down activities are sometimes useful to avoid duplication in step definitions, 
+so Cucumber provides for that with <define>Scenario Hooks</define>.</p>
+<p>Scenario Hooks are technical actions that will be executed before or after a scenario is validated. They can be set up globally (for all scenarios) or 
+filtered by tags.
+</p>
+<todo>add intro to tags into the gherkin chapter, add reference here</todo>
+<section title="Scenario hooks in Ruby">
+<p>For more information on scenario hooks in Ruby, see <url link="http://github.com/aslakhellesoy/cucumber/wiki/Hooks" /></p></section>
+<section title="Scenario hooks in Java">
+<p>For more information on scenario hooks in other JVM languages, see <url link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" /></p></section>
+</section>
+<section title="Scenario hooks in .NET">
+<p>For more information on scenario hooks in Cuke4Nuke, see <url link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" /></p></section>
+</section>
+<note title="Advanced hooks">
+<p>The Ruby version of Cucumber (but not Cuke4Duke and Cuke4Nuke) supports many other hooks, such as step hooks (executed before or after each step) or global hooks (executed 
+once before any test runs or after all tests finish). They are defined similarly to the scenario hooks mentioned in this section. For more information, see
+<url link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.
+</note>
 </section>
 </chapter>

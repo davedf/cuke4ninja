@@ -280,20 +280,20 @@
 	  languages, including some very obscure such as LOLCATS and artificial languages such as Welsh. Here is, 
 	  for example, the feature file from the introduction in French:</p>		
 		<code>
-Fonctionnalité: Lutte ou de fuite
+Fonctionnalit&eacute;: Lutte ou de fuite
     Afin d'augmenter le taux de survie ninja,
     Tant que commandant ninja
-    Je veux que mon ninjas de décider de prendre un adversaire 
-      en fonction de leurs niveaux de compétences
+    Je veux que mon ninjas de d&eacute;cider de prendre un adversaire 
+      en fonction de leurs niveaux de comp&eacute;tences
 
-Plan du Scénario: ennemi plus faible
-    Soit le Ninja a un troisième niveau ceinture noire
-    Lorsqu'il est attaqué par un samouraï
+Plan du Sc&eacute;nario: ennemi plus faible
+    Soit le Ninja a un troisi&egrave;me niveau ceinture noire
+    Lorsqu'il est attaqu&eacute; par un samoura&iuml;
     Alors le ninja doit engager l'adversaire
 
-Plan du Scénario: ennemi plus fort
-    Soit le Ninja a un troisième niveau ceinture noire
-    Lorsqu'il est attaqué par Jean-Claude Van Damme
+Plan du Sc&eacute;nario: ennemi plus fort
+    Soit le Ninja a un troisi&egrave;me niveau ceinture noire
+    Lorsqu'il est attaqu&eacute; par Jean-Claude Van Damme
     Alors le ninja doit fuir pour sauver sa vie
 		</code>
 		<p>See the 

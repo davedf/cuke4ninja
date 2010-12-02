@@ -42,9 +42,9 @@ Ninjas
 			<link ref="img.mount.fuji"/>.
 		</p>
 		<img src="the_sine_of_death.png" title="The Mount Fuji of Death" id="img.mount.fuji"/>
-		<important title="The principle of symmetric changes" id="imp.symmetric.changes">
+		<important title="The principle of symmetric change" id="imp.symmetric.changes">
 			<p>
-				The best software is the one where the technical software model is aligned with the relevant business domain model. This ensures that one small change in the business domain (new requirements or changes to existing features) result in one small change in software. The same is true for the other artefacts produced for software &mdash; tests and documentation. When the tests are aligned with the business domain model, one small change in business will result in one small change in tests, making the tests easy to maintain.</p>
+				The best software is the one where the technical software model is aligned with the relevant business domain model. This ensures that one small change in the business domain (new requirements or changes to existing features) results in one small change in software. The same is true for the other artefacts produced for software &mdash; tests and documentation. When the tests are aligned with the business domain model, one small change in business will result in one small change in tests, making the tests easy to maintain.</p>
 		<p>Tests described at a low level technical detail, in the language of technical UI interactions, are everything but aligned with a business model. If anything, they are aligned with the current design and layout of user interfaces. A small change in business requirements can have a huge impact on such tests, requiring hours of updates to tests after just a few minutes of changes to the code.
 			</p>
 		</important>
