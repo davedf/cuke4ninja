@@ -217,14 +217,14 @@ setups. This will make it easier to change the setup globally in the future. It 
 to understand. Cucumber supports this with backgrounds. A <define>Background</define> is a special scenario executed
 before each scenario in the feature file. It starts with the <code>Background</code> keyword instead of the usual 
 <code>Scenario</code>. Here is how the previous example looks with a background:</p>
-	<code file="ruby/NinjaSurvivalRate/features/danger_levels_background.feature" />
+<code file="ruby/NinjaSurvivalRate/features/danger_levels_background.feature" />
 
 
 <note title="Avoid complex backgrounds">
 <p>If a feature file background starts becoming long or complex, it is often a sign that you are describing how the context needs to be set up
 rather than what the context is. Separate the specification of the context from the procedure to set it up and automate the procedure using step
 definitions. Another reason for complex backgrounds is often trying to define technical initialisation, for example allocating resources etc. 
-Technical context setup should be moved to a technical hook (explained in <link ref="sec_hooks" />. </p>
+Technical context setup should be moved to a technical hook (explained in <link ref="sec_hooks" />). </p>
 </note>
 </section>
 <section id="sec_hooks" title="Using hooks to manage cross-cutting concerns">
@@ -236,18 +236,93 @@ so Cucumber provides for that with <define>Scenario Hooks</define>.</p>
 filtered by tags.
 </p>
 <todo>add intro to tags into the gherkin chapter, add reference here</todo>
+<p>To demonstrate how hooks work, we'll use a simple feature demonstrating how Chuck Norris kills ninjas. 
+We'll call this one a killer feature (<code>features/killer.feature</code>).</p>
+<code file="ruby/NinjaSurvivalRate/features/killer.feature" />
+<p>The number of expected ninjas decreases between scenarios and the number of killed ninjas rises. We'll implement this using hooks and without 
+doing anything in the step definition of the action. This is quite a misuse of hooks and actions but considering that Chuck 
+ends up being really cool, I'm sure he won't mind. And we'll use it to demonstrate the syntax of hooks in different languages. </p>
 <section title="Scenario hooks in Ruby">
-<p>For more information on scenario hooks in Ruby, see <url link="http://github.com/aslakhellesoy/cucumber/wiki/Hooks" /></p></section>
+<p>You can define scenario hooks in Ruby using the following syntax:</p>
+<code>
+Before do
+ # something that happens before a scenario is executed
+end
+After do |scenario|
+ # something that happens after a scenario is executed
+end
+</code>
+<p>We can define the steps of the killer feature using hooks to keep global state of ninjas killed so far. Save the following content
+into a file, for example <code>features/step_definitions/killer_steps.rb</code>.</p>
+<code file="ruby/NinjaSurvivalRate/features/step_definitions/killer_steps.rb" />
+<p>Run only the killer feature now using the following command:</p>
+<code>cucumber features/killer.feature </code>
+<p>The result should appear as in <link ref="img.ruby_killer" />. The global class variables (remaining ninjas and killed ninjas) 
+change every time a scenario is executed, so that you can see the effects. </p>
+
+<img id="img.ruby_killer" title="Chuck kills ninjas using hooks in Ruby" src="ruby-killer.png" />
+
+<important title="Scenario hooks are global">
+Regardless of whether you define a hook in a step definition or in a global support file, all scenario hooks are global. 
+</important>
+
+<p>You can set up hooks in a global file, ideally in a <code>features/support</code> directory. You can also set them up in a feature
+file as in the previous example. All hooks execute before/after each scenario, regardless of where they are defined. To see this effect, execute the
+feature again but run one more feature before it. For example, use the following command:</p>
+
+<code>cucumber features/ninja_survival_rate.feature features/killer.feature</code>
+<p>The result is now quite different, with failing steps in our killer feature (<link ref="img.ruby_killer_global" />). Make sure to remember this
+if you use hooks, or you'll end up on the one Chuck Norris uses to hang his punch bag.</p>
+
+<img id="img.ruby_killer_global" title="Too many ninjas fall at the hand of Chuck because of global hooks" src="ruby-killer-global.png" />
+
+<p>You can avoid this problem by assigning tags to scenarios (<todo> link to tags section</todo>) and specifying the relevant 
+tags as arguments of <code>Before</code> and <code>After</code>). For example, the following will execute only before scenarios marked with <code>@killer</code>:</p>
+<code>
+Before('@killer') do
+  # only before scenarios tagged with @killer
+end
+</code>
+<p>For more information on scenario hooks in Ruby, see <url title="the hooks page in the Cukes wiki" link="http://github.com/aslakhellesoy/cucumber/wiki/Hooks" />.</p>
+</section>
 <section title="Scenario hooks in Java">
-<p>For more information on scenario hooks in other JVM languages, see <url link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" /></p>
+<p>You can define scenario hooks in Java using the <code>@Before</code> and <code>@After</code> annotations. For example:</p>
+
+<code>
+ @Before 
+ public void thisGetsCalledBeforeEachScenario(){
+   // ...
+ }
+ @After
+ public void thisGetsCalledAfterEachScenario(){
+   // ...
+ }
+</code>
+<important>@Before and @After annotations are in the cuke4duke.annotation package,
+not the cuke4duke.annotation.I18n.EN as all the other annotations we used so far.
+</important>
+<p>We can define the steps to implement our killer feature using the tags:</p>
+<code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/KillerSteps.java" part="steps"/>
+<p>If you change the POM file to execute just the killer feature now (or delete other features), you should see the feature passing (<link ref="img.java_killer" />). Remember
+that the hooks are global, although they are defined in a class file with the other steps from this feature, so they will be executed even for other features. This means
+that the same test will fail if you execute all the other features from the <code>features</code> folder. To avoid this problem, mark your scenarios with tags
+and list the relevant tags in the annotation. For example: </p>
+<code>
+Before("@killer")
+ public void thisGetsCalledBeforeKillerScenarios(){
+   // ...
+ }
+</code>
+<img id="img.java_killer" title="Ninjas fall at Chuck's hand in Java" src="java-killer.png" />
+<p>For more information on scenario hooks in other JVM languages, see <url title="the hooks page in the Cuke4Duke wiki"  link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" />.</p>
 </section>
 <section title="Scenario hooks in .NET">
-<p>For more information on scenario hooks in Cuke4Nuke, see <url link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" /></p>
+<p>For more information on scenario hooks in Cuke4Nuke, see <url title="hooks examples in the Cuke4Nuke source code" link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" />.</p>
 </section>
 <note title="Advanced hooks">
 <p>The Ruby version of Cucumber (but not Cuke4Duke and Cuke4Nuke) supports many other hooks, such as step hooks (executed before or after each step) or global hooks (executed 
 once before any test runs or after all tests finish). They are defined similarly to the scenario hooks mentioned in this section. For more information, see
-<url link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.</p>
+<url title="the hooks page in the Cukes wiki" link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.</p>
 </note>
 </section>
 </chapter>
