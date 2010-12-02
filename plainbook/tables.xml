@@ -239,15 +239,15 @@ filtered by tags.
 <section title="Scenario hooks in Ruby">
 <p>For more information on scenario hooks in Ruby, see <url link="http://github.com/aslakhellesoy/cucumber/wiki/Hooks" /></p></section>
 <section title="Scenario hooks in Java">
-<p>For more information on scenario hooks in other JVM languages, see <url link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" /></p></section>
+<p>For more information on scenario hooks in other JVM languages, see <url link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" /></p>
 </section>
 <section title="Scenario hooks in .NET">
-<p>For more information on scenario hooks in Cuke4Nuke, see <url link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" /></p></section>
+<p>For more information on scenario hooks in Cuke4Nuke, see <url link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" /></p>
 </section>
 <note title="Advanced hooks">
 <p>The Ruby version of Cucumber (but not Cuke4Duke and Cuke4Nuke) supports many other hooks, such as step hooks (executed before or after each step) or global hooks (executed 
 once before any test runs or after all tests finish). They are defined similarly to the scenario hooks mentioned in this section. For more information, see
-<url link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.
+<url link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.</p>
 </note>
 </section>
 </chapter>
