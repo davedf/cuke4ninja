@@ -233,9 +233,8 @@ simpler, easier to read and understand, and less bound to a particular technical
 (see <link ref="imp.symmetric.changes" />). Technical initialisation or tear-down activities are sometimes useful to avoid duplication in step definitions, 
 so Cucumber provides for that with <define>Scenario Hooks</define>.</p>
 <p>Scenario Hooks are technical actions that will be executed before or after a scenario is validated. They can be set up globally (for all scenarios) or 
-filtered by tags.
+filtered by tags (mentioned in <link ref="sec.gherkin_tag" />).
 </p>
-<todo>add intro to tags into the gherkin chapter, add reference here</todo>
 <p>To demonstrate how hooks work, we'll use a simple feature demonstrating how Chuck Norris kills ninjas. 
 We'll call this one a killer feature (<code>features/killer.feature</code>).</p>
 <code file="ruby/NinjaSurvivalRate/features/killer.feature" />
@@ -276,7 +275,7 @@ if you use hooks, or you'll end up on the one Chuck Norris uses to hang his punc
 
 <img id="img.ruby_killer_global" title="Too many ninjas fall at the hand of Chuck because of global hooks" src="ruby-killer-global.png" />
 
-<p>You can avoid this problem by assigning tags to scenarios (<todo> link to tags section</todo>) and specifying the relevant 
+<p>You can avoid this problem by assigning tags to scenarios (<link ref="sec.gherkin_tag" />) and specifying the relevant 
 tags as arguments of <code>Before</code> and <code>After</code>). For example, the following will execute only before scenarios marked with <code>@killer</code>:</p>
 <code>
 Before('@killer') do

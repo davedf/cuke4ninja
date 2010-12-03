@@ -346,6 +346,34 @@ Plan du Sc&eacute;nario: ennemi plus fort
 </important>
 	
 </section>
+<section id="sec.gherkin_tag" title="Tagging for fun and profit">
+<p>After a few months, scenarios and features in a project can become unwieldy. With hundreds of feature files, we might 
+not want to run everything all the time. Even without that, it is often useful to be able to check just a subset of the features, for 
+example skip running one or two very slow tests to get faster feedback. </p>
+<p>Cucumber allows us to manage large groups of scenarios easier with tags. Tags are free-form text comments assigned to a scenario, that 
+provide meta-data about the type, nature or group of that scenario. You can assign tags to a scenario by putting it before the scenario header, adding
+an &lsquo;at&rsquo; sign (@) before the tag name. For example:</p>
+<code>
+ @slowtest
+ Scenario: end-to-end signup
+ ...
+</code>
+<p>You can execute only the scenarios with a particular tag using the <code>--tags</code> option, for example:</p>
+<code>cucumber --tags @fasttest</code>
+<p>Another option is to skip only the scenarios without a particular tag. For that, prefix the tag with a tilde (~). Here is an example:</p>
+<code>cucumber --tags @slowtest</code>
+<p>Here are some useful things you can do with tags:</p>
+<ul>
+<li>Identify work in progress to avoid breaking the build when things like that fail.</li>
+<li>Separate quick and slow checks and execute as cascaded builds on the build server to speed up feedback.</li>
+<li>Execute some checks only overnight.</li>
+<li>Cross-reference stories and features/scenarios.</li>
+<li>Cross-reference entire feature areas and scenarios with cross-cutting concerns.</li>
+</ul>
 
-
+<p>You can tag a feature or a scenario (or outline). Feature tags are automatically inherited by all the enclosed scenarios and scenario outlines. Cucumber
+also supports some more advanced tag features, such as enforcing the limit on the number of scenarios with a particular tag (useful for in-progress work) and
+running scenarios that satisfy a combination of tags. For information on those options, have a look at 
+the <url link="https://github.com/aslakhellesoy/cucumber/wiki/tags" title="tags page on the Cucumber wiki"/>.</p>
+</section>
 </chapter>
