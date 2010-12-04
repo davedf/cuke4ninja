@@ -91,7 +91,7 @@ Ninjas
 			things down like that and combining lower level concepts into higher level concepts reduces the cognitive
 			load and promotes reuse.
 		</p>
-	<section title="Easy to understand">
+	<section id="sec_three_layers_easy" title="Easy to understand">
 		<p>
 			From the bottom up, the clarity of the test increases. At the technical activity level, tests are very
 			opaque and full of clutter &mdash; it's hard to see the ninja in the forest.<footnote>Unless you are Chuck Norris</footnote>
@@ -103,7 +103,7 @@ Ninjas
 			logging in, putting only a single book in a cart, checking out etc. Because health and safety regulations we had to take out the text specifying that other example in the language of clicking check boxes and links, because readers noses would bleed after reading it as if they were punched in the face by Chuck Norris himself. 
 		</p>
 	</section>
-	<section title="Efficient to write">
+	<section id="sec_three_layers_efficient" title="Efficient to write">
 		<p>
 			From the bottom up, the technical level of tests decreases. At the technical activity level, you need people
 			who understand the design of a system, HTTP calls, DOM and such to write the test. To write tests at the
@@ -118,7 +118,7 @@ Ninjas
 			and as acceptance criteria to verify the output.
 		</p>
 	</section>
-	<section title="Relatively inexpensive to maintain">
+	<section id="sec_three_layers_inexpensive" title="Relatively inexpensive to maintain">
 		<p>
 			The business rule level is not tied to any particular web site design or activity flow, so it remains stable
 			and unchanged during most web user interface changes, be it layout or workflow improvements. The user interface
@@ -130,7 +130,7 @@ Ninjas
 			button but an image, a ninja would only need to re-write the <code>login</code> action at the technical level. 
 		</p>
 	</section>
-	<section title="The benefits of three levels">
+	<section id="sec_three_layers_benefits" title="The benefits of three levels">
 		<p>
 			You don't need to be Chuck Norris to know that the changes happen most frequently the technical level &mdash; layout, 
 			not the activity workflow and definitely not the business rule level. So by

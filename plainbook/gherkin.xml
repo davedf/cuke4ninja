@@ -346,7 +346,7 @@ Plan du Sc&eacute;nario: ennemi plus fort
 </important>
 	
 </section>
-<section id="sec.gherkin_tag" title="Tagging for fun and profit">
+<section id="sec_gherkin_tag" title="Tagging for fun and profit">
 <p>After a few months, scenarios and features in a project can become unwieldy. With hundreds of feature files, we might 
 not want to run everything all the time. Even without that, it is often useful to be able to check just a subset of the features, for 
 example skip running one or two very slow tests to get faster feedback. </p>

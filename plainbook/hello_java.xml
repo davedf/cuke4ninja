@@ -117,7 +117,7 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
         </p>
         <code>cuke4duke --jars lib features</code>
     </section>
-    <section title="Debugging from a Java IDE">
+    <section id="sec_debugging_java" title="Debugging from a Java IDE">
     <p>The rest of this chapter describes how to run Cuke4Duke from ANT and Maven, which makes it also easy to debug. If you decide to
     use JRuby to run Cucumber features directly, debugging is a bit more complex. JRuby is a Java program, so instead of launching 
     Cuke4Duke directly, you can launch JRuby and pass the arguments you would pass from the command line. The main JRuby class is

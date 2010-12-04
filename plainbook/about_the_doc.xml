@@ -2,15 +2,19 @@
 <preface id="pre_about" title="About this document">
 	<p>This document is a step-by-step guide for Cucumber,
 	a tool that is quickly becoming the weapon of choice for many agile teams when it comes to functional test automation, creating
-	executable specifications and building a living documentation. We believe in iterative development so we write iteratively and this
-	is just the start: </p>
-	<ul>
-	<li>This version
-	covers the basics of setting up Cucumber for Ruby, Java and .NET and how to write and design good tests. </li>
-	<li>The second version will cover integration with web test automation frameworks.</li>
-	<li>The third version will have more examples on Ajax and cover advanced web automation topics.</li>
-	</ul>
-<section id="pref.about.online" title="Online">
+	executable specifications and building a living documentation. We believe in iterative development so we write and publish iteratively.</p>
+<section id="pre_about_whatsnew" title="What's new in this version">
+  <p>In this version, we have started working on the explaining effective web testing and expanded several sections on gherkin:</p>
+  <ul>
+  <li><link ref="sec_hooks" /></li>
+  <li><link ref="sec_debugging_java" /></li>
+  <li><link ref="sec_comparison_tools"/></li>
+  <li>a new chapter on organising web automation for easy maintenance (<link ref="chp_three_layers"/>)</li>
+  <li>a new chapter on web testing in Ruby with Rails and Sinatra (<link ref="chp_gordons_alive" />)</li>
+  <li>and a lot of minor fixes and tweaks</li>
+  </ul>
+</section>
+<section id="pre_about_online" title="Online">
  <p>To get notified when we publish an update, grab the code for the examples we used in the guide, 
 	provide feedback or ask a question, do one or more of the following: </p>
 	<ul>
@@ -19,7 +23,7 @@
 	<li>Follow @davedf and @gojkoadzic on Twitter to keep in touch with the authors or drop us a message there</li>
 	</ul> 
 </section>
-<section id="pref.about.contribuninja" title="Become a contribuninja">
+<section id="pre_about_contribuninja" title="Become a contribuninja">
 	<p>
 		Do you have an interesting story to tell about cucumbers? It is related to the right kind of
 		cucumbers? Is it morally acceptable? Do you have a different opinion about any of the things we

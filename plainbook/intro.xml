@@ -77,7 +77,7 @@
             </footnote> the killer feature of Cucumber is the ease of web workflow testing.
         </p>
     </section>
-    <section title="How does Cucumber compare to other tools?">
+    <section id="sec_comparison_tools" title="How does Cucumber compare to other tools?">
 	<p>Cucumber is essentially a test runner. It does a pretty good job of
 	    running the tests and spitting out reports in lots of various formats,
 	    including HTML, PDF, JUnit (for integration with continuous build tools) and colour text on the
