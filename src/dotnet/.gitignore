@@ -1,0 +1,9 @@
+lib
+**/_ReSharper*
+**/**/bin
+**/**/obj
+**/*.user
+**/*.resharper
+**/bin
+**/obj
+
