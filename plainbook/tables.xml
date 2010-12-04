@@ -278,6 +278,7 @@ if you use hooks, or you'll end up on the one Chuck Norris uses to hang his punc
 <p>You can avoid this problem by assigning tags to scenarios (<link ref="sec.gherkin_tag" />) and specifying the relevant 
 tags as arguments of <code>Before</code> and <code>After</code>). For example, the following will execute only before scenarios marked with <code>@killer</code>:</p>
 <code>
+
 Before('@killer') do
   # only before scenarios tagged with @killer
 end
@@ -307,7 +308,7 @@ that the hooks are global, although they are defined in a class file with the ot
 that the same test will fail if you execute all the other features from the <code>features</code> folder. To avoid this problem, mark your scenarios with tags
 and list the relevant tags in the annotation. For example: </p>
 <code>
-Before("@killer")
+ @Before("@killer")
  public void thisGetsCalledBeforeKillerScenarios(){
    // ...
  }
@@ -316,6 +317,29 @@ Before("@killer")
 <p>For more information on scenario hooks in other JVM languages, see <url title="the hooks page in the Cuke4Duke wiki"  link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" />.</p>
 </section>
 <section title="Scenario hooks in .NET">
+<p>You can define scenario hooks in Java using the <code>[Before]</code> and <code>[After]</code> attributes. For example:</p>
+<code>
+[Before]
+public void ThisGetsCalledBeforeEachScenario(){
+   // ...
+}
+[After]
+public void ThisGetsCalledAfterEachScenario(){
+   // ...
+}
+</code>
+<p>We can define the steps to implement our killer feature using the tags:</p>
+<code file="dotnet/NinjaSurvivalRate/src/KillerSteps.cs" part="steps"/>
+<p>If you execute just the killer feature now, you should see the feature passing. Remember
+that the hooks are global, although they are defined in a class file with the other steps from this feature, so they will be executed even for other features. 
+This means that the same test will fail if you execute all the other features from the <code>features</code> folder. 
+To avoid this problem, mark your scenarios with tags and list the relevant tags in the annotation. For example: </p>
+<code>
+[Before("@killer")]
+ public void ThisGetsCalledBeforeKillerScenarios(){
+   // ...
+ }
+</code>
 <p>For more information on scenario hooks in Cuke4Nuke, see <url title="hooks examples in the Cuke4Nuke source code" link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" />.</p>
 </section>
 <note title="Advanced hooks">
