@@ -23,8 +23,8 @@
         
 	  <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="../resources/legal.xml"/>
 	  <biblioid class="isbn">ISBN: 978-0-9556836-3-3</biblioid>
-	  <edition>1.0</edition>
-	  <pubdate>2010 09 20</pubdate>	  	  
+	  <edition>2.0</edition>
+	  <pubdate>2010 12 06</pubdate>	  	  
     </bookinfo>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about_the_doc.dbxml"/>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="author.dbxml"/>

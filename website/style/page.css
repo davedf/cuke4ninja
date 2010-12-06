@@ -37,7 +37,7 @@ a:hover , a:visited, a, a:active {color: black; }
 .pageTable {width:100%;height:100%;background-image:url('leftbg.png'); background-repeat:repeat-y;}
 .topRow {background-image:url('top.png'); background-repeat:repeat-x;}
 
-.content { padding-left:20px; padding-right:20px; vertical-align:top; }
+.content { padding-left:20px; padding-right:60px; vertical-align:top; }
 
 
 
