@@ -5,10 +5,9 @@
 		absolutely the same approach to integrate Cucumber with any JVM-based language,
 		including Groovy, Scala and Clojure.</p>
 	<p>
-		Thanks to JRuby,
-		<footnote>
+		Thanks to JRuby,<footnote>
 			<url link="http://jruby.org/" />
-		</footnote>, Cucumber can talk directly to JVM code, without a wire protocol. This simplifies the Java
+		</footnote> Cucumber can talk directly to JVM code, without a wire protocol. This simplifies the Java
 		project setup and also means that you do not need a stand-alone Ruby installation.
 	</p>
     <important title="What is JRuby?">

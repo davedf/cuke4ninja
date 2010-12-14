@@ -1,4 +1,4 @@
-<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
+https://github.com/asterite/cukecooker/<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
 <chapter title="Why should you care about Cucumber?" id="chp_introduction">
     <p>
         Ninja is one of the most popular types of cucumbers in Thailand and South-Eastern Asia.
@@ -95,6 +95,7 @@
 	    show feature files</li>
     	    <li><url link="http://21croissants.github.com/courgette/" /> another web product in
 	    development to show feature files</li>
+	    <li><url link="https://github.com/asterite/cukecooker/" /> is a web based IDE for cucumber feature files when working in Ruby</li>
 	</ul>
 	<p> Cucumber feature files (explained later in this chapter) are plain-text files which
 		makes it very simple to edit them but does not allow any clever formatting.  
@@ -208,7 +209,7 @@
                 There are alternative formats, such as:
             </p>
             <quote>As a ..., I want..., So that...</quote>
-            <p>For the purposes of this document all these formats are equivalent and we won't enter into a discussion
+            <p>Many a ninja has died in the futile format wars and some silly shoguns will try to convince you that one way of telling stories is significantly better than the other one. Ninja cucumber disagrees! For the purposes of this document all these formats are equivalent and we won't enter into a discussion
                 on which one is better.
             </p>
             <p>
@@ -254,27 +255,6 @@
             <p>See
                 <link ref="chp_feature_files"/>
                 for a detailed explanation of how Cucumber interprets this file.
-            </p>
-        </section>
-        <section title="Gherkin">
-            <p>
-                <define>Gherkin</define>
-                is the language for describing Cucumber feature files. It is also the name of a separate piece of
-                software that interprets that language.
-            </p>
-            <p>Gherkin, the language, defines the structure of a feature
-                file and the keywords that can be used to describe features. It is based on the behaviour-driven
-                development concept of
-                <define>Given-When-Then</define>.
-            </p>
-            <p>
-                Gherkin, the software, parses files for Cucumber and related projects, such as
-                Specflow,<footnote>
-                    <url link="http://specflow.org"/>
-                </footnote>
-                a native .NET implementation
-                of a Gherkin-compliant automation tool. You can use it to implement your own version
-                of Cucumber for a platform that is not currently supported, if you can find one.
             </p>
         </section>
         <section title="Key Examples">
@@ -325,12 +305,33 @@
             <p>
                 <define>Step Definitions</define>
                 are reusable automation components that execute individual steps. They tell Cucumber what to do when
-                interpreting a particular step (see<link ref="img_cuke_steps"/>). Programmers or automation specialists
+                interpreting a particular step (see <link ref="img_cuke_steps"/>). Programmers or automation specialists
                 write step definitions where necessary when implementing scenarios to validate that they work correctly.
                 Once a step definition is implemented, the step can be reused in other scenarios. We cover how to write
                 step definitions in Ruby, .NET and Java in the following chapters.
             </p>
         </section>
         <img src="cuke-steps.png" title="Cucumber step definitions automate validation" id="img_cuke_steps"/>
+        <section title="Gherkin">
+            <p>
+                <define>Gherkin</define>
+                is the language for describing Cucumber feature files. It is also the name of a separate piece of
+                software that interprets that language.
+            </p>
+            <p>Gherkin, the language, defines the structure of a feature
+                file and the keywords that can be used to describe features. It is based on the behaviour-driven
+                development idea of describing key examples for specifications in the format of
+                <define>Given-When-Then</define> sentences.
+            </p>
+            <p>
+                Gherkin, the software, parses files for Cucumber and related projects, such as
+                Specflow,<footnote>
+                    <url link="http://specflow.org"/>
+                </footnote>
+                a native .NET implementation
+                of a Gherkin-compliant automation tool. You can use it to implement your own version
+                of Cucumber for a platform that is not currently supported, if you can find one.
+            </p>
+        </section>
     </section>
 </chapter>

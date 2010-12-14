@@ -82,7 +82,7 @@
 		<p>Feature files form a living documentation of the software system. They allow developers to
 			understand what needs to be implemented, testers to understand what is being automatically
 			checked and business users and support staff to quickly discover exactly what the system does.
-			They are not just test scripts. Feature files needs to be kept safe and secure as much as the
+			They are not just test scripts. Feature files should be kept safe and secure as much as the
 			system code. When the code is branched, tagged or merged, these specifications should follow. The
 			easiest way to do that is to keep them in the same version control system as the code.</p>
 	</note>
