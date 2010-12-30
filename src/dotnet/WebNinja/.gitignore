@@ -1,0 +1,5 @@
+*.suo
+_ReSharper*
+*.resharper.*
+WebNinja/bin
+WebNinja/obj
