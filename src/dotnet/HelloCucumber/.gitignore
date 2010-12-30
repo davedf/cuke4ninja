@@ -1,0 +1,5 @@
+*.suo
+_ReSharper*
+*.resharper.*
+HelloCucumber/bin
+HelloCucumber/obj
