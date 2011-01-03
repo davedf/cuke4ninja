@@ -46,16 +46,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="selenium\CodeTrack.cs" />
+    <Compile Include="webninja\AssignedIssuesReport.cs" />
     <Compile Include="webninja\Issue.cs" />
     <Compile Include="webninja\User.cs" />
+    <Compile Include="webninja\UserRepository.cs" />
+    <Compile Include="workflow\ProjectWorkflow.cs" />
+    <Compile Include="workflow\UserWorkflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="features\reportassigned.feature" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="features\step_definitions\" />
-    <Folder Include="selenium\" />
-    <Folder Include="workflow\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

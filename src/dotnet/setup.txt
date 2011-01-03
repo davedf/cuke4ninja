@@ -26,7 +26,16 @@ Installing Nu
 	gem install nunit
 	
 	
-4. Install nunit int lib folder under this directory
+4. Install nunit into lib folder under this directory
 
 	nu install nunit
 	
+
+
+5. Install Selenium 2.0 into the lib folder
+
+	Ceate a directory under the lib folder called selenium-2.0b1
+
+	Download from http://code.google.com/p/selenium/downloads/list
+	
+	Unzip the file and copy the files to the directory you created
