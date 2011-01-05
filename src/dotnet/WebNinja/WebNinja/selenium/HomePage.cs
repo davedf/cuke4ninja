@@ -30,7 +30,7 @@ namespace WebNinja.selenium
                 if (summary.Text.Equals(title))
                 {
                     row.FindElement(By.XPath("/td[1]/a")).Click();
-                    return new IssuePage(Driver, _codeTrack, _userRepository);
+                    return new IssuePage(Driver, _userRepository);
                 }
             }
             throw new NoSuchElementException("No issue found for title" + title);
