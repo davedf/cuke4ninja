@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
@@ -14,12 +11,18 @@ namespace WebNinja.selenium
 
         public string Name
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                Driver.FindElement(By.Name("project_data[Title]")).SendKeys(value);
+            }
         }
 
         public string Description
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                Driver.FindElement(By.Name("project_data[Description]")).SendKeys(value);
+            }
         }
     }
 }
