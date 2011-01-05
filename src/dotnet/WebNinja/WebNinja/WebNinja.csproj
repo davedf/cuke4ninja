@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="features\step_definitions\ReportAssignedSteps.cs" />
     <Compile Include="features\step_definitions\TableConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="selenium\AdminPage.cs" />
