@@ -356,5 +356,20 @@
 	<p>We'll leave the ImpactCalculator class to you for homework, or if you want to cheat go and get it from the 
 	  <url link="http://github.com/davedf/cuke4ninja" title="Cuke4Ninja github repository" /> - look for a file called <code>impact_calculator.rb</code>.</p>
 	</section>
+	<section title="Sharing context in Java" id="sec_sharing_context_java">
+		<p>Cuke4Duke loads step definitions from any classes annotated with Cucumber annotations such as <code>@Given</code>,  they to not have to be all in the  same file. To see that, run your tests again after adding a new feature file. For example, if running with maven, run the following command line:</p>
+		<code>mvn integration-test</code>
+		<p>Cucumber will execute the new feature file and find some of the steps in the old <code>NinjaSkillSteps.java</code> step definition class, but report other steps as still undefined (see <link ref="img_java_split" />).</p>
+		<img src="split-java.png" id="img_java_split" title="Cuke4Duke finds some split ninja steps" />
+		<p>Because we want to be able to reuse the same ninja object in another class now, we have to enable those two step definition classes to somehow share state. Before you even think about saying &lsquo;static&rsquo; know that Chuck Norris moves static objects. Remember that you had to add PicoContainer or Spring to the classpath? Now you'll finally understand why. Cuke4Duke shares state between step definitions using dependency injection. We can just create a class to hold the contextrequired for our steps and add an instance of that class as a constructor argument for step definition classes. Cuke4Duke will ensure that both classes get the same context. Let's do that. </p>
+		<p>First, let's define a context class. We just need to share the <code>Ninja</code> object so far, so let's create a container for a ninja:</p>
+		<code file="java/NinjaSurvivalRateWithSharedState/src/test/java/ninjasurvivalrate/NinjaContext.java"/>
+		<p>Now let's change the existing <code>NinjaSurvivalSteps.java</code> to expect an instance of this new class in the constructor:</p>
+		<code part="constructor" file="java/NinjaSurvivalRateWithSharedState/src/test/java/ninjasurvivalrate/NinjaSurvivalSteps.java" />
+		<p>At this point, you should be able to run the tests again and not notice any difference in the old functionality. Although the old step definition class did not have a constructor and this one does, and it requires a context parameter, Cuke4Duke wires that in automatically using your selected dependency injection container</p>
+		<p>Now we can add another step definition class with a similar constructor to handle the missing steps:</p>
+		<code file="java/NinjaSurvivalRateWithSharedState/src/test/java/ninjasurvivalrate/SplitSteps.java" />
+		<p>We'll leave it to you for homework to implement the missing function for impact analysis in the <code>Ninja</code> class. If you want to cheat or admit that you are lazy, look for a folder called <code>NinjaSurvivalRateWithSharedState</code> in the <url link="http://github.com/davedf/cuke4ninja" title="Cuke4Ninja code repository" />.</p>	
+	</section>
 	</section>
 	</chapter>
