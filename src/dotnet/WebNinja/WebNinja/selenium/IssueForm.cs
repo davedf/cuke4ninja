@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using WebNinja.webninja;
 
@@ -9,35 +7,50 @@ namespace WebNinja.selenium
 {
     public class IssueForm : FormObject
     {
+        private readonly UserRepository _repository;
 
-        public IssueForm(RemoteWebDriver driver, CodeTrack track, UserRepository repository) : base(driver)
+        public IssueForm(RemoteWebDriver driver, UserRepository repository) : base(driver)
         {
-            throw new NotImplementedException();
+            _repository = repository;
         }
 
         public string ProjectName
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                SelectOption(By.Name("bug_data[Project]"), value);
+            }
         }
 
         public string Title
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                Driver.FindElement(By.Name("bug_data[Summary]")).SendKeys(value);
+            }
         }
 
         public string Description
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                Driver.FindElement(By.Name("bug_data[Description]")).SendKeys(value);
+            }
         }
 
         public string Severity
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                SelectOption(By.Name("bug_data[Severity]"), value);
+            }
         }
 
-        public void AssignTo(string user)
+        public void AssignTo(string userName)
         {
-            throw new NotImplementedException();
+            User user = _repository.FindByUserId(userName);
+            String name = user == null ? userName : user.Name;
+            SelectOption(By.Name("bug_data[Assign_To]"), name);
         }
     }
 }

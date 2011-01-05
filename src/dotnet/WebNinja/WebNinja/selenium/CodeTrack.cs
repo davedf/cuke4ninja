@@ -64,7 +64,7 @@ namespace WebNinja.selenium
         public IssueForm GotoNewIssueForm()
         {
             _driver.FindElementByXPath("//a[@title='Create a new defect report or Change Request']").Click();
-            return new IssueForm(_driver, this, _userRepository);
+            return new IssueForm(_driver, _userRepository);
         }
 
         public ReportsPage GotoReportsPage()
