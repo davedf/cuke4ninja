@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec/expectations' 
+require 'rspec/expectations' 
 require 'cucumber/formatter/unicode'
 
 $:.unshift(File.dirname(__FILE__) + '/../../src')
@@ -7,7 +7,7 @@ require 'ninja'
 
 #START:belt
 Given /^the ninja has a ([a-z]*) level black\-belt$/ do |belt_level|
-	@ninja=Ninja.new :belt_level => belt_level 
+	@ninja=Ninja.new belt_level 
 end
 #END:belt
 

@@ -10,4 +10,7 @@ class Ninja
 			["engage the opponent"]
 		end
 	end
+	def belt?
+		@belt
+	end
 end
