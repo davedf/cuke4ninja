@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="features\step_definitions\TableConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="selenium\AdminPage.cs" />
     <Compile Include="selenium\CodeTrack.cs" />
@@ -95,9 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="features\reportassigned.feature" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="features\step_definitions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

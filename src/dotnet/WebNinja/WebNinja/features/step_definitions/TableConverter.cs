@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Cuke4Nuke.Framework;
+using WebNinja.webninja;
+
+namespace WebNinja.features.step_definitions
+{
+    public static class TableConverter
+    {
+        public static IList<Issue> ToIssues(this Table propertiesList)
+        {
+            var list = new List<Issue>();
+            foreach (var properties in propertiesList.Hashes())
+            {
+                var issue = new Issue(
+                    properties["Severity"].Trim(),
+                    properties["Title"].Trim());
+                list.Add(issue);
+            }
+            return list;
+        }
+    }
+}
