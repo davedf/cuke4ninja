@@ -128,6 +128,11 @@
 			<code>ninja_steps.rb</code>, and replace the regular expressions with the ones we 
 			suggested in the previous section. 
 		</p>
+		<important title="Do I always create a steps file for a feature file?">
+		Not necessarily. Cucumber will try to load steps from any step definition file when it executes a feature file. For
+		convenience, it is often useful to keep related steps together, but you can even share state across different step 
+		definition files. See <link ref="sec_sharing_context" /> for more information.
+		</important>
 		<section title="Initializing the context">
 		<p>We just need pass the argument captured by the step information
 		to the initialiser of the <code>Ninja</code> class, and store the resulting <code>Ninja</code>
@@ -197,6 +202,12 @@
 		<p>Put the suggested expressions into a new class in the <code>src/test</code>
 		branch. In the example, we use <code>src/test/java/ninjasurvivalrate/NinjaSurvivalSteps.java</code>. Now let's
 		change the expressions to the one we defined earlier.</p>
+		<important title="Do I always create a step class for a feature file?">
+		Not necessarily. Cucumber will try to load steps from any step definition class when it executes a feature file. For
+		convenience, it is often useful to keep related steps together, but you can even share state across different step 
+		definition classes. See <link ref="sec_sharing_context" /> for more information.
+		</important>
+
 		<section title="Initializing the context">
 		<p>We just need pass the argument captured by the step information
 		to the constructor of the <code>Ninja</code> class, and store the resulting <code>Ninja</code>
@@ -265,6 +276,11 @@
 			<code>NinjaSteps.cs</code>. Replace the regular expressions with the ones we 
 			suggested in the previous section. 
 		</p>
+		<important title="Do I always create a step class for a feature file?">
+		Not necessarily. Cucumber will try to load steps from any step definition class when it executes a feature file. For
+		convenience, it is often useful to keep related steps together, but you can even share state across different step 
+		definition classes. See <link ref="sec_sharing_context" /> for more information.
+		</important>
 		<section title="Initializing the context">
 		<p>We just need pass the argument captured by the step information
 		to the initialiser of the <code>Ninja</code> class, and store the resulting <code>Ninja</code>
@@ -309,5 +325,36 @@
 			again. You should get a nice green report.
 		</p>
 		</section>
+	</section>
+	<section title="Sharing context across step definition files" id="sec_sharing_context">
+	<p>Putting all our ninjas in a single file is a good trick, made popular by the Black Star Ninja in the famous documentary about the
+	life of Ninjas on Philippines from the 80's, wrongly titled The American Ninja. However, sometimes it is useful to break our step definitions
+	into several files, and then share the context between them. Cucumber supports this with all the platforms, but in different ways.</p>
+	
+	<p>So far, all our steps have been in a single file, corresponding to a feature file. As things get more complex, you'll want to write feature
+	files that reuse some of the steps from other feature files and combine them with other steps, so the mapping between a step definition and
+	a feature file is not necessarily the same as between Subzero and Scorpion. In this section, we'll show aspiring Ninja Cucumberists how to
+	split these apart.</p>
+	<p>To demonstrate that, let's add a new feature file that reuses some of the steps that we already defined and adds some new steps. Paste the
+	following content in <code>features/split.feature</code>:</p>
+	<code file="ruby/NinjaSurvivalRate/features/split.feature" />
+	<p>The initial step <code>Given the ninja has a third level black-belt</code> will be already implemented. This step previously created a 
+	<code>Ninja</code> object that we'll share with another step definition file.</p>
+	<section title="Sharing context in Ruby" id="sec_sharing_context_ruby">
+	<p>Ruby loads step definitions from any files in the <code>step_definitions</code> directory. They do not have to all be in a single file. 
+	To see that, run the following command line:</p>
+	<code>cucumber features/split.feature</code>
+	<p> Cucumber will execute just the new feature and report that it found the first step in <code>ninja_steps.rb</code> but that the other steps
+	are still undefined (see <link ref="img_ruby_split" />).</p>
+	<img src="split-ruby.png" id="img_ruby_split" title="Cucumber finds some split ninja steps" />
+	<p> Now we can add another step definition that completes the impact analysis required to decide whether the brains of a ninja should not be
+	harmed or be split after a direct hit. Just to demonstrate that things can be a bit more complex, we'll put this logic into an 
+	impact calculator. The step definition file just needs to read the ninja created by the step in <code>ninja_steps.rb</code> using the same
+	class variable name <code>@ninja</code>. When Cucumber compiles the steps, both references to <code>@ninja</code> will map to the same value.
+	</p>
+	<code file="ruby/NinjaSurvivalRate/features/step_definitions/split_steps.rb" />
+	<p>We'll leave the ImpactCalculator class to you for homework, or if you want to cheat go and get it from the 
+	  <url link="http://github.com/davedf/cuke4ninja" title="Cuke4Ninja github repository" /> - look for a file called <code>impact_calculator.rb</code>.</p>
+	</section>
 	</section>
 	</chapter>
