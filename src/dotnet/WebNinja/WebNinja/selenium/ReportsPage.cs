@@ -6,13 +6,13 @@ using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
 {
-    public class FormObject :PageObject
+    public class ReportsPage : PageObject
     {
-        public FormObject(RemoteWebDriver driver) : base(driver)
+        public ReportsPage(RemoteWebDriver driver) : base(driver)
         {
         }
 
-        public void Submit()
+        public IssueTable ShowIssuesAssignedToLoggedInUser()
         {
             throw new NotImplementedException();
         }

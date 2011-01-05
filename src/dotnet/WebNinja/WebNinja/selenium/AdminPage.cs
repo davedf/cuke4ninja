@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
 {
-    public class AdminPage
+    public class AdminPage : PageObject
     {
+        public AdminPage(RemoteWebDriver driver) : base(driver)
+        {
+        }
+
         public ProjectForm GotoProjectForm()
         {
-            throw new NotImplementedException();
+            Driver.FindElementByLinkText("Add a Project").Click();
+            return new ProjectForm(Driver);
         }
     }
 }

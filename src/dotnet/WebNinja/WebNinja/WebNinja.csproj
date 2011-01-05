@@ -78,8 +78,13 @@
     <Compile Include="selenium\CodeTrack.cs" />
     <Compile Include="selenium\FormObject.cs" />
     <Compile Include="selenium\HomePage.cs" />
+    <Compile Include="selenium\IssueForm.cs" />
+    <Compile Include="selenium\IssuePage.cs" />
+    <Compile Include="selenium\IssueTable.cs" />
     <Compile Include="selenium\LogonPage.cs" />
+    <Compile Include="selenium\PageObject.cs" />
     <Compile Include="selenium\ProjectForm.cs" />
+    <Compile Include="selenium\ReportsPage.cs" />
     <Compile Include="selenium\Shared.cs" />
     <Compile Include="webninja\AssignedIssuesReport.cs" />
     <Compile Include="webninja\Issue.cs" />

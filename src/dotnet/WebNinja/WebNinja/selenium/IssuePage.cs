@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
 {
-    public class FormObject :PageObject
+    public class IssuePage
     {
-        public FormObject(RemoteWebDriver driver) : base(driver)
-        {
-        }
-
-        public void Submit()
+        public IssueForm StartEdit()
         {
             throw new NotImplementedException();
         }
