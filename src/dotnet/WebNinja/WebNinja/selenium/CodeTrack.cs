@@ -31,7 +31,7 @@ namespace WebNinja.selenium
                     GotoHomePage();
                     return true;
                 }
-                catch (NoSuchElementException e)
+                catch (NoSuchElementException)
                 {
                     return false;
                 }

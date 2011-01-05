@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
@@ -14,7 +11,8 @@ namespace WebNinja.selenium
 
         public void Submit()
         {
-            throw new NotImplementedException();
+            Driver.FindElement(
+                By.XPath("//input[@type='submit']")).Click();
         }
     }
 }
