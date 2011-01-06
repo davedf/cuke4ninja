@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{AAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaSurvivalRate", "NinjaSurvivalRate.csproj", "{A78B3C88-5ACE-4F39-BA78-6D950EF3E19C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A78B3C88-5ACE-4F39-BA78-6D950EF3E19C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78B3C88-5ACE-4F39-BA78-6D950EF3E19C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78B3C88-5ACE-4F39-BA78-6D950EF3E19C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78B3C88-5ACE-4F39-BA78-6D950EF3E19C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+*.suo
+_ReSharper*
+*.resharper.*
+NinjaSurvivalRate/bin
+NinjaSurvivalRate/obj
