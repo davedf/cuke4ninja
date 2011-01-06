@@ -1,33 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace NinjaSurvivalRate
 {
-    public class Ninja
+  public class Ninja
+  {
+    public Ninja(String beltLevel)
     {
-        public Ninja(String beltLevel)
-        {
-            Belt = beltLevel;
-        }
 
-        public List<String> AttackedBy(String opponent)
-        {
-            if ("Chuck Norris" == opponent)
-                return new List<string>(
-                    new[] {"run for his life"});
-
-            return new List<string>(
-                new[] {"engage the opponent"});
-        }
-
-        public string Belt { get; set; }
-
-        public string CalculateImpact(string opponent)
-        {
-            if (Belt != "third")
-                return "split";
-            return opponent == "Chuck Norris" ? "split" : "not harmed";
-        }
- 
     }
+    public List<String> AttackedBy(String opponent)
+    {
+      if ("Chuck Norris" == opponent)
+        return new List<string>(
+          new String[] { "run for his life" });
+      else
+        return new List<string>(
+          new String[] { "engage the opponent" });
+    }
+  }
 }

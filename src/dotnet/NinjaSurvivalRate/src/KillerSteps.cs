@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Cuke4Nuke.Framework;
 using NUnit.Framework;
 
@@ -6,19 +10,19 @@ namespace NinjaSurvivalRate
     public class KillerSteps
     {
         //START:steps 
-        private static int _killed;
-        private static int _remaining = 3;
+        private static int killed = 0;
+        private static int remaining = 3;
 
         [Before]
         public void KillNinjaBeforeEachScenario()
         {
-            _killed++;
+            killed++;
         }
 
         [After]
         public void ExpectLessNinjasAfterScenario()
         {
-            _remaining--;
+            remaining--;
         }
 
         [When(@"^this scenario is executed$")]
@@ -30,7 +34,7 @@ namespace NinjaSurvivalRate
         [Then("^Chuck Norris should expect ([0-9]+)* ninjas$")]
         public void ChuckNorrisShouldExpectNinjas(int expected)
         {
-            Assert.AreEqual(expected, _remaining);
+            Assert.AreEqual(expected, remaining);
         }
 
         [Then("^Chuck Norris should kill one ninja$")]
@@ -42,7 +46,7 @@ namespace NinjaSurvivalRate
         [Then("^he should kill ([0-9]+)* ninjas$")]
         public void HeShouldKillNinjas(int expected)
         {
-            Assert.AreEqual(expected, _killed);
+            Assert.AreEqual(expected, killed);
         }
 
         //END:steps
