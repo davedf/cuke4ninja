@@ -79,4 +79,12 @@
     </PostBuildEvent>
   </PropertyGroup>
   <!--END:PostBuildEvent -->
+  <!--START:PostBuildEvent -->
+  <PropertyGroup>
+    <PostBuildEvent>
+         Cuke4Nuke $(TargetPath) $(ProjectDir)features -q
+        </PostBuildEvent>
+  </PropertyGroup>
+  <!--END:PostBuildEvent -->
+
 </Project>
