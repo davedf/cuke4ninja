@@ -35,7 +35,7 @@ namespace WebNinja.workflow
             return UsingProject(projectName);
         }
 
-        private ProjectWorkflow UsingProject(string name)
+        public ProjectWorkflow UsingProject(string name)
         {
             _projectWorkflow.CurrentProject = name;
             return _projectWorkflow;
