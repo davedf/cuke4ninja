@@ -1,16 +1,16 @@
-﻿using OpenQA.Selenium.Remote;
+﻿using OpenQA.Selenium;
 
 namespace WebNinja.selenium
 {
     public class AdminPage : PageObject
     {
-        public AdminPage(RemoteWebDriver driver) : base(driver)
+        public AdminPage(IWebDriver driver) : base(driver)
         {
         }
 
         public ProjectForm GotoProjectForm()
         {
-            Driver.FindElementByLinkText("Add a Project").Click();
+            Driver.FindElement(By.LinkText("Add a Project")).Click();
             return new ProjectForm(Driver);
         }
     }

@@ -5,7 +5,7 @@ namespace WebNinja.selenium
 {
     public class LogonPage : FormObject
     {
-        public LogonPage(RemoteWebDriver driver) : base(driver)
+        public LogonPage(IWebDriver driver) : base(driver)
         {
         }
 

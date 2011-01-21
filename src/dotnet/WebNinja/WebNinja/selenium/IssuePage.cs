@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using WebNinja.webninja;
 
 namespace WebNinja.selenium
@@ -8,7 +7,7 @@ namespace WebNinja.selenium
     {
         private readonly UserRepository _repository;
 
-        public IssuePage(RemoteWebDriver driver, UserRepository repository) : base(driver)
+        public IssuePage(IWebDriver driver, UserRepository repository) : base(driver)
         {
             _repository = repository;
         }

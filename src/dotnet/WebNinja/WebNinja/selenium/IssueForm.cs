@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using WebNinja.webninja;
 
 namespace WebNinja.selenium
@@ -9,7 +8,7 @@ namespace WebNinja.selenium
     {
         private readonly UserRepository _repository;
 
-        public IssueForm(RemoteWebDriver driver, UserRepository repository) : base(driver)
+        public IssueForm(IWebDriver driver, UserRepository repository) : base(driver)
         {
             _repository = repository;
         }
@@ -51,6 +50,13 @@ namespace WebNinja.selenium
             User user = _repository.FindByUserId(userName);
             String name = user == null ? userName : user.Name;
             SelectOption(By.Name("bug_data[Assign_To]"), name);
+        }
+
+        public override void Submit()
+        {
+            var div = Driver.FindElement(By.Id("addEditActionButtons"));
+            div.FindElement(
+                By.XPath("input[@type='submit']")).Click();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace WebNinja.features.step_definitions
             foreach (var properties in propertiesList.Hashes())
             {
                 var issue = new Issue(
-                    properties["Severity"].Trim(),
-                    properties["Title"].Trim());
+                    properties["Title"].Trim(),
+                    properties["Severity"].Trim());
                 list.Add(issue);
             }
             return list;

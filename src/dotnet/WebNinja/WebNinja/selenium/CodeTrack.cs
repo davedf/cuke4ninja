@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using WebNinja.webninja;
 
 namespace WebNinja.selenium
@@ -11,10 +7,10 @@ namespace WebNinja.selenium
     public class CodeTrack
     {
         private readonly string _baseUrl;
-        private readonly RemoteWebDriver _driver;
+        private readonly IWebDriver _driver;
         private readonly UserRepository _userRepository;
 
-        public CodeTrack(string baseUrl, RemoteWebDriver driver, UserRepository userRepository)
+        public CodeTrack(string baseUrl, IWebDriver driver, UserRepository userRepository)
         {
             _baseUrl = baseUrl;
             _driver = driver;
@@ -46,30 +42,30 @@ namespace WebNinja.selenium
 
         public AdminPage GotoAdminPage()
         {
-            _driver.FindElementByXPath("//a[@title='CodeTrack Administration and Setup']").Click();
+            _driver.FindElement(By.XPath("//a[@title='CodeTrack Administration and Setup']")).Click();
             return new AdminPage(_driver);
         }
 
         public HomePage GotoHomePage()
         {
-            _driver.FindElementByXPath("//a[@title='Summary of your current project']").Click();
-            return new HomePage(_driver, this, _userRepository);
+            _driver.FindElement(By.XPath("//a[@title='Summary of your current project']")).Click();
+            return new HomePage(_driver, _userRepository);
         }
 
         public void Logout()
         {
-            _driver.FindElementByXPath("//a[@title='Log off the CodeTrack System']").Click();
+            _driver.FindElement(By.XPath("//a[@title='Log off the CodeTrack System']")).Click();
         }
 
         public IssueForm GotoNewIssueForm()
         {
-            _driver.FindElementByXPath("//a[@title='Create a new defect report or Change Request']").Click();
+            _driver.FindElement(By.XPath("//a[@title='Create a new defect report or Change Request']")).Click();
             return new IssueForm(_driver, _userRepository);
         }
 
         public ReportsPage GotoReportsPage()
         {
-            _driver.FindElementByXPath("//a[@title='Create simple and advanced reports']").Click();
+            _driver.FindElement(By.XPath("//a[@title='Create simple and advanced reports']")).Click();
             return new ReportsPage(_driver);
         }
 

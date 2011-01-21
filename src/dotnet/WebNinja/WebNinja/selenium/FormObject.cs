@@ -5,11 +5,11 @@ namespace WebNinja.selenium
 {
     public class FormObject :PageObject
     {
-        public FormObject(RemoteWebDriver driver) : base(driver)
+        public FormObject(IWebDriver driver) : base(driver)
         {
         }
 
-        public void Submit()
+        public virtual void Submit()
         {
             Driver.FindElement(
                 By.XPath("//input[@type='submit']")).Click();

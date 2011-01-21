@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
 {
     public class PageObject
     {
-        protected readonly RemoteWebDriver Driver;
+        protected readonly IWebDriver Driver;
 
-        public PageObject(RemoteWebDriver driver)
+        public PageObject(IWebDriver driver)
         {
             Driver = driver;
         }
@@ -18,12 +17,13 @@ namespace WebNinja.selenium
         {
             IWebElement select = Driver.FindElement(by);
 
-            ReadOnlyCollection<IWebElement> collection = select.FindElements(By.XPath("/option"));
+            ReadOnlyCollection<IWebElement> collection = select.FindElements(By.XPath("option"));
             foreach (var element in collection)
             {
                 if (element.Text.ToUpper().Equals(text.ToUpper()))
                 {
                     element.Select();
+                    return;
                 }
             }
         }

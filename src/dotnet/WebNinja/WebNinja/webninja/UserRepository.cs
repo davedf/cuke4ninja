@@ -11,8 +11,8 @@ namespace WebNinja.webninja
         public UserRepository ()
         {
             users = new Dictionary<string, User>();
-            Add(new User("Ninja1","Ninja 1"));
-            Add(new User("Ninja2", "Ninja 2"));
+            Add(new User("Ninja 1","Ninja1"));
+            Add(new User("Ninja 2", "Ninja2"));
         }
 
         public void Add(User user)

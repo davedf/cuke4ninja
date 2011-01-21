@@ -1,11 +1,10 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 namespace WebNinja.selenium
 {
     public class ProjectForm : FormObject
     {
-        public ProjectForm(RemoteWebDriver driver) : base(driver)
+        public ProjectForm(IWebDriver driver) : base(driver)
         {
         }
 
