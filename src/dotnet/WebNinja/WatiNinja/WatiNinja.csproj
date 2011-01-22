@@ -57,15 +57,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="watininja\CukeStepsTest.cs" />
-    <Compile Include="watininja\SmokeTestSteps.cs" />
+    <Compile Include="watininja\business\TableConverter.cs" />
+    <Compile Include="test\CukeStepsTest.cs" />
+    <Compile Include="watininja\Issue.cs" />
+    <Compile Include="watininja\business\SmokeTestSteps.cs" />
+    <Compile Include="watininja\technical\AdminPage.cs" />
+    <Compile Include="watininja\technical\CodeTrack.cs" />
+    <Compile Include="watininja\technical\Form.cs" />
+    <Compile Include="watininja\technical\HomePage.cs" />
+    <Compile Include="watininja\technical\IssueForm.cs" />
+    <Compile Include="watininja\technical\IssuePage.cs" />
+    <Compile Include="watininja\technical\IssueTable.cs" />
+    <Compile Include="watininja\technical\LogonPage.cs" />
+    <Compile Include="watininja\technical\NoSuchElementException.cs" />
+    <Compile Include="watininja\technical\Page.cs" />
+    <Compile Include="watininja\technical\ProjectForm.cs" />
+    <Compile Include="watininja\technical\ReportsPage.cs" />
+    <Compile Include="watininja\User.cs" />
+    <Compile Include="watininja\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="features\smoketest.feature" />
     <None Include="features\step_definitions\cucumber.wire" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="watininja\workflow\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
