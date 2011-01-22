@@ -2,9 +2,9 @@
 
 namespace WatiNinja.watininja.technical
 {
-    public class LogonPage : Page
+    public class LogonForm : Form
     {
-        public LogonPage(Browser browser) : base(browser)
+        public LogonForm(Browser browser) : base(browser)
         {
         }
         public string Name

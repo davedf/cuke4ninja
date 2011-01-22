@@ -25,10 +25,10 @@ namespace WatiNinja.watininja.technical
             }
         }
 
-        public LogonPage GotoLogonPage()
+        public LogonForm GotoLogonPage()
         {
             _browser.GoTo(Url("?page=login"));
-            return new LogonPage(_browser);
+            return new LogonForm(_browser);
         }
         public AdminPage GotoAdminPage()
         {

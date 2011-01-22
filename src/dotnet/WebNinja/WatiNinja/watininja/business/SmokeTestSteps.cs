@@ -9,7 +9,6 @@ namespace WatiNinja.watininja.business
         [When("^I search for \"(.*)\" on google$")]
         public void HelloWatin(string search)
         {
-
             using (var browser = new IE("http://www.google.com"))
             {
                 browser.TextField(Find.ByName("q")).TypeText(search);
