@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Cuke4Nuke.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using WebNinja.features.step_definitions;
 
-namespace WebNinja.webninja
+namespace WebNinja.features.step_definitions
 {
-    [TestFixture]
-    public class AliveTest
+    public class SmokeTestSteps
     {
-        [Test]
-        public void TestAliveSteps()
-        {
-            new SmokeTestSteps().HelloSelenium();
-        }
-        [Test]
+        [When("^I seach for cheese on google$")]
         public void HelloSelenium()
         {
             IWebDriver driver = new FirefoxDriver();
@@ -36,8 +29,7 @@ namespace WebNinja.webninja
             {
                 System.Console.WriteLine(suggestion.Text);
             }
-            System.Console.ReadLine();
-            driver.Quit();
+            //driver.Quit();
         }
     }
 }
