@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\ReportAssignedStepsTest.cs" />
     <Compile Include="watininja\AssignedIssuesReport.cs" />
+    <Compile Include="watininja\business\ReportAssignedSteps.cs" />
     <Compile Include="watininja\business\TableConverter.cs" />
     <Compile Include="test\CukeStepsTest.cs" />
     <Compile Include="watininja\Issue.cs" />

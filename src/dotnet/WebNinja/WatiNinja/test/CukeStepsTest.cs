@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using WatiNinja.watininja.business;
 
-namespace WatiNinja.watininja
+namespace WatiNinja.test
 {
     [TestFixture]
     public class CukeStepsTest
@@ -15,5 +11,7 @@ namespace WatiNinja.watininja
         {
             new SmokeTestSteps().HelloWatin("WatiN"); 
         } 
+
+
     }
 }
