@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="features\reportassigned.feature" />
     <None Include="features\smoketest.feature" />
     <None Include="features\step_definitions\cucumber.wire" />
   </ItemGroup>

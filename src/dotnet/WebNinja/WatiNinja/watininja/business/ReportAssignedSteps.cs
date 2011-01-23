@@ -78,8 +78,8 @@ namespace WatiNinja.watininja.business
         [After]
         public void Cleanup()
         {
-//            Browser.Close();
-//            _browser = null;
+            Browser.Close();
+            _browser = null;
         }
     }
 }
