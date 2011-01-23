@@ -18,8 +18,8 @@ namespace WatiNinja.watininja.technical
                 var rows = table.TableBodies[0].TableRows;
                 foreach (var row in rows)
                 {
-                    var title = row.TableCells[4].Text;
-                    var severity = row.TableCells[3].Text;
+                    var title = row.TableCells[3].Text;
+                    var severity = row.TableCells[2].Text;
                     issues.Add(new Issue(title, severity));
                 }
                 return issues;

@@ -37,6 +37,8 @@ namespace WatiNinja.watininja.workflow
 
         public ProjectWorkflow UsingProject(string name)
         {
+            var homePage = _codeTrack.GotoHomePage();
+            homePage.ProjectName = name;
             _projectWorkflow.CurrentProject = name;
             return _projectWorkflow;
         }
@@ -49,7 +51,8 @@ namespace WatiNinja.watininja.workflow
 
         private static String NextProjectName()
         {
-            return "CP" + new DateTime().ToString("yyyyMMddhhmmss");
+
+            return "CP" + DateTime.Now.ToString("yyyyMMddhhmmss");
         }
     }
 }

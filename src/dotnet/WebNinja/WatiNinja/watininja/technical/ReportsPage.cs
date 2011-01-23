@@ -9,7 +9,16 @@ namespace WatiNinja.watininja.technical
         }
         public IssueTable ShowIssuesAssignedToLoggedInUser()
         {
-            Browser.Element(a => a.Text.Contains(" issues assigned to me")).Click();
+            var div = Browser.Div(Find.ById("bodyFrame"));
+            foreach (var element in div.Elements)
+            {
+                if (element.TagName != null && element.TagName.ToLower() == "a")
+                {
+                    string text = element.Text;
+                }
+            }
+            var link = div.Element(a => a != null && a.TagName != null && a.TagName.ToLower() == "a" && a.Text != null && a.Text.Contains(" issues assigned to me") && a.Text.StartsWith("Open"));
+            link.Click();
             return new IssueTable(Browser);
         }
 

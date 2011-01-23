@@ -49,7 +49,7 @@ namespace WebNinja.workflow
 
         private static String NextProjectName()
         {
-            return "CP" + new DateTime().ToString("yyyyMMddhhmmss");
+            return "CP" + DateTime.Now.ToString("yyyyMMddhhmmss");
         }
 
     }

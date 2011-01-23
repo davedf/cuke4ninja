@@ -1,5 +1,6 @@
 ﻿using System;
 using WatiN.Core;
+using WatiN.Core.Exceptions;
 
 namespace WatiNinja.watininja.technical
 {
@@ -20,8 +21,18 @@ namespace WatiNinja.watininja.technical
         {
             get
             {
+
                 _browser.GoTo(Url(""));
-                return GotoHomePage() != null;
+                return !_browser.Url.Contains("login");// == Url("");
+//                try
+//                {
+//                    GotoHomePage();
+//                }
+//                catch (ElementNotFoundException)
+//                {
+//                    return false;
+//                }
+//                return true;
             }
         }
 
@@ -32,19 +43,13 @@ namespace WatiNinja.watininja.technical
         }
         public AdminPage GotoAdminPage()
         {
-            var link = _browser.Element(Find.By("title", "CodeTrack Administration and Setup"));
-            if (link == null)
-                return null;
-            link.Click();
+            _browser.Element(Find.By("title", "CodeTrack Administration and Setup")).Click();
             return new AdminPage(_browser);
         }
 
         public HomePage GotoHomePage()
         {
-            var link = _browser.Element(Find.By("title","Summary of your current project"));
-            if (link == null)
-                return null;
-            link.Click();
+            _browser.Element(Find.By("title","Summary of your current project")).Click();
             return new HomePage(_browser, _userRepository);
         }
 

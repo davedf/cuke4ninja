@@ -22,10 +22,10 @@ namespace WatiNinja.watininja.technical
             var rows = table.TableBodies[0].TableRows;
             foreach (var row in rows)
             {
-                var summary = row.TableCells[4];
+                var summary = row.TableCells[3];
                 if (summary.Text.Equals(title))
                 {
-                    row.TableCells[1].Links[0].Click();
+                    row.TableCells[0].Links[0].Click();
                     return new IssuePage(Browser, _repository);
                 }
             }
