@@ -29,7 +29,7 @@ CLASSPATH=$(XALANHOME)/xalan.jar:$(XALANHOME)/xml-apis.jar:$(XALANHOME)/xercesIm
 %.pdf: %.fo
 	$(XEPHOME)/xep -quiet -fo $< -pdf $@
 
-docbook-chapters: implementing.dbxml tables.dbxml training.dbxml resources.dbxml author.dbxml about_the_doc.dbxml intro.dbxml hello_dotnet.dbxml hello_java.dbxml hello_ruby.dbxml gherkin.dbxml three_layers.dbxml gordons_alive.dbxml
+docbook-chapters: implementing.dbxml tables.dbxml training.dbxml resources.dbxml author.dbxml about_the_doc.dbxml intro.dbxml hello_dotnet.dbxml hello_java.dbxml hello_ruby.dbxml gherkin.dbxml three_layers.dbxml gordons_alive.dbxml watiNinja.dbxml
 
 code:
 	sh ../resources/rebuildcode.sh

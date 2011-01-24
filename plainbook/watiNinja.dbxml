@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><chapter id="chp_watiNinja"><title>Automating with .Net and WatiN</title><para>
+		In this chapter we will put into practice some of the principles from <xref linkend="chp_three_layers"/>. To recap,
+		our aim is to automate the testing of a feature in a way that is flexible enough to allow for future
+		changes. We will divide our test code into three layers in order to achieve this. These layers will have the following 
+		responsibilities:
+	</para><itemizedlist><listitem><para>The Business Rules will be expressed in a Cucumber feature file. The feature file will be supported by a step definition class 
+			written in C# that will use the API defined in the Workflow layer.
+		</para></listitem><listitem><para>
+			The Site Workflow will be encapsulated in a fluent API composed of C# classes. This API will attempt to provide a DSL which 
+			describes how users navigate through the site to achieve goals that are of interest for the feature(s) described in the Business Rules. 
+			It will depend on the Technical Implementation API to provide the means of communicating with the application being tested.
+		</para></listitem><listitem><para>The Technical Implementation of the test</para></listitem></itemizedlist><section id="sec_watiNinja"><title>The Tools</title><para/></section></chapter>

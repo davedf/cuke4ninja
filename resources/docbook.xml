@@ -86,6 +86,7 @@
         </partintro>
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="three_layers.dbxml"/>
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gordons_alive.dbxml"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="watiNinja.dbxml"/>
         <chapter id="chp_outside_in_ruby_sinatra">
             <title>Outside-in with Cucumber and Sinatra</title>
             <para>coming in version 3.0</para>
