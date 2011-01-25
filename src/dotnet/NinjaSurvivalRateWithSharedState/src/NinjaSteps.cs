@@ -10,10 +10,12 @@ namespace NinjaSurvivalRate
         private readonly NinjaContext _ninjaContext;
         private List<String> _actions;
 
+        //START:constructor
         public NinjaSteps(NinjaContext ninjaContext)
         {
             _ninjaContext = ninjaContext;
         }
+        //END:constructor
 
         //START:belt
         [Given(@"^the ninja has a ([a-z]*) level black-belt$")]

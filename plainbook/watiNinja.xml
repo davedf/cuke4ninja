@@ -15,10 +15,24 @@
 			describes how users navigate through the site to achieve goals that are of interest for the feature(s) described in the Business Rules. 
 			It will depend on the Technical Implementation API to provide the means of communicating with the application being tested.
 		</li>
-		<li>The Technical Implementation API will provide a finely grained set if classes which will hide the implementation details of UI Automation. It will aim to
+		<li>The Technical Implementation API will provide a finely grained set of classes which will hide the details of UI Automation. It will aim to
 			promote reuse and to insulate the Workflow layer from UI changes</li>
 	</ul>
-	<section title="The Tools" id="sec_watiNinja">
-		<p></p>
+	<section title="Getting Ready" id="sec_watiNinja_kickoff">
+		<p>
+			Before we start, we need to set up the project and get the WatiN libraries.
+		</p>
+		<section title="WatiN" id="sec_watiNinja_watin">
+			<p>
+				WatiN (pronounced What-in) is a library for Web Application Testing in .Net (the initials form the name). It was inspired by WatiR (pronounced water, 
+				where the R stands for Ruby). There is more information about WatiN on SourceForge.<footnote><url link="http://watin.sourceforge.net/"/></footnote>
+			</p>
+			<p>
+				Download the files from SourceForge<footnote><url link="http://sourceforge.net/projects/watin/files/"/></footnote>. For the example in this chapter, I used the 
+				2.x / 2.0 Release candidate.<footnote><url link="http://sourceforge.net/projects/watin/files/WatiN%202.x/2.0%20Release%20candidates/"/></footnote>
+				The files should come in zip format, so you will need to unzip them to a suitable directory. Inside the root directory you should find a directory called <code>Bin</code>. Inside this directory, there should be a file called <code>WatiN.Core.dll</code>. This will need to be referenced in the project we create.
+			</p>
+		</section>
+		
 	</section>
 </chapter>
