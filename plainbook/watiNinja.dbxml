@@ -16,6 +16,10 @@
 				WatiN (pronounced What-in) is a library for Web Application Testing in .Net (the initials form the name). It was inspired by WatiR (pronounced water, 
 				where the R stands for Ruby). There is more information about WatiN on SourceForge.<footnote><para><ulink url="http://watin.sourceforge.net/"/></para></footnote></para><para>
 				Download the files from SourceForge<footnote><para><ulink url="http://sourceforge.net/projects/watin/files/"/></para></footnote>. For the example in this chapter, I used the 
-				2.x / 2.0 Release candidate.<footnote><para><ulink url="http://sourceforge.net/projects/watin/files/WatiN%202.x/2.0%20Release%20candidates/"/></para></footnote>
-				The files should come in zip format, so you will need to unzip them to a suitable directory. Inside the root directory you should find a directory called <code>Bin</code>. Inside this directory, there should be a file called <code>WatiN.Core.dll</code>. This will need to be references in the project we create.
-			</para></section></section></chapter>
+				2.x / 2.0 Release candidate.<footnote><para><ulink url="http://sourceforge.net/projects/watin/files/WatiN%202.x/2.0%20Release%20candidates/"/></para></footnote></para><para>
+				The files should come in zip format, so you will need to unzip them to a suitable directory. Inside the root directory you should find a directory called <code>Bin</code>. Inside this directory, there should be a file called <code>WatiN.Core.dll</code>. This will need to be referenced in the project we create.
+			</para></section><section id="sec_watiNinja_watin"><title>Creatng a Project</title><para>
+				Create a new project, using the same methods described in <xref linkend="chp_hello_dotnet"/> (excepting the creation of feature files and step definition classes). Once this is done, there are a couple of extra steps required so we can use WatiN.
+			</para><para><orderedlist><listitem><para>Add a reference to <code>WatiN.Core.dll</code></para></listitem><listitem><para>Add an <code>App.config</code> file to the root of the project. Edit it, adding the lines in the figure below.
+						
+					</para></listitem></orderedlist></para><para>Setting apartment threading in <code>App.config</code></para><programlisting><inlinemediaobject><textobject><textdata format="linespecific" fileref="../resources/src/dotnet/WebNinja/WatiNinja/App.config.apartment"/></textobject></inlinemediaobject></programlisting></section></section></chapter>
