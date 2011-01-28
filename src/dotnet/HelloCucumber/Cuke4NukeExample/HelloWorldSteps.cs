@@ -20,7 +20,7 @@ namespace Cuke4NukeExample
         //END:action
 
         //START:subject
-        [Then("^The Subject is (.*)$")]
+        [When("^The Subject is (.*)$")]
         public void SubjectIs(string subject)
         {
             _subject = subject;
