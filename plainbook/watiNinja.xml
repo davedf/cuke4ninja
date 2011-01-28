@@ -36,22 +36,29 @@
 				The files should come in zip format, so you will need to unzip them to a suitable directory. Inside the root directory you should find a directory called <code>Bin</code>. Inside this directory, there should be a file called <code>WatiN.Core.dll</code>. This will need to be referenced in the project we create.
 			</p>
 		</section>
-		<section title="Creatng a Project" id="sec_watiNinja_watin">
+		<section title="Creating a Project" id="sec_watiNinja_watin">
 			<p>
 				Create a new project, using the same methods described in <link ref="chp_hello_dotnet"/> (excepting the creation of feature files and step definition classes). Once this is done, there are a couple of extra steps required so we can use WatiN.
 			</p>
 			<p>
 				<ol>
 					<li>Add a reference to <code>WatiN.Core.dll</code></li>
-					<li>Add an <code>App.config</code> file to the root of the project. Edit it, adding the lines in the figure below.
-						
+					<li>Because our example uses Internet Explorer (which is not thread safe!<footnote><url link="http://watin.sourceforge.net/apartmentstateinfo.html"></url></footnote>), you will need to run the tests as Single Threaded Apartments. The details of how to configure this are in 
+						<link ref="sb-watininja-stp" />.
 					</li>
 				</ol>
 				
 				
 			</p>
-			<p>Setting apartment threading in <code>App.config</code></p>
-			<code file="dotnet/WebNinja/WatiNinja/App.config" part="apartment"/>
+			<sidebar title="Configuring apartment threading" id="sb-watininja-stp">
+				<p>
+					Add an <code>App.config</code> file to the root of the project. Edit it, adding the lines
+				</p>
+				<code file="dotnet/WebNinja/WatiNinja/App.config" part="apartment"/>
+			</sidebar>
+		</section>
+		<section title="Making sure WatiN is working" id="sec_watiNinja_smoketest">
+			<p></p>
 		</section>
 	</section>
 </chapter>
