@@ -32,7 +32,7 @@ namespace WatiNinja.watininja.business
                 //Download and run the selenium-server-standalone-2.0b1.jar locally to run this example
                 if (_userWorkFlow == null)
                 {
-                    _userWorkFlow = new UserWorkflow(new CodeTrack("http://i7-macbook-daved.local/codetrack/codetrack.php", Browser, new UserRepository()));
+                    _userWorkFlow = new UserWorkflow(new CodeTrack("http://localhost/codetrack/codetrack.php", Browser, new UserRepository()));
 
                 }
                 return _userWorkFlow;

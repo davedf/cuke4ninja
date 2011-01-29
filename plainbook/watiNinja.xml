@@ -58,7 +58,72 @@
 			</sidebar>
 		</section>
 		<section title="Making sure WatiN is working" id="sec_watiNinja_smoketest">
-			<p></p>
+			<p>
+				Before adding any feature files, it would be useful to check that WatiN is configured correctly. To achieve this, let's add a simple NUnit test.
+				<footnote>I've used the one in the WatiN getting started guide <url link="http://watin.sourceforge.net/gettingstarted.html"/> for this example</footnote> 
+			</p>
+			<p>
+				First, create a folder in your project called <code>test</code>. Then add a class file in the new folder called <code>SmokeTest.cs</code>. Edit 
+				the class so it looks like the example below. Once you have done that, run the test using NUnit.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/test/SmokeTest.cs"/>	
+		</section>
+		<section title="CodeTrack" id="sec_watiNinja_smoketest">
+			<p>In our example project, we will be using an open source bug tracking tool called CodeTrack<footnote><url link="http://kennwhite.sourceforge.net/codetrack/"/></footnote> as a system to test.</p>
+			<p>Codetrack requires Apache and PHP, so you will need to install both of these if they are not on your system</p>
+			<sidebar title="Installing Apache" id="sb-watininja-apache">
+				<p>
+					To install apache on windows, download the msi installer from the apache site.<footnote><url link="http://httpd.apache.org/download.cgi"/></footnote>
+				</p>
+			</sidebar>
+			<sidebar title="Installing PHP" id="sb-watininja-apache">
+				<p>
+					To install PHP on windows, download the msi installed from the PHP site.<footnote><url link="http://windows.php.net/download/"/></footnote> Install PHP as
+					an apache module. You may need to alter the apache configuration file so it correctly points at the php-apache library. To do this edit the
+					<code>httpd.conf</code> file in the <code>conf</code> directory where you installed Apache (on my 64 windows system this was 
+					<code>C:\Program Files (x86)\Apache Software Foundation\Apache2.2\conf</code>). There should be some lines at the bottom of this file 
+				</p>
+		<code>
+#BEGIN PHP INSTALLER EDITS - REMOVE ONLY ON UNINSTALL
+PHPIniDir "C:/Program Files (x86)/PHP"
+LoadModule php5_module "C:/Program Files (x86)/PHP/
+php5apache2_2.dll"
+#END PHP INSTALLER EDITS - REMOVE ONLY ON UNINSTALL
+		</code>
+				<p>When I installed they were blank and needed to be edited so that the correct path to <code>php5apache2_2.dll</code>was set.</p>
+			</sidebar>
+			<p>Once these prerequisites are in place, download the zip or tarball from the codetrack site, and extract into the httpd docs directory.<footnote>For example: <code>C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs</code></footnote> After restarting Apache, pointing your browser at <code>http://localhost/codetrack</code> should bring up the codetrack login screen.
+			</p>
+			<p>
+				The final step is to create some logins for the test to use.
+				<ol>
+					<li>Login as admin (password codetrack) and enter a new password</li>
+					<li>Select the Admin button at the top of the screen, select the &lsquo;Add a User&rsquo; link, and create an administrative user for the tests to use as illustrated in <link ref="img.codetrack-cukeadmin"/></li>.
+					<li>Repeat the procedure for users &lsquo;Ninja 1&rsquo; and &lsquo;Ninja 2&rsquo; as illustrated in <link ref="img.codetrack-ninja1"/> 
+						and <link ref="img.codetrack-ninja2"/>
+					</li>
+				</ol>
+				<img src="codetrack-cukeadmin.png" id="img.codetrack-cukeadmin" title="Creating cukeadmin user in CodeTrack"/>
+				<img src="codetrack-ninja1.png" id="img.codetrack-ninja1" title="Creating ninja1 user in CodeTrack"/>
+				<img src="codetrack-ninja2.png" id="img.codetrack-ninja2" title="Creating ninja2 user in CodeTrack"/>
+			</p>
+			
+		</section>
+	</section>
+	<section title="Putting it to the test">
+		<section title="Creating the Feature file" id="sec_watiNinja_overview">
+			<p>
+				Now we have a system to test, we can get on with the main order of business. We will begin by creating a cucumber feature file, and then work down
+				through the step definitions, application workflow and finally the technical layer. In this chapter we will cover the key classes in the project,
+				there is a completed version of the project that you can download from the cuke4ninja site.<footnote><url link="http://cuke4ninja.com/download.html"/></footnote> 
+			</p>
+			<p>
+				If you haven't created a <code>features</code> folder in the project yet, do this now.<footnote>Don't forget the step_definitions folder and cucumber.wire file as well!</footnote> Add a new file to the <code>features</code> folder called <code>reportassigned.feature</code>. Edit it so it looks like the following example.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/features/reportassigned.feature"/>	
+			<p>
+				So, we want a user to be able to log in and see the issues assigned to them. Though this seems simple enough on first inspection, there are a number of complicating factors.
+			</p>
 		</section>
 	</section>
 </chapter>

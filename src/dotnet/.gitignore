@@ -3,6 +3,7 @@ lib
 **/**/bin
 **/**/obj
 **/*.user
+**/**/*.user
 **/*.resharper
 **/bin
 **/obj
