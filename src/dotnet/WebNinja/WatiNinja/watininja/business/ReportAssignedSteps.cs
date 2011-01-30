@@ -1,19 +1,24 @@
-﻿using System.Collections.Generic;
+﻿//START:imports1
+using System.Collections.Generic;
 using Cuke4Nuke.Framework;
 using NUnit.Framework;
 using WatiN.Core;
+using Table=Cuke4Nuke.Framework.Table;
+//END:imports1
+//START:imports2
 using WatiNinja.watininja.technical;
 using WatiNinja.watininja.workflow;
-using Table=Cuke4Nuke.Framework.Table;
+//END:imports2
 
 namespace WatiNinja.watininja.business
 {
-    public class ReportAssignedSteps
-    {
-        private UserWorkflow _userWorkFlow;
-        private const string Admin = "cukeadmin";
-        private string _project;
-        private Browser _browser;
+//START:fields
+public class ReportAssignedSteps {
+	private const string Admin = "cukeadmin";
+	private UserWorkflow _userWorkFlow;
+	private string _project;
+	private Browser _browser;
+//END:fields
         Browser Browser
         {
             get
@@ -28,25 +33,24 @@ namespace WatiNinja.watininja.business
         {
             get
             {
-                //to use HtmlUnit from .Net we must access it through the RemoteWebDriver
-                //Download and run the selenium-server-standalone-2.0b1.jar locally to run this example
                 if (_userWorkFlow == null)
-                {
                     _userWorkFlow = new UserWorkflow(new CodeTrack("http://localhost/codetrack/codetrack.php", Browser, new UserRepository()));
-
-                }
                 return _userWorkFlow;
             }
         }
-        [Given("^there are open issues with the properties$")]
-        public void ThereAreOpenIssuesWithThePropertiesWithTable(Table issues)
-        {
-            _project = UserWorkflow.LogonAs(Admin)
-                                    .CreateNewProject()
-                                    .AddIssues(issues.ToIssues())
-                                    .CurrentProject;
-        }
 
+//START:given
+[Given("^there are open issues with the properties$")]
+public void ThereAreOpenIssuesWithThePropertiesWithTable(Table issues)
+{
+    _project = UserWorkflow.LogonAs(Admin)
+                            .CreateNewProject()
+                            .AddIssues(issues.ToIssues())
+                            .CurrentProject;
+}
+//END:given
+
+//START:when
         [When("^the issue \"(.*)\" is assigned to (.*)$")]
         public void TheIssueWithTitleIsAssignedToUser(string issueTitle, string user)
         {
@@ -54,7 +58,9 @@ namespace WatiNinja.watininja.business
                          .UsingProject(_project)
                          .AssignIssueToUser(issueTitle, user);
         }
+//END:when
 
+//START:then
         [Then("^(.*) sees the following issues in his report$")]
         public void UserSeesTheFollowingIssuesInHisReportWithTable(string user, Table issues)
         {
@@ -65,7 +71,9 @@ namespace WatiNinja.watininja.business
 
             Assert.AreEqual(issues.ToIssues(), reportedIssues);
         }
+//END:then
 
+//START:thennoissues
         [Then("^(.*) sees no issues in his report$")]
         public void UserSeesNoIssuesInHisReport(string user)
         {
@@ -74,6 +82,7 @@ namespace WatiNinja.watininja.business
                                             .ViewAssignedIssuesReport()
                                             .NumberOfIssues);
         }
+//END:thennoissues
 
         [After]
         public void Cleanup()

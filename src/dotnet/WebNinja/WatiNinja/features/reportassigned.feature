@@ -4,9 +4,11 @@ Feature: Report on assigned problems
 	I want to run a run a report to see the problems assigned to me
 
 Scenario: Assigned problem 
+#START:given
 Given there are open issues with the properties
 |Title                  |Severity | 
 |Chuck Norris beat me   |Fatal	  | 
+#END:given
 When the issue "Chuck Norris beat me" is assigned to Ninja2 
 Then Ninja2 sees the following issues in his report 
 |Title                  |Severity | 

@@ -110,7 +110,7 @@ php5apache2_2.dll"
 			
 		</section>
 	</section>
-	<section title="Putting it to the test">
+	<section title="Putting it to the test" id="sec_watiNinja_puttothetest">
 		<section title="Creating the Feature file" id="sec_watiNinja_overview">
 			<p>
 				Now we have a system to test, we can get on with the main order of business. We will begin by creating a cucumber feature file, and then work down
@@ -122,8 +122,29 @@ php5apache2_2.dll"
 			</p>
 			<code file="dotnet/WebNinja/WatiNinja/features/reportassigned.feature"/>	
 			<p>
-				So, we want a user to be able to log in and see the issues assigned to them. Though this seems simple enough on first inspection, there are a number of complicating factors.
+				So, we want a user to be able to log in and see the issues assigned to them. Though this seems simple enough on first inspection, there are a number of complicating factors. For instance consider the the first part of the scenario
 			</p>
+			<code file="dotnet/WebNinja/WatiNinja/features/reportassigned.feature" part="given"/>	
+			<p>
+				There are a couple of issues that need to be considered when implementing this step, some of which will be non-obvious on first inspection.
+				<ul>
+					<li>
+						We need to ensure that the issues defined in the step are created. In some cases this could involve direct calls to the business layer API to create the issues, which would involve transforming the table in the feature definition to domain objects. In other scenarios this may be achieved by direct access to the database. In this example we do not have access to either of these options, so we will be creating records using the UI. We will still transform the table into domain objects, however, since doing so will decouple the workflow and technical layers from the test harness.
+					</li>
+					<li>The test needs to be repeatable, so issues from previous runs need to be removed, or not visible in the current run. Though post test cleanup may seem advantageous, it is not always possible. Also cleaning up after the test run implies cleaning up after a <i>failed</i> test, which can make finding the causes of test failures difficult. In this example we will, instead, be partitioning our test by creating a new project for each run.</li>
+				</ul>
+			</p>
+		</section>
+		<section title="Step Definitions" id="sec_watiNinja_stepdefinions">
+			<p>
+				Lets start creating our step definitions. In the project we set up earlier, create a folder called <code>waininja</code>, and a folder under that called <code>business</code>. Create a class called ReportAssignedSteps.cs in this folder. At the top, above the <code>namespace WatiNinja.watininja.business</code> definition, make sure there are the following imports.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="imports1"/>	
+			<p></p>
+			<p>Next, lets set up some fields</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="fields"/>	
+			<p>Now, we will create the step definition for the given step</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="given"/>	
 		</section>
 	</section>
 </chapter>
