@@ -3,6 +3,7 @@ using Cuke4Nuke.Framework;
 
 namespace WatiNinja.watininja.business
 {
+//START:class
     public static class TableConverter
     {
         public static IList<Issue> ToIssues(this Table propertiesList)
@@ -17,6 +18,7 @@ namespace WatiNinja.watininja.business
             }
             return list;
         }
-
     }
+//END:class
+
 }

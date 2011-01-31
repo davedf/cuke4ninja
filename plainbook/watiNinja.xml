@@ -1,5 +1,5 @@
 <!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
-<chapter title="Automating with .Net and WatiN" id="chp_watiNinja">
+<chapter title=".Net and WatiN" id="chp_watiNinja">
 	<p>
 		In this chapter we will put into practice some of the principles from <link ref="chp_three_layers" />. To recap,
 		our aim is to automate the testing of a feature in a way that is flexible enough to allow for future
@@ -80,7 +80,7 @@
 				<p>
 					To install PHP on windows, download the msi installed from the PHP site.<footnote><url link="http://windows.php.net/download/"/></footnote> Install PHP as
 					an apache module. You may need to alter the apache configuration file so it correctly points at the php-apache library. To do this edit the
-					<code>httpd.conf</code> file in the <code>conf</code> directory where you installed Apache (on my 64 windows system this was 
+					<code>httpd.conf</code> file in the <code>conf</code> directory where you installed Apache (on my 64-bit windows system this was 
 					<code>C:\Program Files (x86)\Apache Software Foundation\Apache2.2\conf</code>). There should be some lines at the bottom of this file 
 				</p>
 		<code>
@@ -114,8 +114,8 @@ php5apache2_2.dll"
 		<section title="Creating the Feature file" id="sec_watiNinja_overview">
 			<p>
 				Now we have a system to test, we can get on with the main order of business. We will begin by creating a cucumber feature file, and then work down
-				through the step definitions, application workflow and finally the technical layer. In this chapter we will cover the key classes in the project,
-				there is a completed version of the project that you can download from the cuke4ninja site.<footnote><url link="http://cuke4ninja.com/download.html"/></footnote> 
+				through the step definitions, application workflow and finally the technical layer. In this chapter we will cover the key classes in the project.
+				There is a completed version of the project that you can download from the cuke4ninja site.<footnote><url link="http://cuke4ninja.com/download.html"/></footnote>
 			</p>
 			<p>
 				If you haven't created a <code>features</code> folder in the project yet, do this now.<footnote>Don't forget the step_definitions folder and cucumber.wire file as well!</footnote> Add a new file to the <code>features</code> folder called <code>reportassigned.feature</code>. Edit it so it looks like the following example.
@@ -131,20 +131,175 @@ php5apache2_2.dll"
 					<li>
 						We need to ensure that the issues defined in the step are created. In some cases this could involve direct calls to the business layer API to create the issues, which would involve transforming the table in the feature definition to domain objects. In other scenarios this may be achieved by direct access to the database. In this example we do not have access to either of these options, so we will be creating records using the UI. We will still transform the table into domain objects, however, since doing so will decouple the workflow and technical layers from the test harness.
 					</li>
-					<li>The test needs to be repeatable, so issues from previous runs need to be removed, or not visible in the current run. Though post test cleanup may seem advantageous, it is not always possible. Also cleaning up after the test run implies cleaning up after a <i>failed</i> test, which can make finding the causes of test failures difficult. In this example we will, instead, be partitioning our test by creating a new project for each run.</li>
+					<li>The test needs to be repeatable, so issues from previous runs need to be removed, or not visible in the current run. Though post test cleanup may seem advantageous, it is not always possible. Also cleaning up after the test run implies cleaning up after a <i>failed</i> test, which can make finding the causes of test failures difficult. In this example we will, instead, be isolating our test by creating a new project for each run.</li>
 				</ul>
 			</p>
 		</section>
 		<section title="Step Definitions" id="sec_watiNinja_stepdefinions">
 			<p>
-				Lets start creating our step definitions. In the project we set up earlier, create a folder called <code>waininja</code>, and a folder under that called <code>business</code>. Create a class called ReportAssignedSteps.cs in this folder. At the top, above the <code>namespace WatiNinja.watininja.business</code> definition, make sure there are the following imports.
+				Lets start creating our step definitions. In the project we set up earlier, create a folder called <code>watininja</code>, and a folder under that called <code>business</code>. Create a class called <code>ReportAssignedSteps.cs</code> in this folder. At the top, above the <code>namespace WatiNinja.watininja.business</code> definition, make sure there are the following imports.
 			</p>
 			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="imports1"/>	
-			<p></p>
 			<p>Next, lets set up some fields</p>
 			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="fields"/>	
-			<p>Now, we will create the step definition for the given step</p>
+			<p><code>Browser</code> is a WatiN class that allows us to control an instance of a browser. In this example, we will be using IE to test. We will need to reuse the browser field between different step definitions, but close the browser at the end of each scenario. To achieve this behaviour, let's create a lazy loading property to expose the Browser field</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="browser"/>	
+			<p>
+				<code>UserWorkflow</code> is one of the workflow layer classes, so we will need to create this class. Create a folder called <code>workflow</code> under the <code>watininja</code> folder we created earlier, and in this folder, add a class called <code>UserWorkflow.cs</code>. We can leave it as an empty class for now. We will need to reuse the workflow between different step definitions, but clean it up at the end of each scenario. As with <code>Browser</code>, let's create a lazy loading property.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="userworkflow"/>	
+			<p>
+				We will also add an <code>After</code> method for clean up when the feature is done
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="after"/>	
+			<p>
+				We are injecting a couple of dependencies into the <code>UserWorkflow</code> constructor. <code>CodeTrack</code> is the entry point for the technical layer and <code>UserRepository</code> is a simulation of a domain API. The <code>CodeTrack</code> class is itself constructed with the <code>Browser</code> and a root URL. In this example the url is hard coded. In a real life example it would be configured. For now though, let's create the stub classes for <code>CodeTrack</code> and <code>UserRepository</code>. Create a class called <code>UserRepository.cs</code> in the <code>watininja</code> folder, create a folder under <code>watininja</code> called <code>technical</code> and create a file called <code>CodeTrack</code> in this new folder. Edit the <code>CodeTrack</code> class so it has the following lines at the top.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/technical/CodeTrack.cs" part="constructor"/>	
+			<p>
+				Now, we will create the step definition for the <code>given</code> step. First though, a quick recap of our aims.
+				<ul>
+					<li>Set up a new project so test runs are isolated. We need to be refer to this new project later, so some kind of identifier is needed</li>
+					<li>Create the issues defined in the table, while ensuring that the workflow layer API is not dependent on Cucumber</li>
+					<li>Create a workflow API which understandable, reusable and in line with the domain language</li>
+				</ul>
+				Edit the <code>ReportAssignedSteps</code> class, adding the following lines
+			</p>
 			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="given"/>	
 		</section>
+		<section title="User Workflow" id="sec_watiNinja_user-workflow">
+			<p>
+				Next, we will need to implement the methods used in the step definition in the workflow classes.  For the logon functionality, we need to check we are not logged in (and log out if necessary), then log in with the required user. In the <code>UserWorkflow</code> class, add the following code.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/UserWorkFlow.cs" part="logon"/>	
+			<p>
+				Notice how the method returns the containing class. This means we can chain method calls which change state in a fluent manner. This method is implemented using the (as yet unwritten) technical layer API, which we will implement in the next section. 
+			</p>
+			<p>
+				The next part of the workflow API to implement is the creation of new projects. We will need to navigate to the part of the application where new projects are created, enter the details for a new project (including a unique project name) and save the new project (returning the identifier for the project for later use). Add the following code into the <code>UserWorkflow</code> class.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/UserWorkFlow.cs" part="newproject"/>	
+			<p>
+				Notice how from these new methods we are returning a <code>ProjectWorkFlow</code> rather than a <code>UserWorkflow</code>. We will now create a new class called <code>ProjectWorkFlow.cs</code> in the <code>workflow</code> folder, so we can implement the methods for creating new issues there.
+			</p>
+		</section>
+		<section title="Project Workflow" id="sec_watiNinja_project-workflow">
+			<p>
+				In the <code>ProjectWorkFlow</code> we need to implement a constructor, so we can inject the technical layer entry point.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="constructor"/>	
+			<p>
+				We will also need a property, to define the project we are working on
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="property"/>	
+			<p>
+				... and a method that will add issues into the application
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="addissues"/>	
+		</section>
+		<section title="Issue and Table" id="sec_watiNinja_issue">
+			<p>
+				We will also need a way of converting between the Cucumber Table and a collection of <code>Issue</code> objects. First, let's create a class called <code>Issue.cs</code> in the <code>watininja</code> folder. Edit so it looks like the example below. 
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/Issue.cs" part="class"/>
+			<p>
+				Then add a class called <code>TableConverter.cs</code> into the <code>business</code> folder, and edit it to be like the following example.
+			</p>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/TableConverter.cs" part="class"/>
+			<p>
+				This will allow the <code>ToIssues</code> method to be available as an extension method. 
+			</p>
+		</section>
+		<section title="The Technical Layer" id="sec_watiNinja_issue">
+			<p>
+				So far we have created a step definition, and some workflow classes. We have also created a class to represent the entry point to the technical layer API. This is illustrated in <link ref="img.codetrack-watininja"/>.We can now progress with the classes that make up the technical layer API. 
+			</p>
+			<p>
+				With the exception of the <code>CodeTrack</code> class, all the classes in the technical layer can be described as being <i>Pages</i> or <i>Forms</i>, with the difference being that <i>Forms</i> are submitted. Both will need access to the <code>Browser</code> in order to manipulate the application UI. Though complex object hierarchies should in general be avoided, in this case putting some shared functionality into base classes seems reasonable. 
+			</p>
+			<img src="watininja.png" id="img.codetrack-watininja" title="Overview of the Business, Workflow and Technical Layers"/>
+			<p>
+				Lets start by creating a class called <code>Page.cs</code> in the <code>technical</code> folder. Edit it so it looks like the example below.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/technical/Page.cs" part="class"/>
+			<p>
+				Now create a class called <code>Form.cs</code>, again in the technical folder. Edit it so it looks like the example below.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/technical/Form.cs" part="class"/>
+			<p>
+				Now we are ready to create all the Page and Form classes which are used in the Workflow methods we defined earlier.
+				<ul>
+					<li>LogonForm</li>
+					<li>AdminPage</li>
+					<li>ProjectForm</li>
+					<li>HomePage</li>
+					<li>IssueForm</li>
+				</ul>
+			</p>
+			<p>	
+				We will also need to implement methods on the CodeTrack class.
+				<ul>
+					<li>GotoLogonPage</li>
+					<li>GotoHomePage</li>
+					<li>Logout</li>
+					<li>GotoNewIssueForm</li>
+					<li>IsLoggedIn</li>
+				</ul>
+			</p>
+			<p>	
+				Most of these classes are fairly similar, and the source for these classes is can be downloaded from the cuke4ninja site, so I'm not going to list every class here. We will look at a some of the implementation details though.
+			</p>
+			<p>
+				First, create the class <code>LogonForm.cs</code> in the <code>technical</code> folder, and edit it so it looks like the example below.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/technical/LogonForm.cs" part="class"/>
+			<p>
+				As you can see, the Name property setter is implemented using WatiN functionality. The WatiN method <code>Browser.TextField</code> will find a DOM element on the page matching the supplied predicate, in this case <code>Find.ByName(...)</code>. We can then set the value of this text element by typing text into it, using the <code>.TypeText(value)</code> method. Most of the WatiN functionality can be used in a similar manner, selecting an element, or group of elements using a predicate expression, then reading from the element or performing operations on it. 
+			</p>
+			<p>
+				Another example of WatiN interacting with elements can be seen in the <code>IssuePage</code> class. Here we are using the <code>Click()</code> method os simulate the user clicking on a link
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/technical/IssuePage.cs" part="class"/>
+			<p>
+				The methods we need to add to the <code>CodeTrack</code> class are, in the most part, navigational. The implementation for <code>GotoLogonPage</code> is given below.
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/technical/CodeTrack.cs" part="gotoLoginPage"/>
+			<p>
+				Here, we are using the WatiN <code>Browser</code> method <code>Goto(url)</code> to navigate to a particular page on the site. The private helper method <code>Url(string relativePath)</code> is adding the relative path to the base url we constructed the <code>CodeTrack</code> object with.
+			</p>
+			<p>
+				See if you can implement the remaining methods on the technical layer. Download the source from the cuke4ninja site and refer to that if you get stuck.
+			</p>
+		</section>
+		<section title="The When and Then Step Definitons" id="sec_watiNinja_issue">
+			<p>
+				Let's go back to the step definitions and implement the <code>When</code> and <code>Then</code> steps. Add the following code for the <code>when</code> step
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="when"/>	
+			<p>
+				Already, we can see some reuse beginning to pay back the effort we put in earlier. We only have to implement the <code>AssignIssueToUser</code> method to get this step done. This method should be added to the <code>ProjectWorkFlow</code>
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="assignissue"/>	
+			<p>There are two <code>Then</code> steps to implement, for users having issues assigned to them and for those without issues</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="then"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="thennoissues"/>	
+			<p>
+				These require just the implementation of one method in <code>ProjectWorkflow</code>
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="viewassignedissue"/>	
+			<p>
+				We will need to create a few new classes in the technical layer to support this implementation
+				<ul>
+					<li>ReportsPage</li>
+					<li>IssueTable</li>
+					<li>AssignedIssuesReport</li>
+				</ul>
+			</p>
+			<p>
+				See if you can implement the remaining methods on the technical layer. Download the source from the cuke4ninja site and refer to that if you get stuck.
+			</p>
+			
+		</section>
+	
 	</section>
 </chapter>

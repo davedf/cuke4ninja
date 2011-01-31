@@ -6,41 +6,39 @@ namespace WatiNinja.watininja.technical
 {
     public class CodeTrack
     {
-        private readonly string _baseUrl;
-        private readonly Browser _browser;
-        private readonly UserRepository _userRepository;
+//START:constructor
+private readonly string _baseUrl;
+private readonly Browser _browser;
+private readonly UserRepository _userRepository;
 
-        public CodeTrack(string baseUrl, Browser browser, UserRepository userRepository)
-        {
-            _baseUrl = baseUrl;
-            _browser = browser;
-            _userRepository = userRepository;
-        }
+public CodeTrack(string baseUrl, 
+					Browser browser, 
+					UserRepository userRepository)
+{
+    _baseUrl = baseUrl;
+    _browser = browser;
+    _userRepository = userRepository;
+}
+//END:constructor
 
         public bool IsLoggedIn
         {
             get
             {
-
                 _browser.GoTo(Url(""));
                 return !_browser.Url.Contains("login");// == Url("");
-//                try
-//                {
-//                    GotoHomePage();
-//                }
-//                catch (ElementNotFoundException)
-//                {
-//                    return false;
-//                }
-//                return true;
             }
         }
+//START:gotoLoginPage
+private string Url(string relativePath) {
+    return string.Format("{0}{1}", _baseUrl, relativePath);
+}
 
-        public LogonForm GotoLogonPage()
-        {
-            _browser.GoTo(Url("?page=login"));
-            return new LogonForm(_browser);
-        }
+public LogonForm GotoLogonPage() {
+    _browser.GoTo(Url("?page=login"));
+    return new LogonForm(_browser);
+}
+//END:gotoLoginPage
         public AdminPage GotoAdminPage()
         {
             _browser.Element(Find.By("title", "CodeTrack Administration and Setup")).Click();

@@ -19,30 +19,30 @@ public class ReportAssignedSteps {
 	private string _project;
 	private Browser _browser;
 //END:fields
-        Browser Browser
-        {
-            get
-            {
-                if (_browser == null)
-                    _browser = new IE();
-                return _browser;
-            }
-        }
-
-        UserWorkflow UserWorkflow
-        {
-            get
-            {
-                if (_userWorkFlow == null)
-                    _userWorkFlow = new UserWorkflow(new CodeTrack("http://localhost/codetrack/codetrack.php", Browser, new UserRepository()));
-                return _userWorkFlow;
-            }
-        }
+//START:browser
+Browser Browser {
+    get {
+        if (_browser == null) _browser = new IE();
+        return _browser;
+    }
+}
+//END:browser
+//START:userworkflow
+UserWorkflow UserWorkflow {
+    get {
+        if (_userWorkFlow == null)
+            _userWorkFlow = new UserWorkflow(
+				new CodeTrack("http://localhost/codetrack/codetrack.php", 
+				Browser, 
+				new UserRepository()));
+        return _userWorkFlow;
+    }
+}
+//END:userworkflow
 
 //START:given
 [Given("^there are open issues with the properties$")]
-public void ThereAreOpenIssuesWithThePropertiesWithTable(Table issues)
-{
+public void ThereAreOpenIssuesWithThePropertiesWithTable(Table issues) {
     _project = UserWorkflow.LogonAs(Admin)
                             .CreateNewProject()
                             .AddIssues(issues.ToIssues())
@@ -51,44 +51,45 @@ public void ThereAreOpenIssuesWithThePropertiesWithTable(Table issues)
 //END:given
 
 //START:when
-        [When("^the issue \"(.*)\" is assigned to (.*)$")]
-        public void TheIssueWithTitleIsAssignedToUser(string issueTitle, string user)
-        {
-            UserWorkflow.LogonAs(Admin)
-                         .UsingProject(_project)
-                         .AssignIssueToUser(issueTitle, user);
-        }
+[When("^the issue \"(.*)\" is assigned to (.*)$")]
+public void TheIssueWithTitleIsAssignedToUser(
+	string issueTitle, string user) {
+    UserWorkflow.LogonAs(Admin)
+                 .UsingProject(_project)
+                 .AssignIssueToUser(issueTitle, user);
+}
 //END:when
 
 //START:then
-        [Then("^(.*) sees the following issues in his report$")]
-        public void UserSeesTheFollowingIssuesInHisReportWithTable(string user, Table issues)
-        {
-            IList<Issue> reportedIssues = UserWorkflow.LogonAs(user)
-                                                      .UsingProject(_project)
-                                                      .ViewAssignedIssuesReport()
-                                                      .Issues;
+[Then("^(.*) sees the following issues in his report$")]
+public void UserSeesTheFollowingIssuesInHisReportWithTable(
+	string user, Table issues) {
+    IList<Issue> reportedIssues = UserWorkflow.LogonAs(user)
+                                              .UsingProject(_project)
+                                              .ViewAssignedIssuesReport()
+                                              .Issues;
 
-            Assert.AreEqual(issues.ToIssues(), reportedIssues);
-        }
+    Assert.AreEqual(issues.ToIssues(), reportedIssues);
+}
 //END:then
 
 //START:thennoissues
-        [Then("^(.*) sees no issues in his report$")]
-        public void UserSeesNoIssuesInHisReport(string user)
-        {
-            Assert.AreEqual(0, UserWorkflow.LogonAs(user)
-                                            .UsingProject(_project)
-                                            .ViewAssignedIssuesReport()
-                                            .NumberOfIssues);
-        }
+[Then("^(.*) sees no issues in his report$")]
+public void UserSeesNoIssuesInHisReport(string user) {
+    Assert.AreEqual(0, UserWorkflow.LogonAs(user)
+                                    .UsingProject(_project)
+                                    .ViewAssignedIssuesReport()
+                                    .NumberOfIssues);
+}
 //END:thennoissues
-
-        [After]
-        public void Cleanup()
-        {
-            Browser.Close();
-            _browser = null;
-        }
+//START:after
+[After]
+public void Cleanup() {
+    Browser.Close();
+    _browser = null;
+	_userWorkFlow = null;
+}
+//END:after
     }
+
 }
