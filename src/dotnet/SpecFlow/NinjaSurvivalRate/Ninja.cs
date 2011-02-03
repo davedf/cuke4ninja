@@ -5,9 +5,9 @@ namespace NinjaSurvivalRate
 {
     public class Ninja
     {
-        private readonly string _beltLevel;
+        private readonly BeltLevel _beltLevel;
 
-        public Ninja(String beltLevel)
+        public Ninja(BeltLevel beltLevel)
         {
             _beltLevel = beltLevel;
         }
@@ -18,7 +18,7 @@ namespace NinjaSurvivalRate
                 return new List<string>(
                     new[] {"run for his life"});
 
-            if (opponent != "Chuck Norris" && _beltLevel != "third")
+            if (opponent != "Chuck Norris" && _beltLevel != BeltLevel.Third)
                 return new List<string>(
                     new[] {"run for his life"});
 

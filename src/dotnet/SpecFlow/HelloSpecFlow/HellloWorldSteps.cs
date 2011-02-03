@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
-namespace Cuke4NukeExample
+namespace HelloSpecFlow
 {
     [Binding]
     public class HelloWorldSteps
