@@ -1,3 +1,4 @@
+using System;
 using TechTalk.SpecFlow;
 
 namespace NinjaSurvivalRate.StepArgumentTransformations
@@ -9,7 +10,7 @@ namespace NinjaSurvivalRate.StepArgumentTransformations
         public BeltLevel BeltLevelOf(string beltlevel)
         {
             BeltLevel beltLevelEnum;
-            BeltLevel.TryParse(beltlevel, true, out beltLevelEnum);
+            Enum.TryParse(beltlevel, true, out beltLevelEnum);
 
             return beltLevelEnum;
         }
