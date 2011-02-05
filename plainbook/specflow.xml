@@ -1,0 +1,71 @@
+<!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
+<chapter title="Specflow" id="chp_specflow">
+	<p>
+		This is a para.
+		Line breaks are ignored within the para
+	</p>
+ 	<p>&lsquo;Quoted text&rsquo;</p>
+	<p><i>italic text</i></p>
+	<p>
+		<ol>
+			<li>
+				Ordered list item
+			</li>
+		</ol>
+		<ul>
+			<li>Bullet Point</li>
+		</ul>
+	</p>
+	<section title="Section" id="sec_specflow_example">
+		<p>
+			Make sure all the ids are unique.
+		</p>
+		<section title="Sub section" id="sec_specflow_subexample">
+			<p>
+				You can nest sections
+			</p>
+		</section>
+		<section title="Linking and footnotes" id="sec_specflow_link">
+			<p>
+				You can link to other items using an id <link ref="sec_specflow_subexample" />.
+			</p>
+			<p>
+				You can add footnotes with embedded urls.<footnote><url link="http://watin.sourceforge.net/apartmentstateinfo.html"></url></footnote>
+			</p>
+			<p>
+				You can add footnotes with just text.<footnote>Punctuation comes before the footnote according to Gojko</footnote>
+			</p>
+			<sidebar title="Sidebars" id="sb-specflow">
+				<p>
+					Use sidebars for related steps
+				</p>
+			</sidebar>
+		</section>
+		<section title="Embedding code" id="sec_specflow_code">
+			<p>
+				You can embed code, the code can be split into parts using comments
+			</p>
+			<code file="dotnet/WebNinja/WatiNinja/App.config" part="apartment"/>
+			<p>
+				You can also put code inline
+			</p>
+			<code>
+				Inline code example			
+			</code>
+		</section>
+		
+		<section title="Images" id="sec_specflow_images">
+			<p>
+				You can embed images, put the image into the images directory under the root. Make sure the image has a unique id. We also found Gojko's environment is case sensitive whereas mine isn't for image file names (and probably yours won't be as well)
+			</p>
+			<img src="codetrack-cukeadmin.png" id="img.specflow-cukeadmin" title="Example of an image"/>
+		</section>
+		<section title="Important" id="sec_specflow_important">
+			<important title="Imprtant stuff can be highlighted">
+	            <p>
+					Like this.
+	            </p>
+	        </important>
+		</section>
+	</section> 
+</chapter>

@@ -91,6 +91,7 @@
             <title>Outside-in with Cucumber and Sinatra</title>
             <para>coming in version 3.0</para>
         </chapter>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specflow.dbxml"/>
     </part>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resources.dbxml"/>
 </book>
