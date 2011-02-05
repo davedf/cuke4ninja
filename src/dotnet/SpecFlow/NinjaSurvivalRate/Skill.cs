@@ -2,7 +2,7 @@ using System;
 
 namespace NinjaSurvivalRate
 {
-    public class Skill
+	public class Skill
 	{
 		private readonly String name;
 

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NinjaSurvivalRate.Parameters;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace NinjaSurvivalRate
 {
@@ -12,8 +14,8 @@ namespace NinjaSurvivalRate
         private List<String> actions;
         private Ninja ninja;
 
-        [Given(@"^the ninja has a ([a-z]*) level black-belt$")]
-        public void TheNinjaHasABlackBelt(String level)
+        [Given(@"^the ninja has a (.*)$")]
+        public void TheNinjaHasABlackBelt(BeltLevel level)
         {
             ninja = new Ninja(level);
         }
@@ -35,7 +37,19 @@ namespace NinjaSurvivalRate
         public void NinjaWithExperience(Table table)
         {
             string beltLevel = table.Rows.Select(r => r["belt_level"]).FirstOrDefault();
-            ninja = new Ninja(beltLevel);
+
+            BeltLevel beltLevelEnum;
+            Enum.TryParse(beltLevel, true, out beltLevelEnum);
+
+            ninja = new Ninja( beltLevelEnum);
+        }
+
+        [Given("^a ninja with the following parameterized experience$")]
+        public void NinjaWithParameterizedExperience(Table table)
+        {
+            var experience = table.CreateInstance<NinjaExperience>();
+
+            ninja = new Ninja(experience.GetNinjaBeltLevel());
         }
     }
 }

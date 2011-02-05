@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using NinjaSurvivalRate.TestExtensions;
@@ -33,13 +34,11 @@ namespace NinjaSurvivalRate
         {
             var actualTable = new Table("technique","danger");
             
-            foreach (Skill skill in skills)
+            foreach (Skill skill in skills.Where(skill => skill.AvailableTo(opponent)))
             {
-                if (skill.AvailableTo(opponent))
-                {
-                    actualTable.AddRow(skill.Name(), skill.Danger(opponent));
-                }
+                actualTable.AddRow(skill.Name(), skill.Danger(opponent));
             }
+
             Console.WriteLine(actualTable.ToString());
 
             actualTable.ShouldBeSameAs(table);
