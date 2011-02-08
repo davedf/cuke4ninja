@@ -64,6 +64,7 @@
             Cucumber
             should print a suggestion similar to the one in <link ref="fig.ruby_suggestions" />.
           	</p>
+          	<img src="ruby_suggestions.png" id="fig.ruby_suggestions" title="Cucumber suggests a default implementation for step definitions"/>
             <p>
                 Now create a sub-directory called <code>step_definitions</code> in the <code>features</code> directory. This
                 is where the automation layer between the feature files and the domain code goes. Create a new file
@@ -71,7 +72,6 @@
                  Paste the following content into <code>basic_steps.rb</code>:
             </p>
             <code file="ruby/HelloCucumber/features/step_definitions/basic_steps.rb"/>
-          	<img src="ruby_suggestions.png" id="fig.ruby_suggestions" title="Cucumber suggests a default implementation for step definitions"/>
             <p>
                 This is a very simplistic implementation for all the steps, that does not actually
                 connect to any domain code. We go through all the details of the feature file and step definitions in <link ref="chp_feature_files" />. For now,
@@ -81,7 +81,6 @@
             <img id="fig_ruby_project_structure" src="ruby_project_structure.png" title="Ruby project folders"/>
             <p>
                 Now we are ready to run the features. Run
-
             <code>cucumber</code> again from the command line in your main project directory, and you should
             get a result similar to the one in <link ref="fig_ruby_test_results" />.  This tells us the number of
              features and steps executed, the lines of the step definitions, the steps

@@ -124,10 +124,11 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
     the <code>jruby.home</code> JVM variable. See <link ref="fig_cucumber_jruby_eclipse_1" /> and 
     <link ref="fig_cucumber_jruby_eclipse_2" /> for an example of how to do that in Eclipse.</p>
     <img id="fig_cucumber_jruby_eclipse_1" src="cucumber-bare-eclipse-1.png" title="Running JRuby from Eclipse" />
-    <img id="fig_cucumber_jruby_eclipse_2" src="cucumber-bare-eclipse-2.png" title="Setting Cuke4Duke JRuby parameters in Eclipse" />
     
     <p>You can execute or debug this run configuration now as you would do any other Java program. Don't forget to add 
     PicoContainer and JUnit dependencies to your classpath for Cuke4Duke to work correctly.</p>
+    <img id="fig_cucumber_jruby_eclipse_2" src="cucumber-bare-eclipse-2.png" title="Setting Cuke4Duke JRuby parameters in Eclipse" />
+    
    </section>
     </section>
     <!-- here -->
@@ -285,7 +286,6 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
                      Note that we don't need the <code>-D</code> any more because the gems should now be installed. The
                      output should now say that the steps passed, similar to the result in <link ref="fig.j_terminal_output_3"/>.
                  </p>
-                 <img src="j_terminal_output_3.png" id="fig.j_terminal_output_3" title="The feature passes"/>
                  <p>
 	                This is a very simplistic implementation for all the steps, that does not actually
 	                connect to any domain code. We go through all the details of the feature file and step 
@@ -294,6 +294,7 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
 	                <code>Given</code>, <code>When</code> and <code>Then</code> 
 	                to map lines in a feature file to step definitions.  
 	            </p>
+                 <img src="j_terminal_output_3.png" id="fig.j_terminal_output_3" title="The feature passes"/>
                 <important title="Maven may need some TLC">
                     <p>
                         Depending on the IDE you are using, you may need to process the <code>pom.xml</code> file we
@@ -346,11 +347,12 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
         <img src="j.ci.junit.png" id="fig.j.ci.junit" title="Setting up build report type"/>
         <p>
         </p>
-        <p>Once the build is complete it should show that one test passed, as in <link ref="fig.j.ci.build.results" />.
+        <p>Once the build is complete it should show that one test passed, as in <link ref="fig.j.ci.build.results" />.</p>
+        <img src="j.ci.build.results.png" id="fig.j.ci.build.results" title="Test results in TeamCity"/>
+        <p>
         You can drill down into the result to see the test name, as with a normal JUnit test. For an example, see
         <link ref="fig.j.ci.test.results" />. 
         </p>
-        <img src="j.ci.build.results.png" id="fig.j.ci.build.results" title="Test results in TeamCity"/>
         <img src="j.ci.test.results.png" id="fig.j.ci.test.results" title="Test names in TeamCity"/>
     </section>
 	</section>

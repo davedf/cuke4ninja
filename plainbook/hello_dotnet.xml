@@ -181,13 +181,13 @@
                 file called <code>HelloWorldSteps.cs</code> and edit it so it looks like the example below:
             </p>
             <code file="dotnet/HelloCucumber/Cuke4NukeExample/HelloWorldSteps.cs"/>
+            <img src="dn_terminal_output_2.PNG" id="fig.terminal_output2" title="Cuke4Nuke executes our test"/>
             <p>
                 Add a reference to NUnit.Framework.dll (from your NUnit installation) and Cuke4Nuke.Framework.dll
                 (by default, it is installed into <code>C:\Ruby\lib\ruby\gems\1.8\gems\cuke4nuke-0.3.0\dotnet\</code>).
                 Now build the project again, go to the console and re-run the Cuke4Nuke command. The output should
                 now say that the steps passed, similar to the result in <link ref="fig.terminal_output2"/>.
             </p>
-            <img src="dn_terminal_output_2.PNG" id="fig.terminal_output2" title="Cuke4Nuke executes our test"/>
             <p>
                 This is a very simplistic implementation for all the steps, that does not actually
                 connect to any domain code. We go through all the details of the feature file and step definitions in <link ref="chp_feature_files" />. For now,
@@ -201,6 +201,14 @@
                 method or feature source so that they don’t match and re-run Cuke4Nuke.
             </p>
      </section>
+    <important title="Cuke4Nuke keeps timing out">
+    <p>Sometimes you might think that Cuke4Nuke has some special ninja invisibility skills, it just disappears. The reason
+    for that is most likely that a step is taking too long to execute. Cucumber and Cuke4Nuke communicate using TCP and
+    Cucumber only allows steps a very short time to execute by default. To increase the timeout, add a timeout section
+    to your <code>cucumber.wire</code> file and an <code>invoke</code> subitem. Set the number of
+    seconds allowed for a step to execute there. For example, the following file sets that to 200 seconds:</p>
+      	<code file="dotnet/NinjaSurvivalRate/features/step_definitions/cucumber.wire"/>    
+    </important>
       <section id="sec_net_build_integration" title="Build integration">
           <p>
               We can add Cuke4Nuke as a post-build step so that all the specifications get executed after every
@@ -266,14 +274,6 @@
         </p>
         <img width="2.5in" src="teamcity-results.png" id="img.dn.teamcity.results" title="TeamCity reporting test passes"/>
     </section>
-    <important title="Cuke4Nuke keeps timing out">
-    <p>Sometimes you might think that Cuke4Nuke has some special ninja invisibility skills, it just disappears. The reason
-    for that is most likely that a step is taking too long to execute. Cucumber and Cuke4Nuke communicate using TCP and
-    Cucumber only allows steps a very short time to execute by default. To increase the timeout, add a timeout section
-    to your <code>cucumber.wire</code> file and an <code>invoke</code> subitem. Set the number of
-    seconds allowed for a step to execute there. For example, the following file sets that to 200 seconds:</p>
-      	<code file="dotnet/NinjaSurvivalRate/features/step_definitions/cucumber.wire"/>    
-    </important>
     <section title="Debugging Cuke4Nuke steps" id="sec_dotnet_debug">
     	<p>Because of the way that Cuke4Nuke and Cucumber run, it is virtually impossible to debug Cuke4Nuke steps properly
     	directly from Visual Studio, even if you set up the project to launch an external process for debugging. There

@@ -103,10 +103,8 @@ php5apache2_2.dll"
 						and <link ref="img.codetrack-ninja2"/>
 					</li>
 				</ol>
-				<img src="codetrack-cukeadmin.png" id="img.codetrack-cukeadmin" title="Creating cukeadmin user in CodeTrack"/>
-				<img src="codetrack-ninja1.png" id="img.codetrack-ninja1" title="Creating ninja1 user in CodeTrack"/>
-				<img src="codetrack-ninja2.png" id="img.codetrack-ninja2" title="Creating ninja2 user in CodeTrack"/>
 			</p>
+				<img src="codetrack-cukeadmin.png" id="img.codetrack-cukeadmin" title="Creating cukeadmin user in CodeTrack"/>
 			
 		</section>
 	</section>
@@ -117,6 +115,7 @@ php5apache2_2.dll"
 				through the step definitions, application workflow and finally the technical layer. In this chapter we will cover the key classes in the project.
 				There is a completed version of the project that you can download from the cuke4ninja site.<footnote><url link="http://cuke4ninja.com/download.html"/></footnote>
 			</p>
+				<img src="codetrack-ninja1.png" id="img.codetrack-ninja1" title="Creating ninja1 user in CodeTrack"/>
 			<p>
 				If you haven't created a <code>features</code> folder in the project yet, do this now.<footnote>Don't forget the step_definitions folder and cucumber.wire file as well!</footnote> Add a new file to the <code>features</code> folder called <code>reportassigned.feature</code>. Edit it so it looks like the following example.
 			</p>
@@ -125,6 +124,7 @@ php5apache2_2.dll"
 				So, we want a user to be able to log in and see the issues assigned to them. Though this seems simple enough on first inspection, there are a number of complicating factors. For instance consider the the first part of the scenario
 			</p>
 			<code file="dotnet/WebNinja/WatiNinja/features/reportassigned.feature" part="given"/>	
+				<img src="codetrack-ninja2.png" id="img.codetrack-ninja2" title="Creating ninja2 user in CodeTrack"/>
 			<p>
 				There are a couple of issues that need to be considered when implementing this step, some of which will be non-obvious on first inspection.
 				<ul>

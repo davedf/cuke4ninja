@@ -22,7 +22,6 @@
 			Their anger turns to despair, however, once they look at the scripts produced in the first stage of their
 			journey. The scripts are written in Selenese (<link ref="img.selenese" />), a strange language from a far off land. Selenese uses twelve words where a real ninja would usually use one. 
 		</p>
-		<img src="selenese.png" title="The Secret language of Selenese" id="img.selenese"/>
 <p>
 The ninjas realize that their UI record and replay testing was a trap. They
 were describing tests at the technical level of user interface interactions. The
@@ -38,13 +37,7 @@ Ninjas
 			illustrated in
 			<link ref="img.mount.fuji"/>.
 		</p>
-		<img src="the_sine_of_death.png" title="The Mount Fuji of Death" id="img.mount.fuji"/>
-		<important title="The principle of symmetric change" id="imp.symmetric.changes">
-			<p>
-				The best software is the one where the technical software model is aligned with the relevant business domain model. This ensures that one small change in the business domain (new requirements or changes to existing features) results in one small change in software. The same is true for the other artefacts produced for software &mdash; tests and documentation. When the tests are aligned with the business domain model, one small change in business will result in one small change in tests, making the tests easy to maintain.</p>
-		<p>Tests described at a low level technical detail, in the language of technical UI interactions, are everything but aligned with a business model. If anything, they are aligned with the current design and layout of user interfaces. A small change in business requirements can have a huge impact on such tests, requiring hours of updates to tests after just a few minutes of changes to the code.
-			</p>
-		</important>
+		<img src="selenese.png" title="The Secret language of Selenese" id="img.selenese"/>
 		<p>
 
 		</p>
@@ -57,10 +50,10 @@ Ninjas
 			don't change as much as technical implementations. Technology moves much faster than business. The closer
 			tests are to business rules, the more stable they are. Ninjas realise that a test script describes two things: the specification of a business rule and the way to validate it. The specification does not depend on the user interface, just the validation process.
 		</p>
+		<img src="the_sine_of_death.png" title="The Mount Fuji of Death" id="img.mount.fuji"/>
 		<p>
 			Ninjas then start to divide the two: the specification of a business rule can be written in a language readable even to junior ninjas who don't know the secrets of ancient calligraphy. These specifications are stable and do not change very often. They capture the validation process and automate it with different levels of granularity, applying what they learned about reusable workflows. Ninjas start thinking about the three levels of UI test automation, shown in <link ref="img.three_levels" />). 
 		</p>
-		<img src="three_levels.png" title="The three levels of web automation" id="img.three_levels"/>
 		<p>
 			<ol>
 				<li>
@@ -82,6 +75,7 @@ Ninjas
 				</li>
 			</ol>
 		</p>
+		<img src="three_levels.png" title="The three levels of web automation" id="img.three_levels"/>
 		<p>
 			And there was much rejoicing. The idea of thinking about these different levels 
 			allows ninjas to write UI-level tests that were easy to understand, efficient to write and relatively
@@ -91,6 +85,12 @@ Ninjas
 			things down like that and combining lower level concepts into higher level concepts reduces the cognitive
 			load and promotes reuse.
 		</p>
+		<important title="The principle of symmetric change" id="imp.symmetric.changes">
+			<p>
+				The best software is the one where the technical software model is aligned with the relevant business domain model. This ensures that one small change in the business domain (new requirements or changes to existing features) results in one small change in software. The same is true for the other artefacts produced for software &mdash; tests and documentation. When the tests are aligned with the business domain model, one small change in business will result in one small change in tests, making the tests easy to maintain.</p>
+		<p>Tests described at a low level technical detail, in the language of technical UI interactions, are everything but aligned with a business model. If anything, they are aligned with the current design and layout of user interfaces. A small change in business requirements can have a huge impact on such tests, requiring hours of updates to tests after just a few minutes of changes to the code.
+			</p>
+		</important>
 	<section id="sec_three_layers_easy" title="Easy to understand">
 		<p>
 			From the bottom up, the clarity of the test increases. At the technical activity level, tests are very
