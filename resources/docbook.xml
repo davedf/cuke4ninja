@@ -23,8 +23,8 @@
         
 	  <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="../resources/legal.xml"/>
 	  <biblioid class="isbn">ISBN: 978-0-9556836-3-3</biblioid>
-	  <edition>2.0</edition>
-	  <pubdate>2010 12 06</pubdate>	  	  
+	  <edition>3.0</edition>
+	  <pubdate>2010 01 09</pubdate>	  	  
     </bookinfo>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about_the_doc.dbxml"/>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="author.dbxml"/>
@@ -87,11 +87,13 @@
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="three_layers.dbxml"/>
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gordons_alive.dbxml"/>
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="watiNinja.dbxml"/>
+        <!--
         <chapter id="chp_outside_in_ruby_sinatra">
             <title>Outside-in with Cucumber and Sinatra</title>
             <para>coming in version 3.0</para>
         </chapter>
         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="specflow.dbxml"/>
+        -->
     </part>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="resources.dbxml"/>
 </book>

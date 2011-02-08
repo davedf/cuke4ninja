@@ -1,7 +1,25 @@
 <!DOCTYPE bibliography SYSTEM "./dtd/docbook-4.5/docbookx.dtd" >
 <bibliography>
     <title>Books and articles</title>
-
+    <biblioentry id="adzic:sbe">
+		<abbrev>Adzic11</abbrev>
+		<authorgroup>
+			<author>
+				<firstname>Gojko</firstname>
+				<surname>Adzic</surname>
+			</author>
+		</authorgroup>
+		<copyright>
+			<year>2011</year>
+		</copyright>
+		<publisher>
+			<publishername>Manning</publishername>
+		</publisher>
+		<title>Specification by Example</title>
+		<subtitle>How Successful Teams Deliver The Right Software</subtitle>
+		<isbn>9781617290084</isbn>
+  </biblioentry>
+	
     <biblioentry id="adzic:comgap">
         <abbrev>Adzic09</abbrev>
         <authorgroup>

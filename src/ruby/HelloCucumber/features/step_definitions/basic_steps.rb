@@ -1,4 +1,4 @@
-require 'spec/expectations' 
+require 'rspec/expectations' 
 
 Given /The Action is ([A-z]*)/ do |action|
   @action = action
