@@ -4,13 +4,10 @@
 	a tool that is quickly becoming the weapon of choice for many agile teams when it comes to functional test automation, creating
 	executable specifications and building a living documentation. We believe in iterative development so we write and publish iteratively.</p>
 <section id="pre_about_whatsnew" title="What's new in this version">
-  <p>In this version, we have started working on the explaining effective web testing and expanded several sections on gherkin:</p>
+  <p>The changes in this version are:</p>
   <ul>
-  <li><link ref="sec_hooks" /></li>
-  <li><link ref="sec_debugging_java" /></li>
-  <li><link ref="sec_comparison_tools"/></li>
-  <li>a new chapter on organising web automation for easy maintenance (<link ref="chp_three_layers"/>)</li>
-  <li>a new chapter on web testing in Ruby with Rails and Sinatra (<link ref="chp_gordons_alive" />)</li>
+  <li><link ref="chp_watiNinja"/> on effective web testing in .NET through the three layers </li>
+  <li><link ref="sec_sharing_context" /></li>
   <li>and a lot of minor fixes and tweaks</li>
   </ul>
 </section>
