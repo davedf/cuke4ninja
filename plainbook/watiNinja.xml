@@ -171,14 +171,14 @@ php5apache2_2.dll"
 			<p>
 				Next, we will need to implement the methods used in the step definition in the workflow classes.  For the logon functionality, we need to check we are not logged in (and log out if necessary), then log in with the required user. In the <code>UserWorkflow</code> class, add the following code.
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/UserWorkFlow.cs" part="logon"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/UserWorkflow.cs" part="logon"/>	
 			<p>
 				Notice how the method returns the containing class. This means we can chain method calls which change state in a fluent manner. This method is implemented using the (as yet unwritten) technical layer API, which we will implement in the next section. 
 			</p>
 			<p>
 				The next part of the workflow API to implement is the creation of new projects. We will need to navigate to the part of the application where new projects are created, enter the details for a new project (including a unique project name) and save the new project (returning the identifier for the project for later use). Add the following code into the <code>UserWorkflow</code> class.
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/UserWorkFlow.cs" part="newproject"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/UserWorkflow.cs" part="newproject"/>	
 			<p>
 				Notice how from these new methods we are returning a <code>ProjectWorkFlow</code> rather than a <code>UserWorkflow</code>. We will now create a new class called <code>ProjectWorkFlow.cs</code> in the <code>workflow</code> folder, so we can implement the methods for creating new issues there.
 			</p>
@@ -187,15 +187,15 @@ php5apache2_2.dll"
 			<p>
 				In the <code>ProjectWorkFlow</code> we need to implement a constructor, so we can inject the technical layer entry point.
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="constructor"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkflow.cs" part="constructor"/>	
 			<p>
 				We will also need a property, to define the project we are working on
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="property"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkflow.cs" part="property"/>	
 			<p>
 				... and a method that will add issues into the application
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="addissues"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkflow.cs" part="addissues"/>	
 		</section>
 		<section title="Issue and Table" id="sec_watiNinja_issue">
 			<p>
@@ -279,14 +279,14 @@ php5apache2_2.dll"
 			<p>
 				Already, we can see some reuse beginning to pay back the effort we put in earlier. We only have to implement the <code>AssignIssueToUser</code> method to get this step done. This method should be added to the <code>ProjectWorkFlow</code>
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="assignissue"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkflow.cs" part="assignissue"/>	
 			<p>There are two <code>Then</code> steps to implement, for users having issues assigned to them and for those without issues</p>
 			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="then"/>	
 			<code file="dotnet/WebNinja/WatiNinja/watininja/business/ReportAssignedSteps.cs" part="thennoissues"/>	
 			<p>
 				These require just the implementation of one method in <code>ProjectWorkflow</code>
 			</p>
-			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkFlow.cs" part="viewassignedissue"/>	
+			<code file="dotnet/WebNinja/WatiNinja/watininja/workflow/ProjectWorkflow.cs" part="viewassignedissue"/>	
 			<p>
 				We will need to create a few new classes in the technical layer to support this implementation
 				<ul>

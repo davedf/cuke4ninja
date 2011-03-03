@@ -24,7 +24,7 @@
 	  <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="../resources/legal.xml"/>
 	  <biblioid class="isbn">ISBN: 978-0-9556836-3-3</biblioid>
 	  <edition>3.0</edition>
-	  <pubdate>2010 01 09</pubdate>	  	  
+	  <pubdate>2011 02 09</pubdate>	  	  
     </bookinfo>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about_the_doc.dbxml"/>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="author.dbxml"/>

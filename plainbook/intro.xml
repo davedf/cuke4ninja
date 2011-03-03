@@ -12,7 +12,7 @@
         development, specification by example and agile acceptance testing. You can use it to
         automate functional validation in a form that is easily readable and understandable to business users,
         developers and testers. This helps teams create <i>executable specifications</i>,
-        that are also a goal for development, acceptance criteria and functional regression checks for future changes. 
+        that are a goal for development, acceptance criteria and functional regression checks for future changes. 
         In this way, Cucumber allows teams to create <i>living documentation</i>, a single authoritative source of
         information on system functionality that is always up-to-date.
     </p>
@@ -27,7 +27,7 @@
         </p>
     </note>
     <p>Cucumber is quickly becoming as popular with teams that develop and maintain web-based systems as the shuriken
-        is with ninjas (such as <url link="http://www.crazyapplerumors.com/?p=1273" title="Steve Jobs"/>) because of its
+        is with <url link="http://www.crazyapplerumors.com/?p=1273" title="Steve Jobs"/>. Teams love Cucumber because of its
         flexibility and support for web automation frameworks. It started as a tool for Ruby, but now supports a wide
         variety of platforms. This makes it appealing to teams that work with JVM-based languages and even those shinobi
         that use the dark magic of .NET.
@@ -47,25 +47,24 @@
                 business users better.
             </li>
             <li>It supports different ways of describing executable specifications &mdash; including story-like prose,
-                lists and tabular data.
+                lists and tabular data. You can unleash your inner writer, or more likely an inner accountant. 
             </li>
             <li>It allows scripting, abstraction and component reuse on several levels, allowing both technical and
                 non-technical
-                users to efficiently describe specifications.
+                users to efficiently describe specifications and tests.
             </li>
             <li>It generates the tricky parts of the code so that you don't have to write most of the boiler-plate
                 automation or make mistakes doing it.
             </li>
             <li>It integrates nicely with the rest of the development ecosystem. It does not try to impose a version
                 control system, but works off plain-text files that can be stored in any version control system. For
-                continuous build integration, it emulates JUnit (and everything else in the world is already integrated
-                with JUnit).
+                continuous build integration, it emulates JUnit. JUnit XML format is, of course, the equivalent of Star Trek transporters when it comes to testing &mdash; use it and you can beam your test results anywhere.
             </li>
-            <li>Although it is a Ruby tool, people who work on other platforms do not have to learn Ruby to use it. You
+            <li>Although Cucumber is a Ruby tool, people who work on other platforms do not have to learn Ruby to use it. You
                 can use Cucumber with .NET or JVM languages almost natively.
             </li>
             <li>It's integrated with all the most popular web testing libraries.</li>
-            <li>It allows you to mark tests with tags so that you can quickly run a group of related tests (eg quick
+            <li>It allows you to cross reference and index tests using tags, so that you can quickly find all tests related to a function or run a group of related tests (eg quick
                 tests, slow tests, integration tests, accounting tests).
             </li>
         </ul>
@@ -78,8 +77,7 @@
         </p>
     </section>
     <section id="sec_comparison_tools" title="How does Cucumber compare to other tools?">
-	<p>Cucumber is essentially a test runner. It does a pretty good job of
-	    running the tests and spitting out reports in lots of various formats,
+	<p>Cucumber is like that brave Athenian soldier who centuries ago decided to test the resilience of humans by running from the Marathon field. It is essentially a test runner. It does a pretty good job of executing automated tests and spitting out reports in lots of various formats,
 	    including HTML, PDF, JUnit (for integration with continuous build tools) and colour text on the
 	    screen. On the other hand, it doesn't try to do anything before test
 	    execution in the process. So there is no Cucumber-IDE or anything
@@ -87,25 +85,21 @@
 	    quality and in development:</p>
    	<ul>
 	    <li><url link="http://github.com/henritersteeg/cuke4vs" /> does syntax highlighting
-	    and intellisense in visual studio.</li>
+	    and intellisense in Visual Studio.</li>
     	    <li><url link="http://github.com/QuBiT/cucumber-eclipse-plugin" /> is a plugin for Eclipse</li>
 	    <li><url link="http://github.com/cs3b/cucumber_fm/" /> is a website system for
-	    feature file management</li>
-    	    <li><url link="http://relishapp.com/" /> is another web product in development to
-	    show feature files</li>
+	    Cucumber file management</li>
+    	    <li><url link="http://relishapp.com/" /> is a web product in development to
+	    publish Cucumber files as a nice web site</li>
     	    <li><url link="http://21croissants.github.com/courgette/" /> another web product in
-	    development to show feature files</li>
-	    <li><url link="https://github.com/asterite/cukecooker/" /> is a web based IDE for cucumber feature files when working in Ruby</li>
+	    development to show files as web pages</li>
+	    <li><url link="https://github.com/asterite/cukecooker/" /> is a web based IDE for Cucumber feature files when working in Ruby</li>
 	</ul>
-	<p> Cucumber feature files (explained later in this chapter) are plain-text files which
-		makes it very simple to edit them but does not allow any clever formatting.  
-		A feature file
-		allows for a short description in a header, but apart from that everything else
-		in the file is related to scenarios and test cases. That means that there is no
-		way to include images, hyperlinks, rich-text descriptions and similar.
+	<p> Cucumber files (explained later in this chapter) are plain-text which makes it very simple to edit them but does not allow any clever formatting.  
+You can put a short description in a file header, but apart from that everything else in the file is related to scenarios and test cases. That means that there is no way to include images, hyperlinks, rich-text descriptions and similar.
 	</p>
 	<p>Cucumber's step
-	    definition (integration to domain API, explained in later chapters) model is much simpler which is 
+	    definition (automation layer, integration to domain API, explained in later chapters) model is very simple, which is 
 	    both a strength
 	    and a weakness in different contexts. A simple API makes it very easy
 	    to understand and learn what you can do with Cucumber, so you won't
@@ -116,9 +110,8 @@
 	    flexibility in how you can manage complex scenarios.
     	</p>
     </section>
-    <!--    <section title="What does BDD have to do with Cucumber?">
-        <p>
-            Cucumber is often mentioned in the context of Behaviour driven Development (BDD). Dan North, the central authority on BDD, summarised it as:<footnote>
+    <section title="What does Cucumber have to do with BDD">
+        <p>Aspiring Cucumber  ninjas are well advised that Cucumber is frequently mentioned in the context of Behaviour driven Development (BDD). In fact, Cucumber is as closely tied to BDD as Chuck Norris is to his beard. Dan North, the central authority on BDD, summarised BDD as:<footnote>
             See
             <url link="http://skillsmatter.com/podcast/java-jee/how-to-sell-bdd-to-the-business" />
         </footnote>
@@ -148,190 +141,14 @@
        <section title="Multiple-scale">
            <p>A core idea of BDD is to clearly specify the expected outputs with realistic examples and then develop the software to achieve those outputs. This works on multiple levels. On the top level, we can work with high-level examples of how a feature will be useful in a holistic way. Below that, we can look at the impact of that on individual functional areas of the system. Below that we can work on technical implementation units. The process is the same, regardless of the level. </p>
        </section>
-       <section title="High-automation">
-           <p>Once the expected quality is defined, the team will need to check the system functionality frequently and compare it to the expected results. To make this check efficient, it has to be automated. BDD relies heavily on automation of executable
-               specifications.</p>
-       </section>
        <section title="Agile">
            <p>BDD works best with short iterations or flow-based work, where teams specify, implement and deliver relatively small
                chunks of functionality. It requires cross-functional teams to collaborate on specifications and tests.</p>
        </section>
-        <p>
-            Cucumber takes care of the &lsquo;high-automation&rsquo; part of the BDD definition. It allows teams to describe features in a business language, with key examples, and automate the validation of those features against system functionality.
-        Although it was originally written
-       for Ruby, Cucumber now supports automation in all major programming languages on all major platforms.
-        </p>
-    </section>
-    -->
-    <section id="sec_cucumber_jargon" title="Cucumber jargon">
-        <p>To ensure that we're all on the same page, here are some of the basic terms we'll use in this document:</p>
-        <section title="Stakeholder">
-            <p>
-                A <define>Stakeholder</define> is a person who gets some value out of the system. Typical stakeholders are
-                representative of groups of users, for example a trader or an administrator. Some teams describe
-                stakeholders with user personae
-                (explained nicely in User Stories Applied<bib ref="cohn:userstory"/>). Personae are particularly useful
-                for web based projects as they encourage you to think about how a typical user is likely to interact with
-                the system.
-            </p>
-        </section>
-        <section title="Feature">
-            <p>
-                A
-                <define>Feature</define>
-                is a piece of system functionality that delivers value to one or more stakeholders. Executable
-                Specifications work best when described from the perspective of stakeholders, not technical
-                infrastructure, since doing so enables business users to understand them better and engage more in
-                discussions about what makes a particular feature complete.
-            </p>
-            <p>Features are normally vertical
-                functional slices of the system, for example credit card processing. Horizontal infrastructural
-                slices, for example database caching, are not good as features. They do not deliver value
-                directly to any stakeholders. Stakeholders will not be able to engage properly in specifying the
-                acceptance
-                criteria for such functionality, pretty much defeating the point of specification by example.
-            </p>
-        </section>
-        <section title="User story">
-            <p>
-                A
-                <define>User story</define>
-                is a rough description of scope for future work, used as a planning tool. Stories are vertical
-                slices of system functionality that are deliverable independently. Each story should specify the
-                value it brings to one or more stakeholders, the stakeholders that care about the story
-                and the scope of the intended work. A common format for the stories is:
-            </p>
-
-            <quote>
-                In order to..., as a ..., I want ...
-            </quote>
-            <p>
-                There are alternative formats, such as:
-            </p>
-            <quote>As a ..., I want..., So that...</quote>
-            <p>Many a ninja has died in the futile format wars and some silly shoguns will try to convince you that one way of telling stories is significantly better than the other one. Ninja cucumber disagrees! For the purposes of this document all these formats are equivalent and we won't enter into a discussion
-                on which one is better.
-            </p>
-            <p>
-                Stories often impact several features &mdash; a card processing story might have an impact on card
-                processing, fraud control and back-office reporting. For frequent delivery, stories are often
-                relatively small chunks of work, so a single feature might be delivered through a large number of
-                stories.
-            </p>
-            <note title="Stories are more than just the format">
-                <p>
-                    Here is an example of a good user story:
-                </p>
-                <quote>In order to reduce fraud, as a financial controller I want the system to automatically
-                    send Chuck Norris to beat up suspected fraudsters.
-                </quote>
-                <p>This story clearly states who cares about it, why it is important and what it delivers. This provides
-                    enough
-                    information for a meaningful discussion on the specifications when the time comes to implement it.
-                    Here is
-                    an example of a bad user story:
-                </p>
-                <quote>As a trader I want to enter a trade because I want to trade</quote>
-                <p>Although this story obeys the form, it is too broad, too generic and it does not state a clear
-                    benefit.
-                    It would be much better to specify a full flow of activities that provides
-                    some end-to-end value to a stakeholder. We would normally look for thin slices of functionality, for
-                    example
-                    not supporting all possible trade types or trade workflows from the start but only one type. In this
-                    way,
-                    once a story is delivered some stakeholders can actually start getting the value from it.
-                </p>
-            </note>
-        </section>
-        <section title="Feature file">
-            <p>A
-                <define>Feature file</define>
-                describes a feature or a part of a feature with representative examples of expected outcomes. Cucumber
-                uses these files to validate the system functionality against the specifications. Feature files are
-                plain-text files, ideally stored in the same version control system as the related project.
-            </p>
-            <p>Here is an example of a Cucumber feature file:</p>
-            <code file="ruby/NinjaSurvivalRate/features/ninja_survival_rate.feature"/>
-            <p>See
-                <link ref="chp_feature_files"/>
-                for a detailed explanation of how Cucumber interprets this file.
-            </p>
-        </section>
-        <section title="Key Examples">
-            <p>
-                Each feature should be illustrated with
-                <define>Key Examples</define>. The examples show the expected outcomes in specific representative
-                cases with very precise
-                information. This makes it absolutely clear what the system is expected to do and helps to avoid
-                any misunderstanding and ambiguity. It also makes it possible for an automation tool, such as
-                Cucumber, to check whether the system works according to the specification.
-            </p>
-        </section>
-        <section title="Scenario">
-            <p>
-                A
-                <define>Scenario</define>
-                captures one key example for a feature in the feature file. It represents a way that the system
-                delivers some value to a stakeholder. Scenarios are units of specifications for Cucumber. They
-                allow us to break down feature functionality into chunks that can be separately discussed and
-                delivered. Examples of good scenarios for credit card processing might be successful
-                transaction authorisation, transaction failure due to lack of funds, transaction failure due to
-                wrong verification code and so on.
-            </p>
-        </section>
-        <section title="Step">
-            <p>
-                <define>Steps</define>
-                are domain language phrases that we can combine to write scenarios. They can either refer to the context
-                of a scenario, an action that the scenario describes or a way to validate the action. The steps that
-                define the context of a scenario generally begin with the
-                <define>Given</define>
-                keyword, for example:
-                <quote>Given the ninja has a third level black-belt</quote>
-                The steps that define an action generally begin with the
-                <define>When</define>
-                keyword, for example:
-                <quote>When attacked by a samurai</quote>
-                The steps that define an expected outcome generally start with the
-                <define>Then</define>
-                keyword, for example:
-                <quote>Then the ninja should run for his life</quote>
-                See
-                <link ref="chp_feature_files"/>
-                for more information on the other Cucumber keywords and step structure.
-            </p>
-        </section>
-        <section title="Step Definition">
-            <p>
-                <define>Step Definitions</define>
-                are reusable automation components that execute individual steps. They tell Cucumber what to do when
-                interpreting a particular step (see <link ref="img_cuke_steps"/>). Programmers or automation specialists
-                write step definitions where necessary when implementing scenarios to validate that they work correctly.
-                Once a step definition is implemented, the step can be reused in other scenarios. We cover how to write
-                step definitions in Ruby, .NET and Java in the following chapters.
-            </p>
-        </section>
-        <img src="cuke-steps.png" title="Cucumber step definitions automate validation" id="img_cuke_steps"/>
-        <section title="Gherkin">
-            <p>
-                <define>Gherkin</define>
-                is the language for describing Cucumber feature files. It is also the name of a separate piece of
-                software that interprets that language.
-            </p>
-            <p>Gherkin, the language, defines the structure of a feature
-                file and the keywords that can be used to describe features. It is based on the behaviour-driven
-                development idea of describing key examples for specifications in the format of
-                <define>Given-When-Then</define> sentences.
-            </p>
-            <p>
-                Gherkin, the software, parses files for Cucumber and related projects, such as
-                Specflow,<footnote>
-                    <url link="http://specflow.org"/>
-                </footnote>
-                a native .NET implementation
-                of a Gherkin-compliant automation tool. You can use it to implement your own version
-                of Cucumber for a platform that is not currently supported, if you can find one.
-            </p>
-        </section>
+       <section title="High-automation">
+           <p>Once the expected quality is defined, the team will need to check the system functionality frequently and compare it to the expected results. To make this check efficient, it has to be automated. BDD relies heavily on automation of executable
+               specifications. </p>
+               <p>Cucumber takes care of the &lsquo;high-automation&rsquo; part of the BDD definition. It allows teams to describe features in a business language, with key examples, and automate the validation of those features against system functionality.</p>
+       </section>
     </section>
 </chapter>

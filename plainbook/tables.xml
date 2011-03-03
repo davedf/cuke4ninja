@@ -11,6 +11,52 @@
          <li>Backgrounds allow us to group related pre-conditions for a set of scenarios and manage them in one place</li>
          <li>Hooks allow us to programmatically manage cross-cutting technical activities such as transactions, security or external resources.</li>
          </ul>
+      
+      	<section id="sec_more_complex" title="Complex setups and validations">
+		<p>
+			Steps can also start with keywords
+<code>And</code> and
+<code>But</code>. They continue the current section and allow us to use multiple steps to set up the context or validate several outcomes. Using these keywords
+			can improve readability. For example, the following scenario uses two validations:
+		</p>
+<code>
+	Scenario: Angry Chuck
+		Given the ninja has a third level black-belt 
+		<b>Given</b> the ninja has never fought Chuck Norris before 
+		When attacked by Chuck Norris
+		Then the ninja should apologise 
+		<b>Then</b> the ninja should run away
+</code>	
+	<p>It reads better when it is written in the following way:</p>
+<code>
+	Scenario: Angry Chuck
+		Given the ninja has a third level black-belt 
+		<b>But</b> the ninja has never fought Chuck Norris before 
+		When attacked by Chuck Norris
+		Then the ninja should apologise 
+		<b>And</b> the ninja should run away 
+</code>
+
+<p>
+	Technically, it isn't really important whether a step starts with
+	<code>Given</code>,	<code>And</code> or <code>But</code>
+	(or <code>Then</code> and <code>When</code>, actually). Cucumber will match the step using a regular expression 
+	and execute it. Using <code>And</code> and <code>But</code>
+	makes it easier to read the specification.
+</p>
+	<p>This also means that the syntax allows you to chain <code>When</code> steps by using <code>And</code> or
+<code>But</code> steps. Though the Gherkin syntax won't stop you, it will send a secret message to Chuck Norris and he will come to your house
+ and burn it to the ground with you in it.<footnote>Legal Note: Chuck reserves the right to sub-contract to the Deadly Viper Assassination Squad if he is busy that day.</footnote> A scenario should have one and only one action.</p>
+<important title="But I need to execute several actions">
+	<p>If you want to put more than one
+	<code>When</code> step, then you have a complex multi-step action that means something to the business.
+	 That flow should be captured by your domain model. Talk to the business users, decide
+	  on the name for that flow and specify it using a single
+	   step, which invokes the appropriate domain model procedure. Don't use feature files for scripting the flow.
+	</p>
+</important>
+	
+</section>
       <section id="sec_groups_of_scenarios" title="Managing groups of related scenarios">
      <p>    The feature file we used
          in the <link ref="chp_feature_files" /> has 13 lines for two scenarios. To specify a business
