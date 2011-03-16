@@ -502,7 +502,7 @@ also supports some more advanced tag features, such as enforcing the limit on th
 running scenarios that satisfy a combination of tags. For information on those options, have a look at 
 the <url link="https://github.com/aslakhellesoy/cucumber/wiki/tags" title="tags page on the Cucumber wiki"/>.</p>
 </section>
-<section title="Remember">
+<section id="sec_gherkin_remember" title="Remember">
 <ul>
 <li>Describe features from the perspective of users and stakeholders, not technical tasks</li>
 <li>Think of feature files as documentation when you write them.</li>

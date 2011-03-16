@@ -6,8 +6,8 @@
 <section id="pre_about_whatsnew" title="What's new in this version">
   <p>The changes in this version are:</p>
   <ul>
-  <li><link ref="chp_watiNinja"/> explains how three layers of UI automation actually work with code, with examples in .NET so far</li>
-  <li><link ref="sec_sharing_context" /></li>
+  <li>Introduction cleaned up, added a section on how Cucumber fits into BDD, moved terminology to the Gherkin part</li>
+  <li>Fixed PDF inclusion of some missing .NET sources</li>
   <li>and a lot of minor fixes and tweaks</li>
   </ul>
 </section>

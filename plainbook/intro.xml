@@ -110,7 +110,7 @@ You can put a short description in a file header, but apart from that everything
 	    flexibility in how you can manage complex scenarios.
     	</p>
     </section>
-    <section title="What does Cucumber have to do with BDD">
+    <section id="sec_cucumber_bdd" title="What does Cucumber have to do with BDD">
         <p>Aspiring Cucumber  ninjas are well advised that Cucumber is frequently mentioned in the context of Behaviour driven Development (BDD). In fact, Cucumber is as closely tied to BDD as Chuck Norris is to his beard. Dan North, the central authority on BDD, summarised BDD as:<footnote>
             See
             <url link="http://skillsmatter.com/podcast/java-jee/how-to-sell-bdd-to-the-business" />

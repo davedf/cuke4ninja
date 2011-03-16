@@ -36,11 +36,13 @@ code:
 
 docbook: code docbook-chapters docbook.pdf
 
-website: code docbook-chapters docbook.html
+website-files: code docbook-chapters docbook.html
 	sh ../resources/embedfiles.sh .
 	mv index.html toc.html
 	rm -rf ../website-final
 	cp -R ../website ../website-final
+
+website: website-files
 	sh ../resources/embedfiles.sh ../website-final
 	mv *.html ../website-final
 	cp -R ../images ../website-final	

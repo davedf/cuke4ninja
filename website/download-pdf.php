@@ -26,5 +26,5 @@ fclose($fp);
 
 log_download();
 
-Header("Location: http://cuke4ninja.s3.amazonaws.com/cuke4ninja-2011-02-09.pdf?AWSAccessKeyId=1X67X2N8SN9A2283RSR2&Expires=1305893732&Signature=r5jvKPHSEGHn0kO7q9JVlDxZVZc%3D");
+Header("Location: http://cuke4ninja.s3.amazonaws.com/cuke4ninja-2011-03-16.pdf?AWSAccessKeyId=1X67X2N8SN9A2283RSR2&Expires=1308913112&Signature=5Hayswv9i%2BTTf7AxZ3nxq8pKj68%3D");
 ?>
