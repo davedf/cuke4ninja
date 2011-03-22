@@ -486,7 +486,7 @@ an &lsquo;at&rsquo; sign (@) before the tag name. For example:</p>
 </code>
 <p>You can execute only the scenarios with a particular tag using the <code>--tags</code> option, for example:</p>
 <code>cucumber --tags @fasttest</code>
-<p>Another option is to skip only the scenarios without a particular tag. For that, prefix the tag with a tilde (~). Here is an example:</p>
+<p>Another option is to skip only the scenarios with a particular tag. For that, prefix the tag with a tilde (~). Here is an example:</p>
 <code>cucumber --tags ~@slowtest</code>
 <p>Here are some useful things you can do with tags:</p>
 <ul>
