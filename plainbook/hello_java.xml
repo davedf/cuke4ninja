@@ -130,6 +130,29 @@ jruby 1.4.0 (ruby 1.8.7 patchlevel 174) (2009-11-02 69fbfa3)
     <img id="fig_cucumber_jruby_eclipse_2" src="cucumber-bare-eclipse-2.png" title="Setting Cuke4Duke JRuby parameters in Eclipse" />
     
    </section>
+
+    <important title="Speed up JRuby">
+    <p>If the slow startup time of JRuby is giving you headaches, know that you can speed it up significantly by running a client VM. If you have a 64 bit operating system, you can speed it up even more by running the VM in the 32 bit mode. To do that, define the <code>JAVA_OPTS</code> environment variable and add <code>-client</code> and <code>-d32</code> to it. Here is the comparison of the same test run without and with those options. 
+</p>
+<code>
+$ time sh run.sh 
+.....
+done
+
+real	0m19.438s
+user	0m26.235s
+sys	0m1.333s
+$ export JAVA_OPTS="-client -d32"
+$ time sh run.sh 
+.....
+done
+
+real	0m7.455s
+user	0m8.088s
+sys	0m0.637s
+</code>
+<p>For more good tips on how to speed up JRuby, see <url link="http://blog.headius.com/2010/03/jruby-startup-time-tips.html" />.</p>
+    </important>
     </section>
     <!-- here -->
     <section title="Using ANT and Ivy" id="sec_ant">
