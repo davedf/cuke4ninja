@@ -1,32 +1,31 @@
 <!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
 <chapter title="Cucumber and Ruby" id="chp_hello_ruby">
     <p>
-        In this chapter, we cover setting up Cucumber for a Ruby project.
+        In this chapter we cover setting up Cucumber for a Ruby project.
     </p>
     <sidebar title="Do you have Ruby installed?">
         <p>
-            In this chapter, we assume you have already installed ruby on your system. If this is not the case, there is
+            In this chapter, we assume you have already installed Ruby on your system. If this is not the case, there is
             more information on the <url link="http://www.ruby-lang.org/en/" title="Ruby site"/>.
         </p>
         <p>
             If you are running Windows
-            there are some notes on installing Ruby in <link ref="chp_hello_dotnet"/>
+            see the notes on installing Ruby in <link ref="chp_hello_dotnet"/>
         </p>
     </sidebar>
     <section id="sec_ruby_install_cucumber" title="Installing Cucumber">
-    <p>To automate feature files using Ruby you need to install the <code>cucumber</code> gem.
-            Do that with the following command:
+    <p>To automate feature files using Ruby you need to install the <code>cucumber</code> gem.  Do that with the following command:
         </p>
         <code>gem install cucumber</code>
-		<important title="Installing Gems behind a firewall">
+		<important title="Installing gems behind a firewall">
 			<p>
-				If you do not have direct access to the internet, but instead go through a proxy server, you will have to set the HTTP_PROXY environment variable. Information about environment variables is available on the RubyGems site.<footnote><url link="http://docs.rubygems.org/read/chapter/12"/></footnote>
-			</p>
+If you only have internet access through a proxy server, you will have to set the HTTP_PROXY environment variable. Information about environment variables is available on the RubyGems site.<footnote><url link="http://docs.rubygems.org/read/chapter/12"/></footnote>
+</p>
 		</important>
 
         <p>Check that Cucumber is installed by running the following command in the terminal window:</p>
         <code>cucumber --version</code>
-        <p>Cucumber should print out the version (0.9.4 at the time when we wrote this). </p>
+        <p>Cucumber should print out the installed version. </p>
         <p>Cucumber uses
          RSpec for assertions. If you do not already have
             RSpec, run the following command to install it:
@@ -34,14 +33,15 @@
         <code>gem install rspec</code>
         <important title="Cucumber won't install!">
         <p>
-            Cucumber depends on a particular gherkin version. It will try to download it automatically, but
+            Cucumber depends on a particular version of the gherkin gem
+It will try to download it automatically, but
             if you already have a later version then RubyGems gets confused and won't download the version
             required by Cucumber. As a result you might get an error message similar to this one:
         </p>
         <code>ERROR:  Error installing cucumber:
         cucumber requires gherkin (~> 2.2.9, runtime)</code>
         <p>
-            To resolve this, install the correct gherkin gem version first:
+            To resolve this, install the correct version of gherkin first:
         </p>
         <code>gem install gherkin --version 2.2.9 </code>
         <p> Or just uninstall the previous version of gherkin if you do not need it for other reasons, and then install the latest version:</p>
@@ -55,36 +55,36 @@
         <p>Let's go through a quick sample project to verify that the installation works.
                 Create a directory for the project, for example <code>HelloCucumber</code>.
                 Create a <code>features</code> directory in it. This is where the feature files go.
-                Create a new file in it, called <code>basic.feature</code>, with the following content:
+                Create a new file in the directory called <code>basic.feature</code>, with the following content:
             </p>
             <code file="ruby/HelloCucumber/features/basic.feature"/>
             <p>Run <code>cucumber</code> from the command line in the main project directory.
-            When it cannot match steps to step definitions, Cucumber prints out what it thinks
+            When Cucumber cannot match steps to step definitions, it prints out what it thinks
             would be a good default setup for the steps. As we have not implemented any steps yet,
             Cucumber
             should print a suggestion similar to the one in <link ref="fig.ruby_suggestions" />.
           	</p>
           	<img src="ruby_suggestions.png" id="fig.ruby_suggestions" title="Cucumber suggests a default implementation for step definitions"/>
             <p>
-                Now create a sub-directory called <code>step_definitions</code> in the <code>features</code> directory. This
+                Now create a subdirectory called <code>step_definitions</code> in the <code>features</code> directory. This
                 is where the automation layer between the feature files and the domain code goes. Create a new file
-                called <code>basic_steps.rb</code> in the <code>step_definitions</code> directory. You project structure should end up looking something like in <link ref="fig_ruby_project_structure" />.
+                called <code>basic_steps.rb</code> in the <code>step_definitions</code> directory. Your project structure should be as shown in<link ref="fig_ruby_project_structure" />.
                  Paste the following content into <code>basic_steps.rb</code>:
             </p>
             <code file="ruby/HelloCucumber/features/step_definitions/basic_steps.rb"/>
             <p>
-                This is a very simplistic implementation for all the steps, that does not actually
+                This is a very simplistic implementation that does not actually
                 connect to any domain code. We go through all the details of the feature file and step definitions in <link ref="chp_feature_files" />. For now,
-                you can probably guess that Cucumber uses regular expression after the keywords <code>Given</code>, <code>When</code> and <code>Then</code>
+                you can probably guess that Cucumber uses regular expressions after the keywords <code>Given</code>, <code>When</code> and <code>Then</code>
                 to map lines in a feature file to step definitions.
             </p>
             <img id="fig_ruby_project_structure" src="ruby_project_structure.png" title="Ruby project folders"/>
             <p>
                 Now we are ready to run the features. Run
             <code>cucumber</code> again from the command line in your main project directory, and you should
-            get a result similar to the one in <link ref="fig_ruby_test_results" />.  This tells us the number of
-             features and steps executed, the lines of the step definitions, the steps
-                executed and reports successful and failed test executions.</p>
+            get a result similar to the one shown in <link ref="fig_ruby_test_results" />.  This tells us the number of
+             features and steps executed, the lines of the step definitions and the steps
+                executed, and reports successful and failed test executions.</p>
 	    <img id="fig_ruby_test_results" title="Our feature works in Ruby" src="ruby_test_results.png"/>
     </section>
 </chapter>
