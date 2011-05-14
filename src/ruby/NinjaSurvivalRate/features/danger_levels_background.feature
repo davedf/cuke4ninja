@@ -9,14 +9,14 @@ Feature: Skill availability
     | karate-kick     |
     | roundhouse-kick |
 
-  Scenario: Samurai are dangeous with katanas, no advanced kicks
+  Scenario: Samurai are dangerous with katanas, no advanced kicks
     When a ninja faces a samurai
     Then he should expect the following attack techniques 
     | technique   | danger | 
     | katana      | high   |
     | karate-kick | low    |
 
-  Scenario: Chuch Norris can do anything and is always dangerous 
+  Scenario: Chuck Norris can do anything and is always dangerous 
     When a ninja faces Chuck Norris
     Then he should expect the following attack techniques 
     | technique       | danger   |
