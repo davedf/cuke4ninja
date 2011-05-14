@@ -59,7 +59,7 @@ one way of telling stories is significantly better than the other one. Ninja cuc
                 on which one is better.
             </p>
             <p>
-                Stories often impact several features &mdash; a payment story might have an impact on card
+                Stories often impact several features &ndash; a payment story might have an impact on card
                 processing, fraud control and back-office reporting. Stories are often
                 relatively small chunks of work, helping developers to deliver new functionality frequently. A single feature might be delivered through a large number of
                 stories.
