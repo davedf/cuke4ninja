@@ -1,16 +1,10 @@
 <!DOCTYPE chapter SYSTEM "../resources/plainbook/plainbook.dtd" >
 <chapter id="chp_complex_scenarios" title="Managing complex scenarios">
      <p>The BDD Given-When-Then scenario structure is too verbose when a specification
-         includes lots of similar cases or when complicated objects come into play. One of the strengths of Cucumber is
-         handling complex scenarios and groups of scenarios efficiently. It has several features that help developers
+         includes lots of similar cases or when complicated objects come into play. One of the strengths of Cucumber is its ability to
+         handle complex scenarios and groups of scenarios efficiently. It has several features that help developers
          and testers write and manage complex specifications yet still keep them in a form that is self-explanatory.
          In this chapter, we explore several such features.</p>
-         <ul>
-         <li>Scenario outlines allow us to group related scenarios and add examples with no loss of clarity</li>
-         <li>Tables allow us to define or validate related attributes as a group and handle lists of objects easily</li>
-         <li>Backgrounds allow us to group related pre-conditions for a set of scenarios and manage them in one place</li>
-         <li>Hooks allow us to programmatically manage cross-cutting technical activities such as transactions, security or external resources.</li>
-         </ul>
       
       	<section id="sec_more_complex" title="Complex setups and validations">
 		<p>
@@ -42,16 +36,17 @@
 	<code>Given</code>,	<code>And</code> or <code>But</code>
 	(or <code>Then</code> and <code>When</code>, actually). Cucumber will match the step using a regular expression 
 	and execute it. Using <code>And</code> and <code>But</code>
-	makes it easier to read the specification.
+	just makes it easier to read the specification.
 </p>
 	<p>This also means that the syntax allows you to chain <code>When</code> steps by using <code>And</code> or
-<code>But</code> steps. Though the Gherkin syntax won't stop you, it will send a secret message to Chuck Norris and he will come to your house
- and burn it to the ground with you in it.<footnote>Legal Note: Chuck reserves the right to sub-contract to the Deadly Viper Assassination Squad if he is busy that day.</footnote> A scenario should have one and only one action.</p>
+<code>But</code> steps. Though the Gherkin syntax won't stop you, it will send a secret message to Chuck Norris and 
+he will come to your house
+ and burn it to the ground with you in it.<footnote>Legal note: Chuck reserves the right to sub-contract to the Deadly Viper Assassination Squad if he is busy that day.</footnote> A scenario should have one and only one action.</p>
 <important title="But I need to execute several actions">
-	<p>If you want to put more than one
+	<p>If you want to include more than one
 	<code>When</code> step, then you have a complex multi-step action that means something to the business.
-	 That flow should be captured by your domain model. Talk to the business users, decide
-	  on the name for that flow and specify it using a single
+	 This flow should be captured by your domain model. Talk to the business users, decide
+	  on the name for the flow and specify it using a single
 	   step, which invokes the appropriate domain model procedure. Don't use feature files for scripting the flow.
 	</p>
 </important>
@@ -59,9 +54,9 @@
 </section>
       <section id="sec_groups_of_scenarios" title="Managing groups of related scenarios">
      <p>    The feature file we used
-         in the <link ref="chp_feature_files" /> has 13 lines for two scenarios. To specify a business
+         in <link ref="chp_feature_files" /> has 13 lines for 2 scenarios. To specify a business
          rule properly we would most likely have to add many more scenarios, that illustrate what happens when a
-         ninja is not experienced enough to engage a samurai, when it becomes experienced enough to engage Chuck Norris,
+         ninja is not experienced enough to engage a samurai, and when it becomes experienced enough to engage Chuck Norris,
          not to mention other ninjas and types of opponents. If we had to add four lines for every new scenario,
          the file would quickly become too big to be readable.
      </p>
@@ -84,25 +79,25 @@ Scenario <b>Outline</b>: third-level ninjas engage samurai
      <p>The interesting parts are in bold:     </p>
      <ul>
      <li>Instead of <code>Scenario</code>, this block starts with <code>Scenario Outline</code></li>
-     <li>The steps have placeholders enclosed into less-than and greater-than (&lt; and &gt;).</li>
+     <li>The steps have placeholders enclosed inside less-than and greater-than symbols (&lt; and &gt;).</li>
      <li>There is a new block after the steps, starting with a line that contains the <code>Examples</code> keyword and a colon.</li>
      <li>A table in the normal wiki format (pipes separate cells, one row per line) defines the examples and expected outcomes. The first
      row of the table contains placeholder names.</li>
      </ul>
  <p>This feature file is functionally equivalent to the one we used in the previous chapter. The same step definitions
- will be used to execute it. In fact, try that yourself. Delete the two step definitions we used earlier, or create 
+ will be used to execute it. In fact, try it yourself. Delete the two step definitions we used earlier, or create 
  a new feature file and run it using Cucumber. You'll see the same results, just formatted differently. </p>
- <p>What's nice about this format is that we can easily add more examples. To make the specification stronger, let's
+ <p>What's nice about scenario outlines is that we can easily add more examples. To make the specification stronger, let's
  add another example that shows that second level ninjas don't even fight against samurai. We add just one line to the table:  
  <code>
 |second		|a samurai	|run for his life	|
  </code>
  The result is easier to read and understand than if we added another four-line scenario. With more complex
- scenarios, the result is even better.</p>
+ scenarios, the benefit is greater still.</p>
  <p>Run Cucumber again and the test should fail. If you are running Ruby, you should get an error similar to the one in
  <link ref="fig.ninja_survival_outlines_ruby_fail" />. If you are running Java, you should get an error similar to the one in <link ref="fig.ninja_survival_outlines_java_fail" />.</p>
 <img src="ninja_survival_outlines_ruby_fail.png" id="fig.ninja_survival_outlines_ruby_fail" title="Ruby ninjas engage samurai even when they should not" />
-<p>For a homework assignment, change the Ninja class to make this test pass and re-run Cucumber to confirm that you 
+<p>For a homework assignment, change the Ninja class to make this test pass and rerun Cucumber to confirm that you 
 have fixed it.</p>
 
 <img src="ninja_survival_outlines_java_fail.png" id="fig.ninja_survival_outlines_java_fail" title="Java ninjas engage samurai even when they should not" />
@@ -131,11 +126,12 @@ the scenarios become hard to understand and maintain. For example:
 	<code file="ruby/NinjaSurvivalRate/features/ninja_survival_rate_tables.feature" part="singletable" />
 
  <section id="sec_ruby_tables" title="Reading tables in Ruby">
-	<p>In Ruby, tables are converted automatically into <code>Cucumber::Ast::Table</code> objects. A step definition will receive
-	the whole table as an argument. The simplest way to use a table is to invoke the <code>hashes</code> method
+	<p>In Ruby, tables are converted automatically into <code>Cucumber::Ast::Table</code> objects. A step definition will
+receive
+	the whole table as an argument. The simplest way to use a table is to invoke the <code>hashes</code> method,
 	which converts the entire table into an array of hashes, mapping the header values to cell values. Each element of the array
 	represents a single data row. We can implement
-	the step to handle creating a ninja from several properties by grabbing the first (and only) hash and passing that to the
+	the step to handle creating a ninja from several properties by grabbing the first (and only) hash and passing it to the
 	constructor:
 	</p>
 	<code file="ruby/NinjaSurvivalRate/features/step_definitions/ninja_steps.rb" part="singletable" />		
@@ -144,8 +140,8 @@ the scenarios become hard to understand and maintain. For example:
  </section> 
  <section id="sec_java_tables" title="Reading tables in Java">
  	<p>In Java, tables are converted automatically into <code>cuke4duke.Table</code> objects, which 
- 	mirror the API of the <code>Cucumber::Ast::Table</code> ruby class. A step definition 
- 	will receive the entire table as an argument. The easiest way to process a table is to invoke the
+ 	mirror the API of the <code>Cucumber::Ast::Table</code> ruby class. A step definition will
+ 	receive the entire table as an argument. The easiest way to process a table is to invoke the
  	<code>hashes</code> method to get a list of maps that represents the table. Each element of the list represents
  	one data row as a <code>Map&lt;String,String&gt;</code>, mapping column headers into cell values. For example, this is how
  	we can create a ninja using the <code>belt_level</code> property of the first map in the list:</p>
@@ -156,7 +152,7 @@ the scenarios become hard to understand and maintain. For example:
  <section id="sec_net_tables" title="Reading tables in .NET">
  
  	<p>In .NET, tables are converted automatically into <code>Cuke4Nuke.Framework.Table</code> objects, which 
- 	mirror parts of the API of the <code>Cucumber::Ast::Table</code> Ruby class. The Table API in .NET is not
+ 	mirror parts of the API of the <code>Cucumber::Ast::Table</code> Ruby class. The table API in .NET is not
  	as nice and clean as it is in Ruby and Java, but it does the job. A step definition 
  	will receive the entire table as an argument. The easiest way to process a table is to invoke the
  	<code>Hashes</code> method to get a list of dictionaries that represents the table. Each element of the list represents
@@ -171,40 +167,41 @@ the scenarios become hard to understand and maintain. For example:
 <section id="sec_object_lists" title="Working with lists of objects">
 <p>We can use tables to efficiently describe specifications that work with lists of objects. Instead of a very lengthy 
 description that explains individual objects with Given-When-Then, we can just specify batches of objects in a table. 
-For example, it is a well known fact that only Chuck Norris can perform the roundhouse-kick without wire-fu and that he is
-always extremely dangerous. We can specify that with the following scenario:
+For example, it is a well-known fact that only Chuck Norris can perform the roundhouse kick without wire fu and that he is
+always extremely dangerous. We can specify this with the following scenario:
 </p>
 <code file="ruby/NinjaSurvivalRate/features/danger_levels.feature"/>
-<p>In this case we are using tables for inputs and expected outputs. Note that the input table does not really have any headers. Unlike
-most other tools based on tables, Cucumber does not require the first row to be a header if that is not required. In addition, although
+<p>In this case we are using tables for inputs (skills) and expected outputs (techniques and levels). Note that the table of skills
+ does not have any headers. 
+Unlike most other tools based on tables, Cucumber does not require the first row to be a header if that is not required. In addition, although
 the API to pass tables to validation step definitions is the same, Cucumber does not require us to check every value individually. It
 has a helper method to compare expected tabular outputs to actual values.
 </p>	
-<p>We'll go through the step definitions in all three platforms now. For homework, implement the <code>Skill</code> class to make the feature from this example pass. 
-If you want to cheat, have a look at our web site and download the solution from there. Once you have it running, the result
-should be nice and green like in <link ref="fig.skill_ruby_pass" />.</p>
+<p>We'll go through the step definitions on all three platforms now. For homework, implement the <code>Skill</code> class to make the feature from this example pass. 
+If you want to cheat, have a look at our website and download the solution from there. Once you have it running, the result
+should be nice and green just as in <link ref="fig.skill_ruby_pass" />.</p>
 <p>Then break the test by changing the code in the <code>Skill</code> class and
-re-run the test again to see it fail. For example, the result in <link ref="fig.skill_ruby_fail" /> is the result when
-all the skills were available to everyone. Notice how Cucumber prints the outputs nicely to signal exactly what is wrong.</p>
+rerun the test to see it fail. For example, the result in <link ref="fig.skill_ruby_fail" /> is the result when
+all the skills are available to everyone. Notice how Cucumber prints the outputs nicely to signal exactly what is wrong.</p>
 
  <img src="skill_ruby_pass.png" id="fig.skill_ruby_pass" title="Table comparisons in Ruby" />
 
 <important title="What is the order of execution?">
 <p>It's not important. When teams start with specification by example they often ask for the order of execution to
- be able to reuse context. For example, both scenarios in this case have the same <code>Given</code> step, so
- setting it up only in one place and using it for both scenarios makes sense. Making one scenario dependent on another
+ be able to reuse context. For example, the two scenarios in this case have the same <code>Given</code> step, so
+ setting it up in one place only and using it for both scenarios makes sense. Making one scenario dependent on another
  one or relying on the order of execution is bad practice. This makes it impossible to check individual scenarios
- in isolation or get quick feedback from a subset of tests. Instead of making the scenarios interdependent, we can clean
- this up with a common setup. We explain this in <link ref="sec_background" />   </p>
+ in isolation or to get quick feedback from a subset of tests. Instead of making the scenarios interdependent, we can clarify 
+things with a common setup. We explain this in <link ref="sec_background" />.   </p>
 </important>
 
  <img src="skill_ruby_fail.png" id="fig.skill_ruby_fail" title="Cucumber clearly prints what's wrong when table comparisons fail" />
 
  <section  title="Advanced table operations in Ruby">
- <p>To process a table without using the first row as a header, we can call the <code>raw</code> method and get the entire table as
- an array of arrays of strings. The first array will contain rows and the second-level arrays will contain
+ <p>To process a table without a header row, we can call the <code>raw</code> method and get the entire table as
+ an array of arrays of strings. The first-level array containa rows and the second-level arrays contain
  cell values inside each row. In this case, the table has only one column, so we'll get the following array
- <code>[["katana"],["karate-kick"],["roundhouse-kick"]]</code>. We can now process this easily and for example initialise
+ <code>[["katana"],["karate-kick"],["roundhouse-kick"]]</code>. We can now process this easily and, for example, initialise
  an array of <code>Skill</code> objects with it.</p>
 	<code file="ruby/NinjaSurvivalRate/features/step_definitions/skill_steps.rb" part="raw"/>
 
@@ -212,16 +209,16 @@ all the skills were available to everyone. Notice how Cucumber prints the output
  of hashes corresponding to the expected outcome table. Then we can use the <code>diff!</code> method of the Cucumber table
  to compare the entire table with the expected list of hashes.</p>
 	<code file="ruby/NinjaSurvivalRate/features/step_definitions/skill_steps.rb" part="diff"/>
-<p>The <code>diff!</code> method can compare a table against another table, an array of hashes, or an array of arrays of strings 
+<p>We can use the <code>diff!</code> method to compare a table against another table, an array of hashes, or an array of arrays of strings 
 for cases when a table does not have a header row. </p>
  </section>
  
  <section title="Advanced table operations in Java">
- <p>To process a table without using the first row as a header, we can call the <code>raw</code> method and get
+ <p>To process a table without a header row, we can call the <code>raw</code> method and get
  the entire table as
- a <code>List&lt;List&lt;String&gt;&gt;</code>. The first list will contain rows and the second-level lists will contain
+ a <code>List&lt;List&lt;String&gt;&gt;</code>. The first-level list contains rows and the second-level lists contain
  cell values inside each row. In this case, the table has only one column, so we'll get the following List
- <code>[["katana"],["karate-kick"],["roundhouse-kick"]]</code>. We can now process this easily and for example initialise
+ <code>[["katana"],["karate-kick"],["roundhouse-kick"]]</code>. We can now process this easily and, for example, initialise
  an array of <code>Skill</code> objects with it.</p>
 	<code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/SkillSteps.java" part="raw"/>
 
@@ -231,60 +228,66 @@ for cases when a table does not have a header row. </p>
  Then we can use the <code>diff!</code> method of the Cucumber table
  to compare the entire table with the expected list of hashes.</p>
 	<code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/SkillSteps.java" part="diff"/>
-<p>The <code>diff!</code> method can compare a table against another table, a list of hash-maps, or a list of lists of strings 
+<p>We can use the <code>diff!</code> method to compare a table against another table, a list of hash-maps, or a list of lists of strings 
 for cases when a table does not have a header row. </p>
  </section>
  <section title="Advanced table operations in .NET">
- <p>To process a table without using the first row as a header, we can access the raw data using the <code>Data</code>
- property. This is the replacement for the Ruby <code>hashes</code> method, it gives us access to
+ <p>To process a table without a header row, we can access the raw data using the <code>Data</code>
+ property. This is the equivalent of the Ruby <code>hashes</code> method. It gives us access to
  the entire table as
- a <code>List&lt;List&lt;string&gt;&gt;</code>. The first list will contain rows. The second-level lists will contain
+ a <code>List&lt;List&lt;string&gt;&gt;</code>. The first-level list contains rows. The second-level lists contain
  cell values inside each row. In this case, the table has only one column, so we'll get the following List
- <code>[["katana"],["karate-kick"],["roundhouse-kick"]]</code>. We can now process this easily and for example initialise
+ <code>[["katana"],["karate-kick"],["roundhouse-kick"]]</code>. We can now process this easily and, for example, initialise
  an array of <code>Skill</code> objects with it.</p>
 	<code file="dotnet/NinjaSurvivalRate/src/SkillSteps.cs" part="raw"/>
 
  <p>To validate the results in the third step, we create a new table using the actual values. The API in .NET differs
- significantly from the Ruby and Java counterparts in this aspect. We can use the <code>Data</code> property
+ significantly from the Ruby and Java counterparts in this respect. We can use the <code>Data</code> property
  of the new table to populate it with the actual data, in the same format as the result that we expect. 
  Then we can use the <code>AssertSameAs</code> method of the Cucumber table
  to compare both tables:</p>
 	<code file="dotnet/NinjaSurvivalRate/src/SkillSteps.cs" part="diff"/>
-<p>Unlike Java and Ruby that print a nice report when the comparison fails and show us exactly where the problem is,
-the .NET version just fails. You might need to debug it, as explained in <link ref="sec_dotnet_debug" />, if you get stuck. </p>
+<p>Unlike Java and Ruby, which print nice reports when the comparison fails and show us exactly where the problem is,
+the .NET version just fails. if you get stuck you might need to debug it, as explained in <link ref="sec_dotnet_debug" />. </p>
  </section>
 </section>
 
 
-<section title="Using backgrounds to group related pre-conditions" id="sec_background">
+<section title="Using backgrounds to group related preconditions" id="sec_background">
 <p>Both scenarios we use to demonstrate advanced table operations start with the same list of skills. Related scenarios
 often start with the same context, or a very similar context. In such cases, it is often useful to centralise the common
 setups. This will make it easier to change the setup globally in the future. It also makes scenarios shorter and easier
-to understand. Cucumber supports this with backgrounds. A <define>Background</define> is a special scenario executed
+to understand. Cucumber supports this with backgrounds. A <define>background</define> is a special scenario executed
 before each scenario in the feature file. It starts with the <code>Background</code> keyword instead of the usual 
 <code>Scenario</code>. Here is how the previous example looks with a background:</p>
 <code file="ruby/NinjaSurvivalRate/features/danger_levels_background.feature" />
 
-
 <note title="Avoid complex backgrounds">
-<p>If a feature file background starts becoming long or complex, it is often a sign that you are describing how the context needs to be set up
-rather than what the context is. Separate the specification of the context from the procedure to set it up and automate the procedure using step
-definitions. Another reason for complex backgrounds is often trying to define technical initialisation, for example allocating resources etc. 
+<p>If a feature file background starts becoming long or complex, it is often a sign that you are describing how the context
+ needs to be set up
+rather than what the context is. Separate the specification of the context from the procedure to set it up and automate the
+ procedure using step
+definitions. Backgrounds can also become complex because you are trying to define technical initialisation, for example 
+allocating resources etc. 
 Technical context setup should be moved to a technical hook (explained in <link ref="sec_hooks" />). </p>
 </note>
 </section>
 <section id="sec_hooks" title="Using hooks to manage cross-cutting concerns">
-<p>Cucumber feature files should ideally describe expected functionality without going into a lot of technical detail. This makes the feature files
-simpler, easier to read and understand, and less bound to a particular technical implementation. It helps us implement the principle of symmetric change 
-(see <link ref="imp.symmetric.changes" />). Technical initialisation or tear-down activities are sometimes useful to avoid duplication in step definitions, 
-so Cucumber provides for that with <define>Scenario Hooks</define>.</p>
-<p>Scenario Hooks are technical actions that will be executed before or after a scenario is validated. They can be set up globally (for all scenarios) or 
-filtered by tags (mentioned in <link ref="sec_gherkin_tag" />).
+<p>Cucumber feature files should ideally describe expected functionality without going into a lot of technical detail. 
+This makes the feature files
+simpler, easier to read and understand, and less bound to a particular technical implementation. It helps us implement 
+the principle of symmetric change 
+(see <link ref="imp.symmetric.changes" />). It is useful to separate technical initialisation and tear-down activities, to avoid
+ duplication in step definitions, 
+so Cucumber provides for this with <define>scenario hooks</define>.</p>
+<p>Scenario hooks are technical actions that are executed before or after a scenario is validated. They can be set up globally (for all scenarios) or 
+filtered by tags (covered in <link ref="sec_gherkin_tag" />).
 </p>
 <p>To demonstrate how hooks work, we'll use a simple feature demonstrating how Chuck Norris kills ninjas. 
-We'll call this one a killer feature (<code>features/killer.feature</code>).</p>
+We'll call this a killer feature, and create it in the file <code>features/killer.feature</code>.</p>
 <code file="ruby/NinjaSurvivalRate/features/killer.feature" />
-<p>The number of expected ninjas decreases between scenarios and the number of killed ninjas rises. We'll implement this using hooks and without 
+<p>The number of expected ninjas decreases between scenarios and the number of killed ninjas rises. We'll implement this
+ using hooks, without 
 doing anything in the step definition of the action. This is quite a misuse of hooks and actions but considering that Chuck 
 ends up being really cool, I'm sure he won't mind. And we'll use it to demonstrate the syntax of hooks in different languages. </p>
 <section title="Scenario hooks in Ruby">
@@ -297,10 +300,11 @@ After do |scenario|
  # something that happens after a scenario is executed
 end
 </code>
-<p>We can define the steps of the killer feature using hooks to keep global state of ninjas killed so far. Save the following content
+<p>We can define the steps of the killer feature using hooks to store the global number of ninjas killed so far. Save the 
+following content
 into a file, for example <code>features/step_definitions/killer_steps.rb</code>.</p>
 <code file="ruby/NinjaSurvivalRate/features/step_definitions/killer_steps.rb" />
-<p>Run only the killer feature now using the following command:</p>
+<p>Run the killer feature now using the following command:</p>
 <code>cucumber features/killer.feature </code>
 <p>The result should appear as in <link ref="img.ruby_killer" />. The global class variables (remaining ninjas and killed ninjas) 
 change every time a scenario is executed, so that you can see the effects. </p>
@@ -311,8 +315,8 @@ change every time a scenario is executed, so that you can see the effects. </p>
 Regardless of whether you define a hook in a step definition or in a global support file, all scenario hooks are global. 
 </important>
 
-<p>You can set up hooks in a global file, ideally in a <code>features/support</code> directory. You can also set them up in a feature
-file as in the previous example. All hooks execute before/after each scenario, regardless of where they are defined. To see this effect, execute the
+<p>You can set up hooks in a global file, ideally in a <code>features/support</code> folder. You can also set them up in a feature
+file as in the previous example. All hooks execute before or after each scenario, regardless of where they are defined. To see this effect, execute the
 feature again but run one more feature before it. For example, use the following command:</p>
 
 <code>cucumber features/ninja_survival_rate.feature features/killer.feature</code>
@@ -321,8 +325,9 @@ if you use hooks, or you'll end up on the one Chuck Norris uses to hang his punc
 
 <img id="img.ruby_killer_global" title="Too many ninjas fall at the hand of Chuck because of global hooks" src="ruby-killer-global.png" />
 
-<p>You can avoid this problem by assigning tags to scenarios (<link ref="sec_gherkin_tag" />) and specifying the relevant 
-tags as arguments of <code>Before</code> and <code>After</code>). For example, the following will execute only before scenarios marked with <code>@killer</code>:</p>
+<p>You can avoid this problem by assigning tags to scenarios (see <link ref="sec_gherkin_tag" />) and specifying the relevant 
+tags as arguments of <code>Before</code> and <code>After</code>). For example, the following code will execute only 
+before scenarios marked with <code>@killer</code>:</p>
 <code>
 
 Before('@killer') do
@@ -345,11 +350,11 @@ end
  }
 </code>
 <important>@Before and @After annotations are in the cuke4duke.annotation package,
-not the cuke4duke.annotation.I18n.EN as all the other annotations we used so far.
+not the cuke4duke.annotation.I18n.EN package as all the other annotations we have used so far.
 </important>
 <p>We can define the steps to implement our killer feature using the tags:</p>
 <code file="java/NinjaSurvivalRate/src/test/java/ninjasurvivalrate/KillerSteps.java" part="steps"/>
-<p>If you change the POM file to execute just the killer feature now (or delete other features), you should see the feature passing (<link ref="img.java_killer" />). Remember
+<p>If you change the POM file to execute just the killer feature (or delete the other features), you should see the feature passing (<link ref="img.java_killer" />). Remember
 that the hooks are global, although they are defined in a class file with the other steps from this feature, so they will be executed even for other features. This means
 that the same test will fail if you execute all the other features from the <code>features</code> folder. To avoid this problem, mark your scenarios with tags
 and list the relevant tags in the annotation. For example: </p>
@@ -363,7 +368,7 @@ and list the relevant tags in the annotation. For example: </p>
 <p>For more information on scenario hooks in other JVM languages, see <url title="the hooks page in the Cuke4Duke wiki"  link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" />.</p>
 </section>
 <section title="Scenario hooks in .NET">
-<p>You can define scenario hooks in Java using the <code>[Before]</code> and <code>[After]</code> attributes. For example:</p>
+<p>You can define scenario hooks in .NET using the <code>[Before]</code> and <code>[After]</code> attributes. For example:</p>
 <code>
 [Before]
 public void ThisGetsCalledBeforeEachScenario(){
@@ -376,7 +381,7 @@ public void ThisGetsCalledAfterEachScenario(){
 </code>
 <p>We can define the steps to implement our killer feature using the tags:</p>
 <code file="dotnet/NinjaSurvivalRate/src/KillerSteps.cs" part="steps"/>
-<p>If you execute just the killer feature now, you should see the feature passing. Remember
+<p>If you execute just the killer feature, you should see the feature passing. Remember
 that the hooks are global, although they are defined in a class file with the other steps from this feature, so they will be executed even for other features. 
 This means that the same test will fail if you execute all the other features from the <code>features</code> folder. 
 To avoid this problem, mark your scenarios with tags and list the relevant tags in the annotation. For example: </p>
@@ -389,8 +394,9 @@ To avoid this problem, mark your scenarios with tags and list the relevant tags 
 <p>For more information on scenario hooks in Cuke4Nuke, see <url title="hooks examples in the Cuke4Nuke source code" link="http://github.com/richardlawrence/Cuke4Nuke/blob/master/features/hooks.feature" />.</p>
 </section>
 <note title="Advanced hooks">
-<p>The Ruby version of Cucumber (but not Cuke4Duke and Cuke4Nuke) supports many other hooks, such as step hooks (executed before or after each step) or global hooks (executed 
-once before any test runs or after all tests finish). They are defined similarly to the scenario hooks mentioned in this section. For more information, see
+<p>The Ruby version of Cucumber (but not Cuke4Duke and Cuke4Nuke) supports many other types of hooks, such as step hooks
+ (executed before or after each step) and global hooks (executed 
+once before any test runs or after all tests finish). They are defined similarly to the scenario hooks covered in this section. For more information, see
 <url title="the hooks page in the Cukes wiki" link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.</p>
 </note>
 </section>
