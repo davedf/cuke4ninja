@@ -2,16 +2,14 @@
 <preface id="pre_about" title="About this document">
 	<p>This document is a step-by-step guide for Cucumber,
 	a tool that is quickly becoming the weapon of choice for many agile teams when it comes to functional test automation, creating
-	executable specifications and building a living documentation. We believe in iterative development so we write and publish iteratively.</p>
+	executable specifications and building living documentation. We believe in iterative development so we write and publish iteratively.</p>
 <section id="pre_about_whatsnew" title="What's new in this version">
   <p>The changes in this version are:</p>
   <ul>
-  <li>Introduction cleaned up, added a section on how Cucumber fits into BDD, moved terminology to the Gherkin part</li>
-  <li>Fixed PDF inclusion of some missing .NET sources</li>
-  <li>and a lot of minor fixes and tweaks</li>
+  <li>a lot of minor fixes and tweaks</li>
   </ul>
 </section>
-<section id="pre_about_online" title="Online">
+<section id="pre_about_online" title="Get online">
  <p>To get notified when we publish an update, grab the code for the examples we used in the guide, 
 	provide feedback or ask a question, do one or more of the following: </p>
 	<ul>

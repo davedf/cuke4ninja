@@ -12,7 +12,7 @@
         development, specification by example and agile acceptance testing. You can use it to
         automate functional validation in a form that is easily readable and understandable to business users,
         developers and testers. This helps teams create <i>executable specifications</i>,
-        that are a goal for development, acceptance criteria and functional regression checks for future changes. 
+        that function as goals for development, acceptance criteria and functional regression checks for future changes. 
         In this way, Cucumber allows teams to create <i>living documentation</i>, a single authoritative source of
         information on system functionality that is always up-to-date.
     </p>
@@ -21,7 +21,7 @@
             Yes, executable specifications. You can use Cucumber to execute checks based on your
             specifications against the software automatically, when you use specification by example. To keep
             this document short we won't go into specification by example, how behaviour-driven development
-            works or how best to apply agile acceptance testing. There are some nice references in
+            works or how best to apply agile acceptance testing. There are some useful references in
             <link ref="app_resources"/>
             for further research.
         </p>
@@ -35,26 +35,25 @@
     <section id="sec_why_cucumber" title="Why use Cucumber?">
         <p>
             Cucumber is one of the rare tools that try very hard to stay out of your way, to let you do your work
-            without making you worry about the tool itself too much. It helps teams automate their specifications
+            without you having to worry about the tool itself much. It helps teams automate their specifications
             efficiently in several ways:
         </p>
 
         <ul>
             <li>It is relatively easy to set up.</li>
             <li>It supports multiple report formats, including HTML and PDF.</li>
-            <li>It supports writing specifications in about 40 spoken languages, making it easy for teams outside of
-                English-speaking territories or those working on internationally targeted software to engage their
+            <li>It supports about 40 languages, making it easy for teams in
+                non-English-speaking territories or those working on internationally targeted software to engage their
                 business users better.
             </li>
             <li>It supports different ways of describing executable specifications &mdash; including story-like prose,
-                lists and tabular data. You can unleash your inner writer, or more likely an inner accountant. 
+                lists and tabular data. You can unleash your inner writer, or more likely inner accountant. 
             </li>
-            <li>It allows scripting, abstraction and component reuse on several levels, allowing both technical and
+            <li>It provides for scripting, abstraction and component reuse on several levels, allowing both technical and
                 non-technical
-                users to efficiently describe specifications and tests.
+                users to describe specifications and tests efficiently.
             </li>
-            <li>It generates the tricky parts of the code so that you don't have to write most of the boiler-plate
-                automation or make mistakes doing it.
+            <li>It generates the boiler-plate parts of the code (often tricky) so that you don't have to write it and possibly make mistakes.
             </li>
             <li>It integrates nicely with the rest of the development ecosystem. It does not try to impose a version
                 control system, but works off plain-text files that can be stored in any version control system. For
@@ -64,7 +63,7 @@
                 can use Cucumber with .NET or JVM languages almost natively.
             </li>
             <li>It's integrated with all the most popular web testing libraries.</li>
-            <li>It allows you to cross reference and index tests using tags, so that you can quickly find all tests related to a function or run a group of related tests (eg quick
+            <li>It allows you to cross-reference and index tests using tags, so that you can quickly find all tests related to a function or run a group of related tests (eg quick
                 tests, slow tests, integration tests, accounting tests).
             </li>
         </ul>
@@ -77,11 +76,11 @@
         </p>
     </section>
     <section id="sec_comparison_tools" title="How does Cucumber compare to other tools?">
-	<p>Cucumber is like that brave Athenian soldier who centuries ago decided to test the resilience of humans by running from the Marathon field. It is essentially a test runner. It does a pretty good job of executing automated tests and spitting out reports in lots of various formats,
+	<p>Cucumber is like that brave Athenian soldier who centuries ago decided to try out whether he could reach Athens from the Marathon battlefield &ndash; it is essentially a test runner. It does a pretty good job of executing automated tests and spitting out reports in lots of various formats,
 	    including HTML, PDF, JUnit (for integration with continuous build tools) and colour text on the
-	    screen. On the other hand, it doesn't try to do anything before test
-	    execution in the process. So there is no Cucumber-IDE or anything
-	    similar. There are some external programs for that, mostly of beta
+	    screen. On the other hand, it doesn't try to do anything in the testing process before or after actual test
+	    execution.  So there is no Cucumber IDE or anything
+	    similar. There are some external programs for such purposes, mostly of beta
 	    quality and in development:</p>
    	<ul>
 	    <li><url link="http://github.com/henritersteeg/cuke4vs" /> does syntax highlighting
@@ -89,64 +88,69 @@
     	    <li><url link="http://github.com/QuBiT/cucumber-eclipse-plugin" /> is a plugin for Eclipse</li>
 	    <li><url link="http://github.com/cs3b/cucumber_fm/" /> is a website system for
 	    Cucumber file management</li>
-    	    <li><url link="http://relishapp.com/" /> is a web product in development to
-	    publish Cucumber files as a nice web site</li>
+    	    <li><url link="http://relishapp.com/" /> is a web product that enables you to publish Cucumber files as a website</li>
     	    <li><url link="http://21croissants.github.com/courgette/" /> another web product in
 	    development to show files as web pages</li>
-	    <li><url link="https://github.com/asterite/cukecooker/" /> is a web based IDE for Cucumber feature files when working in Ruby</li>
+	    <li><url link="https://github.com/asterite/cukecooker/" /> is a web-based IDE for Cucumber feature files that you can use when working in Ruby</li>
 	</ul>
-	<p> Cucumber files (explained later in this chapter) are plain-text which makes it very simple to edit them but does not allow any clever formatting.  
-You can put a short description in a file header, but apart from that everything else in the file is related to scenarios and test cases. That means that there is no way to include images, hyperlinks, rich-text descriptions and similar.
+	<p>For Ruby automation, RubyMine by JetBrains has pretty good integration with Cucumber. SpecFlow integrates very nicely into Visual Studio.</p>
+	<p> Cucumber files (explained later in this chapter) are in plain text, which makes it very simple to edit them but does not allow any clever formatting.  
+You can put a short description in a file header, but apart from that everything else in the file is related to scenarios and test cases. That means that there is no way to include images, hyperlinks, rich-text descriptions and similar adjuncts.
 	</p>
-	<p>Cucumber's step
-	    definition (automation layer, integration to domain API, explained in later chapters) model is very simple, which is 
+	<p>Cucumber's automation model 
+	    definition (automation layer, integration to domain API, explained in later chapters
+ 		is very simple, which is 
 	    both a strength
-	    and a weakness in different contexts. A simple API makes it very easy
+	    and a weakness. A simple API makes it very easy
 	    to understand and learn what you can do with Cucumber, so you won't
 	    spend three months getting your head around all the possible ways to
-	    use tables. On the other hand, it doesn't have the smart domain-object
+	    use tables. On the other hand, it doesn't have the smart mapping for domain objects
 	    mapping features that some other tools have, which allow you to expose your domain
 	    objects and services directly for testing and provide lots of
 	    flexibility in how you can manage complex scenarios.
     	</p>
     </section>
-    <section id="sec_cucumber_bdd" title="What does Cucumber have to do with BDD">
-        <p>Aspiring Cucumber  ninjas are well advised that Cucumber is frequently mentioned in the context of Behaviour driven Development (BDD). In fact, Cucumber is as closely tied to BDD as Chuck Norris is to his beard. Dan North, the central authority on BDD, summarised BDD as:<footnote>
+    <section title="What does Cucumber have to do with BDD?">
+        <p>Aspiring Cucumber  ninjas are well advised that Cucumber is frequently mentioned 
+in the context of behaviour-driven development (BDD). In fact, Cucumber is as closely tied to BDD as Chuck Norris is to his beard. Dan North, the central authority on BDD, summarised BDD as:<footnote>
             See
             <url link="http://skillsmatter.com/podcast/java-jee/how-to-sell-bdd-to-the-business" />
         </footnote>
            </p>
-        <quote>A second generation, outside-in, pull based, multiple stakeholder,
-            multiple scale, high automation, agile methodology
+        <quote>A second-generation, outside-in, pull-based, multiple-stakeholder,
+            multiple-scale, high-automation, agile methodology
         </quote>
-           <section title="Second Generation">
-           <p>BDD came out of merging ideas of Extreme Programming, Lean software development and Domain Driven Design,
-            as a second-generation agile process that helps teams deliver high quality software and answers many of the
-            most confusing questions of early agile processes, such as the ones dealing with documentation and testing.
+           <section title="Second-generation">
+           <p>BDD developed from a merging of the concepts of extreme programming, lean software development and domain-driven design,
+            as a second-generation agile process that helps teams deliver high-quality software and answers many of the
+            most confusing questions of early agile processes, such as those dealing with documentation and testing.
         </p>
        </section>
            <section title="Outside-in and pull-based">
-           <p>BDD takes the ideas of value chains and pulling features from Lean manufacturing, ensuring that the right software
+           <p>BDD takes the ideas of value chains and pulling features from lean manufacturing, ensuring that the right software
                is built by focusing on the expected outputs of the system and ensuring that these outputs are achieved.
-               Teams achieve this by collaborating on specifications and illustrating the specifications with key examples
+               Teams do this by collaborating on specifications and illustrating the specifications with key examples
                of expected outcomes. These specifications are created just in time when they are needed, from user stories
                and use cases that get pulled into development.</p>
        </section>
        <section title="Multiple-stakeholder">
            <p>BDD dispenses with the idea that there is a single amorphous &lsquo;user&rsquo; of the system, and recognises that
-               different groups of people will be affected with the software in different ways. In Quality Software Management, Gerald Weinberg wrote that &lsquo;Quality is value to some person&rsquo;.
+               different groups of people will be involved with the software in different ways. In <i>Quality Software Management</i><bib ref="weinberg:qualitysw"/>, Gerald Weinberg wrote: &lsquo;Quality is value to some person&rsquo;.
                BDD forces the delivery teams
                to understand and define quality, by specifying <i>who</i> are the people that the software will bring some value to and <i>what</i> will be valuable to them. </p>
        </section>
        <section title="Multiple-scale">
-           <p>A core idea of BDD is to clearly specify the expected outputs with realistic examples and then develop the software to achieve those outputs. This works on multiple levels. On the top level, we can work with high-level examples of how a feature will be useful in a holistic way. Below that, we can look at the impact of that on individual functional areas of the system. Below that we can work on technical implementation units. The process is the same, regardless of the level. </p>
+           <p>A core idea of BDD is to specify the expected outputs clearly with realistic examples and then develop the software to achieve those outputs. 
+This works on multiple levels. On the top level, we can work with high-level examples of how a feature will be useful
+ in a holistic way. Below that level, we can look at the impact
+ on individual functional areas of the system. Below that we can work on technical implementation units. The process is the same, regardless of the level. </p>
        </section>
        <section title="Agile">
            <p>BDD works best with short iterations or flow-based work, where teams specify, implement and deliver relatively small
                chunks of functionality. It requires cross-functional teams to collaborate on specifications and tests.</p>
        </section>
        <section title="High-automation">
-           <p>Once the expected quality is defined, the team will need to check the system functionality frequently and compare it to the expected results. To make this check efficient, it has to be automated. BDD relies heavily on automation of executable
+           <p>Once the expected quality is defined, the team will need to check the system's functionality frequently and compare it to the expected results. To make this check efficient, it has to be automated. BDD relies heavily on the automation of executable
                specifications. </p>
                <p>Cucumber takes care of the &lsquo;high-automation&rsquo; part of the BDD definition. It allows teams to describe features in a business language, with key examples, and automate the validation of those features against system functionality.</p>
        </section>
