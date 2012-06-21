@@ -135,7 +135,7 @@ receive
 	constructor:
 	</p>
 	<code file="ruby/NinjaSurvivalRate/features/step_definitions/ninja_steps.rb" part="singletable" />		
- 	<p>See <url link="http://rdoc.info/github/aslakhellesoy/cucumber/master/Cucumber/Ast/Table" title="Cucumber AST Table API docs" /> on RDoc for more
+ 	<p>See <url link="http://rdoc.info/github/cucumber/cucumber/master/Cucumber/Ast/Table" title="Cucumber AST Table API docs" /> on RDoc for more
  	information on other table methods.</p>
  </section> 
  <section id="sec_java_tables" title="Reading tables in Java">
@@ -334,7 +334,7 @@ Before('@killer') do
   # only before scenarios tagged with @killer
 end
 </code>
-<p>For more information on scenario hooks in Ruby, see <url title="the hooks page in the Cukes wiki" link="http://github.com/aslakhellesoy/cucumber/wiki/Hooks" />.</p>
+<p>For more information on scenario hooks in Ruby, see <url title="the hooks page in the Cukes wiki" link="http://github.com/cucumber/cucumber/wiki/Hooks" />.</p>
 </section>
 <section title="Scenario hooks in Java">
 <p>You can define scenario hooks in Java using the <code>@Before</code> and <code>@After</code> annotations. For example:</p>
@@ -365,7 +365,7 @@ and list the relevant tags in the annotation. For example: </p>
  }
 </code>
 <img id="img.java_killer" title="Ninjas fall at Chuck's hand in Java" src="java-killer.png" />
-<p>For more information on scenario hooks in other JVM languages, see <url title="the hooks page in the Cuke4Duke wiki"  link="http://github.com/aslakhellesoy/cuke4duke/wiki/Hooks" />.</p>
+<p>For more information on scenario hooks in other JVM languages, see <url title="the hooks page in the Cuke4Duke wiki"  link="http://github.com/cucumber/cuke4duke/wiki/Hooks" />.</p>
 </section>
 <section title="Scenario hooks in .NET">
 <p>You can define scenario hooks in .NET using the <code>[Before]</code> and <code>[After]</code> attributes. For example:</p>
@@ -397,7 +397,7 @@ To avoid this problem, mark your scenarios with tags and list the relevant tags 
 <p>The Ruby version of Cucumber (but not Cuke4Duke and Cuke4Nuke) supports many other types of hooks, such as step hooks
  (executed before or after each step) and global hooks (executed 
 once before any test runs or after all tests finish). They are defined similarly to the scenario hooks covered in this section. For more information, see
-<url title="the hooks page in the Cukes wiki" link="https://github.com/aslakhellesoy/cucumber/wiki/Hooks"/>.</p>
+<url title="the hooks page in the Cukes wiki" link="https://github.com/cucumber/cucumber/wiki/Hooks"/>.</p>
 </note>
 </section>
 </chapter>

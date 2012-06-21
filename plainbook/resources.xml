@@ -4,10 +4,10 @@
 <section title="Tools" id="sec_resources_tools">
 <ul>
 <li>Cucumber main web site <url link="http://cukes.info" /></li>
-<li>Cucumber wiki <url link="http://wiki.github.com/aslakhellesoy/cucumber/" /></li>
+<li>Cucumber wiki <url link="http://wiki.github.com/cucumber/cucumber/" /></li>
 <li>Specflow <url link="http://specflow.org" /> </li>
 <li>Cuke4Nuke <url link="http://github.com/richardlawrence/Cuke4Nuke" /></li>
-<li>Cuke4Duke <url link="http://wiki.github.com/aslakhellesoy/cuke4duke/" /></li>
+<li>Cuke4Duke <url link="http://wiki.github.com/cucumber/cuke4duke/" /></li>
 <li>Cuke4Nuke Visual Studio Plugin <url link="http://github.com/henritersteeg/cuke4vs" /></li>
 </ul>
 </section>

@@ -500,7 +500,7 @@ an &lsquo;at&rsquo; sign (@) before the tag name. For example:</p>
 <p>You can tag a feature or a scenario. Feature tags are automatically inherited by all the enclosed scenarios and scenario outlines. Cucumber
 also supports some more advanced tag features, such as enforcing the limit on the number of scenarios with a particular tag (useful for work-in-progress) and
 running scenarios that satisfy a combination of tags. For information on those options, have a look at 
-the <url link="https://github.com/aslakhellesoy/cucumber/wiki/tags" title="tags page on the Cucumber wiki"/>.</p>
+the <url link="https://github.com/cucumber/cucumber/wiki/tags" title="tags page on the Cucumber wiki"/>.</p>
 </section>
 <section title="Remember">
 <ul>
